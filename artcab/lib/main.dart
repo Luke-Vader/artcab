@@ -3,7 +3,10 @@ import 'home_page.dart';
 import 'dart:async';
 
 void main() {
-  runApp(MaterialApp(home: MyApp(),));
+  runApp(MaterialApp(
+    home: MyApp(),
+    debugShowCheckedModeBanner: false,
+  ));
 } 
 
 class MyApp extends StatefulWidget {
