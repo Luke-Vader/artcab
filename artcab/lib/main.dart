@@ -5,6 +5,7 @@ import 'dart:async';
 void main() {
   runApp(MaterialApp(
     home: MyApp(),
+    theme: ThemeData(fontFamily: 'Monaco'),
     debugShowCheckedModeBanner: false,
   ));
 } 
