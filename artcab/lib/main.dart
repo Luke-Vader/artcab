@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'home_page.dart';
+import 'welcome.dart';
 import 'dart:async';
 
 void main() {
@@ -20,15 +20,21 @@ class _MyAppState extends State<MyApp> {
     super.initState();  
     Future.delayed(Duration(seconds: 3),
     () {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(),),);
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => HomePage(),
+        ),
+      );
     },
   ); 
 }
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: FlutterLogo(
-          size:  400,
+          size:  300,
         )
       )
     );
