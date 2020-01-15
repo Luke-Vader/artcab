@@ -15,6 +15,7 @@ enum FormType {
 class _LoginPageState extends State<LoginPage> {
 
   final formKey = new GlobalKey<FormState>();
+  var passKey = new GlobalKey<FormFieldState>();
   final cursorColor = Colors.red;
   final sizedBoxSpace = SizedBox(height: 24);
   String _name;
@@ -80,8 +81,11 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
 
     return new Scaffold(
+      appBar: AppBar(
+        title: Text('ArtCab'),
+      ),
       body: new Container(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.only(bottom: 16.0, left: 16.0, right: 16.0, top: 24.0),
         child: new Form(
           key: formKey,
           child: Scrollbar(
@@ -102,14 +106,22 @@ class _LoginPageState extends State<LoginPage> {
     if (_formType == FormType.login) {
       return [
         new TextFormField(
-          decoration: new InputDecoration(labelText: 'Email'),
+          decoration: new InputDecoration(
+            labelText: 'Email',
+            filled: true,
+            focusColor: Colors.red,
+          ),
           validator: (value) => value.isEmpty ? 'Email can\'t be empty' : null,
           cursorColor: cursorColor,
           onSaved: (value) => _email = value,
         ),  
         sizedBoxSpace,
         new TextFormField(
-          decoration: new InputDecoration(labelText: 'Password'),
+          decoration: new InputDecoration(
+            labelText: 'Password',
+            filled: true,
+            focusColor: Colors.red,
+          ),
           cursorColor: cursorColor,
           validator: (value) => value.isEmpty ? 'Password can\'t be empty' : null,
           onSaved: (value) => _password = value,
@@ -141,6 +153,7 @@ class _LoginPageState extends State<LoginPage> {
         ),
         sizedBoxSpace,
         new TextFormField(
+          key: passKey,
           decoration: new InputDecoration(
             labelText: 'Password*',
             filled: true,
@@ -148,6 +161,10 @@ class _LoginPageState extends State<LoginPage> {
           ),
           onSaved: (value) => _password = value,
           obscureText: true,
+          validator: (password) {
+            var result = password.length < 8 ? "Password should have at least 8 characters" : null;
+            return result;
+          },
         ),
         sizedBoxSpace,
         new TextFormField(
@@ -158,6 +175,10 @@ class _LoginPageState extends State<LoginPage> {
           ),
           onSaved: (value) => _cPassword = value,
           obscureText: true,
+          validator: (confirmation) {
+            var password = passKey.currentState.value;
+            return confirmation == password ? null : "Passwords don\'t match";
+          },
         ),
         sizedBoxSpace,
         new TextFormField(
@@ -178,6 +199,7 @@ class _LoginPageState extends State<LoginPage> {
             filled: true,
           ),
           onSaved: (value) => _quote = value,
+          maxLength: 100,
           maxLines: 3,
         ),
         sizedBoxSpace,
@@ -185,7 +207,6 @@ class _LoginPageState extends State<LoginPage> {
           decoration: new InputDecoration(
             labelText: 'Portfolio',
             filled: true,
-            hintMaxLines: 250,
             focusColor: Colors.red,
           ),
           maxLength: 250,
@@ -210,13 +231,16 @@ class _LoginPageState extends State<LoginPage> {
     if (_formType == FormType.login) {
       return [
         new RaisedButton(
+          elevation: 4,
+          color: Colors.red[300],
+          textColor: Colors.white,
           child: new Text('Login', style: new TextStyle(fontSize: 14),),
           onPressed: login,
         ),
         new FlatButton(          
           child: new Text('Become a Member Now!', style: new TextStyle(fontSize: 14)),
           onPressed: switchToRegistration,
-        )                    
+        )
       ];
     } else {
       return [
