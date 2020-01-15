@@ -1,7 +1,5 @@
-import 'package:artcab/login_page.dart';
 import 'package:artcab/question.dart';
 import 'package:flutter/material.dart';
-import 'login_page.dart';
 import 'dart:async';
 
 void main() {
