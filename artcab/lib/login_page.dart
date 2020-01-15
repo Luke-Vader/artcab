@@ -245,6 +245,8 @@ class _LoginPageState extends State<LoginPage> {
     } else {
       return [
         new RaisedButton(
+          color: Colors.red[300],
+          textColor: Colors.white,
           child: new Text('Become a Member', style: new TextStyle(fontSize: 14),),
           onPressed: register,
         ),
