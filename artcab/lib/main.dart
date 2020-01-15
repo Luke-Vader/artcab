@@ -1,44 +1,13 @@
 import 'package:flutter/material.dart';
-import 'welcome.dart';
-import 'dart:async';
+import 'login_page.dart';
 
 void main() {
-  runApp(MaterialApp(
-    home: MyApp(),
-    theme: ThemeData(fontFamily: 'Monaco'),
-    debugShowCheckedModeBanner: false,
-  ));
-} 
-
-class MyApp extends StatefulWidget {
-  _MyAppState createState() => _MyAppState();
+  runApp(new MyApp());
 }
 
-class _MyAppState extends State<MyApp> {
+class MyApp extends StatelessWidget {
   @override
-  void initState() {
-    super.initState();  
-    Future.delayed(Duration(seconds: 3),
-    () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => HomePage(),
-        ),
-      );
-    },
-  ); 
-}
-
   Widget build(BuildContext context) {
-<<<<<<< Updated upstream
-    return Scaffold(
-      body: Center(
-        child: FlutterLogo(
-          size:  300,
-        )
-      )
-=======
     return new MaterialApp(
       title: 'Login',
       theme: new ThemeData(
@@ -46,7 +15,6 @@ class _MyAppState extends State<MyApp> {
         fontFamily: 'Monaco'
       ),
       home: new LoginPage(),
->>>>>>> Stashed changes
     );
   }
 }
