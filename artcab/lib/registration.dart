@@ -29,6 +29,9 @@ class PersonalData {
   String links = '';
   String password = '';
   String confirmPassword = '';
+  String specialization = '';
+  String genre = '';
+  String taste = '';
 }
 
 class PasswordField extends StatefulWidget {
