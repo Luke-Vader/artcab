@@ -16,7 +16,7 @@ class _LoginPageState extends State<LoginPage> {
 
   final formKey = new GlobalKey<FormState>();
   final cursorColor = Colors.red;
-
+  final sizedBoxSpace = SizedBox(height: 24);
   String _name;
   String _phone;
   String _organisation;
@@ -78,6 +78,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+
     return new Scaffold(
       body: new Container(
         padding: const EdgeInsets.all(16.0),
@@ -106,6 +107,7 @@ class _LoginPageState extends State<LoginPage> {
           cursorColor: cursorColor,
           onSaved: (value) => _email = value,
         ),  
+        sizedBoxSpace,
         new TextFormField(
           decoration: new InputDecoration(labelText: 'Password'),
           cursorColor: cursorColor,
@@ -117,18 +119,40 @@ class _LoginPageState extends State<LoginPage> {
     } else {
       return [
         new TextFormField(
-          decoration: new InputDecoration(labelText: 'Name'),
+          decoration: new InputDecoration(
+            labelText: 'Name*',
+            filled: true,
+          ),
           cursorColor: cursorColor,
           validator: (value) => value.isEmpty ? 'Name can\'t be empty' : null,
           onSaved: (value) => _name = value,
-        ),  
+        ), 
+        sizedBoxSpace, 
         new TextFormField(
           cursorColor: cursorColor,
-          decoration: new InputDecoration(labelText: 'Contact Number'),
+          decoration: new InputDecoration(
+            labelText: 'Contact Number*',
+            filled: true,
+          ),
           validator: (value) => value.isEmpty ? 'Contact Number can\t be empty' : null,
         ),
+        sizedBoxSpace,
         new TextFormField(
-          decoration: new InputDecoration(labelText: 'Password'),
+          cursorColor: cursorColor,
+          decoration: new InputDecoration(
+            labelText: 'Organisation',
+          ),
+        ),
+        sizedBoxSpace,
+        new TextFormField(
+          cursorColor: cursorColor,
+          decoration: new InputDecoration(labelText: 'Film Quote'),
+          maxLines: 3,
+        ),
+        sizedBoxSpace,
+        new TextFormField(
+          decoration: new InputDecoration(
+            labelText: 'Password*'),
           validator: (value) => value.isEmpty ? 'Password can\'t be empty' : null,
           onSaved: (value) => _password = value,
           obscureText: true,
