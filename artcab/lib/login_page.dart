@@ -122,6 +122,7 @@ class _LoginPageState extends State<LoginPage> {
           decoration: new InputDecoration(
             labelText: 'Name*',
             filled: true,
+            focusColor: Colors.red,
           ),
           cursorColor: cursorColor,
           validator: (value) => value.isEmpty ? 'Name can\'t be empty' : null,
@@ -132,30 +133,74 @@ class _LoginPageState extends State<LoginPage> {
           cursorColor: cursorColor,
           decoration: new InputDecoration(
             labelText: 'Contact Number*',
+            focusColor: Colors.red,
             filled: true,
           ),
           validator: (value) => value.isEmpty ? 'Contact Number can\t be empty' : null,
+          onSaved: (value) => _phone = value,
+        ),
+        sizedBoxSpace,
+        new TextFormField(
+          decoration: new InputDecoration(
+            labelText: 'Password*',
+            filled: true,
+            focusColor: Colors.red,
+          ),
+          onSaved: (value) => _password = value,
+          obscureText: true,
+        ),
+        sizedBoxSpace,
+        new TextFormField(
+          decoration: new InputDecoration(
+            labelText: 'Confirm Password*',
+            filled: true,
+            focusColor: Colors.red,
+          ),
+          onSaved: (value) => _cPassword = value,
+          obscureText: true,
         ),
         sizedBoxSpace,
         new TextFormField(
           cursorColor: cursorColor,
           decoration: new InputDecoration(
             labelText: 'Organisation',
+            focusColor: Colors.red,
+            filled: true,
           ),
+          onSaved: (value) => _organisation = value,
         ),
         sizedBoxSpace,
         new TextFormField(
           cursorColor: cursorColor,
-          decoration: new InputDecoration(labelText: 'Film Quote'),
+          decoration: new InputDecoration(
+            labelText: 'Film Quote',
+            focusColor: Colors.red,
+            filled: true,
+          ),
+          onSaved: (value) => _quote = value,
           maxLines: 3,
         ),
         sizedBoxSpace,
         new TextFormField(
           decoration: new InputDecoration(
-            labelText: 'Password*'),
-          validator: (value) => value.isEmpty ? 'Password can\'t be empty' : null,
-          onSaved: (value) => _password = value,
-          obscureText: true,
+            labelText: 'Portfolio',
+            filled: true,
+            hintMaxLines: 250,
+            focusColor: Colors.red,
+          ),
+          maxLength: 250,
+          maxLines: 3,
+          onSaved: (value) => _portfolio = value,
+        ),
+        sizedBoxSpace,
+        new TextFormField(
+          decoration: new InputDecoration(
+            labelText: 'Links',
+            focusColor: Colors.red,
+            filled: true,
+          ),
+          onSaved: (value) => _links = value,
+          maxLines: 2,
         ),
       ];
     }
