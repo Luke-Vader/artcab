@@ -1,3 +1,4 @@
+import 'package:artcab/home.dart';
 import 'package:artcab/main.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -48,6 +49,10 @@ class _LoginPageState extends State<LoginPage> {
       try {
         final AuthResult _result = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _email, password: _password);
         print('Signed in: ${_result.user.uid}');
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => HomePage()),
+        );
       } catch (e) {
         print('$e');
       }
@@ -59,6 +64,10 @@ class _LoginPageState extends State<LoginPage> {
       try {
         final AuthResult _result = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: _email, password: _password);
         print('Created User: ${_result.user.uid}');
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => HomePage()),
+        );
       } catch(e) {
         print('$e');
       }

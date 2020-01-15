@@ -1,4 +1,5 @@
 import 'package:artcab/login_page.dart';
+import 'package:artcab/question.dart';
 import 'package:flutter/material.dart';
 import 'login_page.dart';
 import 'dart:async';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       ),
       home: new SplashScreen(),
       routes: <String, WidgetBuilder>{
-        '/Login': (BuildContext context) => new LoginPage()
+        '/Login': (BuildContext context) => new Questionnaire()
       },
     );
   }
