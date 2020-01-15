@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'login_page.dart';
 
 void main() {
   runApp(new MyApp());
@@ -10,7 +11,8 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       title: 'Login',
       theme: new ThemeData(
-        primarySwatch: Colors.red;
+        primarySwatch: Colors.red,
+        fontFamily: 'Monaco'
       ),
       home: new LoginPage(),
     );
