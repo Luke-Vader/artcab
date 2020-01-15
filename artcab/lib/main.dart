@@ -1,5 +1,7 @@
+import 'package:artcab/login_page.dart';
 import 'package:flutter/material.dart';
 import 'login_page.dart';
+import 'dart:async';
 
 void main() {
   runApp(new MyApp());
@@ -14,7 +16,58 @@ class MyApp extends StatelessWidget {
         primarySwatch: primaryBlack,
         fontFamily: 'Monaco'
       ),
-      home: new LoginPage(),
+      home: new SplashScreen(),
+      routes: <String, WidgetBuilder>{
+        '/Login': (BuildContext context) => new LoginPage()
+      },
+    );
+  }
+}
+
+class SplashScreen extends StatefulWidget {
+  @override
+  _SplashScreenState createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+
+  startTime() async {
+    var _duration = new Duration(seconds: 4);
+    return new Timer(_duration, navigationPage);
+  }
+
+  void navigationPage() {
+    Navigator.of(context).pushReplacementNamed('/Login');
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    startTime();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.black,
+            ),
+          ),
+          Center(
+            child: Text(
+              'ArtCab',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 48,
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 }
