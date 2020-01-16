@@ -78,15 +78,30 @@ class _QuestionnaireState extends State<Questionnaire> {
         new Flexible(
           child: Container(
             child: new Center(
-              child: new FlatButton(
-                child: new Text(
-                  'SKIP',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: questionColor,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  new FlatButton(
+                    child: new Text(
+                      'SKIP',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: questionColor,
+                      ),
+                    ),
+                    onPressed: moveToGenre,
                   ),
-                ),
-                onPressed: moveToGenre,
+                  new FlatButton(
+                    child: new Text(
+                      'NEXT',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: questionColor,
+                      ),
+                    ),
+                    onPressed: moveToGenre,
+                  )
+                ],
               ),
             ),
           ),
@@ -127,15 +142,30 @@ class _QuestionnaireState extends State<Questionnaire> {
         new Flexible(
           child: Container(
             child: new Center(
-              child: new FlatButton(
-                child: new Text(
-                  'SKIP',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: questionColor,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  new FlatButton(
+                    child: new Text(
+                      'SKIP',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: questionColor,
+                      ),
+                    ),
+                    onPressed: movetoTaste,
                   ),
-                ),
-                onPressed: movetoTaste,
+                  new FlatButton(
+                    child: new Text(
+                      'NEXT',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: questionColor,
+                      ),
+                    ),
+                    onPressed: movetoTaste,
+                  )
+                ],
               ),
             ),
           ),
