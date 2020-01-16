@@ -1,5 +1,6 @@
 import 'package:artcab/question.dart';
 import 'package:flutter/material.dart';
+import 'welcome.dart';
 import 'dart:async';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       ),
       home: new SplashScreen(),
       routes: <String, WidgetBuilder>{
-        '/Login': (BuildContext context) => new Questionnaire()
+        '/Login': (BuildContext context) => new Welcome(),
       },
     );
   }
