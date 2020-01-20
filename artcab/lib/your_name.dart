@@ -53,7 +53,7 @@ class _NameState extends State<Name> {
               child: new Container(
                 padding: const EdgeInsets.all(16.0),
                 child: new TextFormField(
-                  validator: (value) => value.isEmpty ? 'Name can\'t be empty' : null,
+                  validator: (value) => value.isEmpty ? 'This can\'t be empty' : null,
                   decoration: new InputDecoration(
                       fillColor: questionColor,
                       filled: true,
