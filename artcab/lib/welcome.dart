@@ -1,4 +1,4 @@
-import 'package:artcab/question.dart';
+import 'package:artcab/nicreate.dart';
 import 'package:flutter/material.dart';
 
 class Welcome extends StatefulWidget {
@@ -15,7 +15,7 @@ class _WelcomeState extends State<Welcome> {
         children: <Widget>[
           new Flexible(
             child: Container(),
-            flex: 4,
+            flex: 3,
           ),
           new Flexible(
             flex: 1,
@@ -38,7 +38,7 @@ class _WelcomeState extends State<Welcome> {
             )
           ),
           new Flexible(
-            flex: 4,
+            flex: 2,
             child: Container(),
           ),
           new Flexible(
@@ -51,7 +51,7 @@ class _WelcomeState extends State<Welcome> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Questionnaire())
+                MaterialPageRoute(builder: (context) => NiCreate())
               );
             },
             ),

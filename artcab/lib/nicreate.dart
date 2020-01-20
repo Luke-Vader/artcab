@@ -1,13 +1,12 @@
-import 'package:artcab/welcome.dart';
+import 'package:artcab/signup_or_login.dart';
 import 'package:flutter/material.dart';
-import 'welcome.dart';
 
-class Artists extends StatefulWidget {
+class NiCreate extends StatefulWidget {
   @override
-  _ArtistsState createState() => _ArtistsState();
+  _NiCreateState createState() => _NiCreateState();
 }
 
-class _ArtistsState extends State<Artists> {
+class _NiCreateState extends State<NiCreate> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,10 +20,10 @@ class _ArtistsState extends State<Artists> {
           new Flexible(
             flex: 2,
             child: new Text(
-              "People live and die.\nArtists die, but live.",
+              "Network\nIdeate\nCreate",
               style: TextStyle(
               color: Colors.white,
-                fontSize: 24,
+                fontSize: 36,
               ),
             )
           ),
@@ -42,7 +41,7 @@ class _ArtistsState extends State<Artists> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Welcome())
+                MaterialPageRoute(builder: (context) => LoginSignup())
               );
             },
             ),
