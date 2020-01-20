@@ -9,23 +9,26 @@ class _WelcomeState extends State<Welcome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Stack(
-          children: <Widget>[
-            new Container(
-              child: new Image.asset(
-                'assets/images/welcome_1.jpg',
-                fit: BoxFit.fill,
-              ),
+      backgroundColor: Colors.black,
+      body: Stack(
+        children: <Widget>[
+          new Center(
+            child: new Image.asset(
+              'assets/images/welcome_2.jpg',
+              fit: BoxFit.contain,
             ),
-            new Text(
-              "People live and die.\nArtists die, but live.",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-              ),
+          ),
+          new Center(
+            child: new Text(
+            "People live and die.\nArtists die, but live.",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 22,
+              backgroundColor: Colors.green,
             ),
-          ],
           )
-        );
+        ),
+      ],
+    ));
   }
 }
