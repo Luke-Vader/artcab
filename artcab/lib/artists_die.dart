@@ -1,12 +1,13 @@
-import 'package:artcab/question.dart';
+import 'package:artcab/welcome.dart';
 import 'package:flutter/material.dart';
+import 'welcome.dart';
 
-class Welcome extends StatefulWidget {
+class Artists extends StatefulWidget {
   @override
-  _WelcomeState createState() => _WelcomeState();
+  _ArtistsState createState() => _ArtistsState();
 }
 
-class _WelcomeState extends State<Welcome> {
+class _ArtistsState extends State<Artists> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,25 +16,15 @@ class _WelcomeState extends State<Welcome> {
         children: <Widget>[
           new Flexible(
             child: Container(),
-            flex: 4,
+            flex: 3,
           ),
           new Flexible(
-            flex: 1,
+            flex: 2,
             child: new Text(
-              "Welcome to",
+              "People live and die.\nArtists die, but live.",
               style: TextStyle(
               color: Colors.white,
-                fontSize: 36,
-              ),
-            )
-          ),
-          new Flexible(
-            flex: 1,
-            child: new Text(
-              "ArtCab",
-              style: TextStyle(
-              color: Colors.white,
-                fontSize: 48,
+                fontSize: 24,
               ),
             )
           ),
@@ -51,7 +42,7 @@ class _WelcomeState extends State<Welcome> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Questionnaire())
+                MaterialPageRoute(builder: (context) => Welcome())
               );
             },
             ),
