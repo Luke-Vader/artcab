@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:artcab/your_contact.dart';
+import 'package:artcab/your_ig.dart';
 
-class Name extends StatefulWidget {
+
+class Email extends StatefulWidget {
   @override
-  _NameState createState() => _NameState();
+  _EmailState createState() => _EmailState();
 }
 
-class _NameState extends State<Name> {
+class _EmailState extends State<Email> {
 
   final questionColor = Colors.white;
   final formKey = new GlobalKey<FormState>();
@@ -18,7 +19,7 @@ class _NameState extends State<Name> {
       print('Valid');
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Contact()));
+        MaterialPageRoute(builder: (context) => Instagram()));
     } else {
       print('Invalid');
     }
@@ -40,7 +41,7 @@ class _NameState extends State<Name> {
               child: new Container(
                 padding: const EdgeInsets.all(16.0),
                 child: new Text(
-                  'Your Name?',
+                  'Your Email address?',
                   style: TextStyle(
                     fontSize: 32,
                     color: questionColor,
@@ -53,7 +54,7 @@ class _NameState extends State<Name> {
               child: new Container(
                 padding: const EdgeInsets.all(16.0),
                 child: new TextFormField(
-                  validator: (value) => value.isEmpty ? 'Name can\'t be empty' : null,
+                  validator: (value) => value.isEmpty ? 'This can\'t be empty' : null,
                   decoration: new InputDecoration(
                       fillColor: questionColor,
                       filled: true,

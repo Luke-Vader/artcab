@@ -17,6 +17,9 @@ class _LoginSignupState extends State<LoginSignup> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
+          new Container(
+            height: 24,
+          ),
           new Flexible(
             child: Text(
               'ArtCab',
