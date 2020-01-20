@@ -57,7 +57,7 @@ class _NameState extends State<Name> {
                   decoration: new InputDecoration(
                       fillColor: questionColor,
                       filled: true,
-                      border: OutlineInputBorder()),
+                      ),
                 ),
               ),
               flex: 3,

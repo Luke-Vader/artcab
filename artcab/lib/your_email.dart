@@ -79,7 +79,7 @@ class _EmailState extends State<Email> {
             )
           ],
         ),
-        )
-        );
+      )
+    );
   }
 }
