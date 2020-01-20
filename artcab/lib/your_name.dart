@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:artcab/your_contact.dart';
 
 class Name extends StatefulWidget {
   @override
@@ -6,13 +7,30 @@ class Name extends StatefulWidget {
 }
 
 class _NameState extends State<Name> {
+
   final questionColor = Colors.white;
+  final formKey = new GlobalKey<FormState>();
+
+  void validateSend() {
+    final form = formKey.currentState;
+    if(form.validate()) {
+      form.save();
+      print('Valid');
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Contact()));
+    } else {
+      print('Invalid');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.black,
-        body: new Column(
+        body: new Form(
+          key: formKey,
+          child: new Column(
           children: <Widget>[
             new Flexible(
               child: Container(),
@@ -35,6 +53,7 @@ class _NameState extends State<Name> {
               child: new Container(
                 padding: const EdgeInsets.all(16.0),
                 child: new TextFormField(
+                  validator: (value) => value.isEmpty ? 'Name can\'t be empty' : null,
                   decoration: new InputDecoration(
                       fillColor: questionColor,
                       filled: true,
@@ -53,11 +72,13 @@ class _NameState extends State<Name> {
                     color: questionColor,
                   ),
                 ),
-                onPressed: () {},
+                onPressed: validateSend,
               )),
               flex: 5,
             )
           ],
-        ));
+        ),
+        )
+        );
   }
 }
