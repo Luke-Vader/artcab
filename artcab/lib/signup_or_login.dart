@@ -1,4 +1,6 @@
+import 'package:artcab/login_page.dart';
 import 'package:flutter/material.dart';
+import 'package:artcab/your_name.dart';
 
 class LoginSignup extends StatefulWidget {
   @override
@@ -11,21 +13,21 @@ class _LoginSignupState extends State<LoginSignup> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: new Center(
-        child: new Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            new Flexible(
-              child: Text(
-                'ArtCab',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 48,
-                  color: Colors.white,
-                ),
+          child: new Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          new Flexible(
+            child: Text(
+              'ArtCab',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 48,
+                color: Colors.white,
               ),
-              flex: 1,
             ),
+            flex: 1,
+          ),
           new Flexible(
             flex: 1,
             child: new Column(
@@ -44,7 +46,11 @@ class _LoginSignupState extends State<LoginSignup> {
                       color: Colors.white,
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Name()));
+                  },
                 ),
                 new Container(
                   height: 16,
@@ -62,7 +68,12 @@ class _LoginSignupState extends State<LoginSignup> {
                       color: Colors.white,
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginPage())
+                    );
+                  },
                 )
               ],
             ),
