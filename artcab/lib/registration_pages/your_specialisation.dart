@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:artcab/your_name.dart';
 
-class Instagram extends StatefulWidget {
+class Special extends StatefulWidget {
   @override
-  _InstagramState createState() => _InstagramState();
+  _SpecialState createState() => _SpecialState();
 }
 
-class _InstagramState extends State<Instagram> {
+class _SpecialState extends State<Special> {
 
   final questionColor = Colors.white;
   final formKey = new GlobalKey<FormState>();
@@ -16,9 +15,9 @@ class _InstagramState extends State<Instagram> {
     if(form.validate()) {
       form.save();
       print('Valid');
-      Navigator.push(
+      /*Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Name()));
+        MaterialPageRoute(builder: (context) => Genre()));*/
     } else {
       print('Invalid');
     }
@@ -40,7 +39,7 @@ class _InstagramState extends State<Instagram> {
               child: new Container(
                 padding: const EdgeInsets.all(16.0),
                 child: new Text(
-                  'Your Instagram?',
+                  'Your Contact Number?',
                   style: TextStyle(
                     fontSize: 32,
                     color: questionColor,
@@ -53,7 +52,8 @@ class _InstagramState extends State<Instagram> {
               child: new Container(
                 padding: const EdgeInsets.all(16.0),
                 child: new TextFormField(
-                  validator: (value) => value.isEmpty ? 'Email can\'t be empty' : null,
+                  keyboardType: TextInputType.number,
+                  validator: (value) => value.isEmpty ? 'This can\'t be empty' : null,
                   decoration: new InputDecoration(
                       fillColor: questionColor,
                       filled: true,
@@ -78,7 +78,7 @@ class _InstagramState extends State<Instagram> {
             )
           ],
         ),
-        )
-        );
+      )
+    );
   }
 }

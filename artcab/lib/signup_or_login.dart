@@ -1,6 +1,6 @@
 import 'package:artcab/login_page.dart';
 import 'package:flutter/material.dart';
-import 'package:artcab/your_name.dart';
+import 'package:artcab/registration_pages/your_name.dart';
 
 class LoginSignup extends StatefulWidget {
   @override

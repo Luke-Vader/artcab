@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:artcab/your_email.dart';
+import 'package:artcab/registration_pages/your_email.dart';
 
 class Contact extends StatefulWidget {
   @override
@@ -53,7 +53,8 @@ class _ContactState extends State<Contact> {
               child: new Container(
                 padding: const EdgeInsets.all(16.0),
                 child: new TextFormField(
-                  validator: (value) => value.isEmpty ? 'Contact Number can\'t be empty' : null,
+                  keyboardType: TextInputType.number,
+                  validator: (value) => value.isEmpty ? 'This can\'t be empty' : null,
                   decoration: new InputDecoration(
                       fillColor: questionColor,
                       filled: true,

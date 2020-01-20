@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:artcab/your_ig.dart';
+import 'package:artcab/registration_pages/your_contact.dart';
 
-
-class Email extends StatefulWidget {
+class Name extends StatefulWidget {
   @override
-  _EmailState createState() => _EmailState();
+  _NameState createState() => _NameState();
 }
 
-class _EmailState extends State<Email> {
+class _NameState extends State<Name> {
 
   final questionColor = Colors.white;
   final formKey = new GlobalKey<FormState>();
@@ -19,7 +18,7 @@ class _EmailState extends State<Email> {
       print('Valid');
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Instagram()));
+        MaterialPageRoute(builder: (context) => Contact()));
     } else {
       print('Invalid');
     }
@@ -41,7 +40,7 @@ class _EmailState extends State<Email> {
               child: new Container(
                 padding: const EdgeInsets.all(16.0),
                 child: new Text(
-                  'Your Email address?',
+                  'Your Name?',
                   style: TextStyle(
                     fontSize: 32,
                     color: questionColor,
@@ -54,11 +53,12 @@ class _EmailState extends State<Email> {
               child: new Container(
                 padding: const EdgeInsets.all(16.0),
                 child: new TextFormField(
+                  keyboardType: TextInputType.text,
                   validator: (value) => value.isEmpty ? 'This can\'t be empty' : null,
                   decoration: new InputDecoration(
                       fillColor: questionColor,
                       filled: true,
-                      border: OutlineInputBorder()),
+                      ),
                 ),
               ),
               flex: 3,
@@ -79,7 +79,7 @@ class _EmailState extends State<Email> {
             )
           ],
         ),
-      )
-    );
+        )
+        );
   }
 }
