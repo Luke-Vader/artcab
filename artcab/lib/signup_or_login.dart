@@ -1,6 +1,6 @@
 import 'package:artcab/login_page.dart';
 import 'package:flutter/material.dart';
-import 'package:artcab/registration_pages/your_name.dart';
+import 'package:artcab/registration_pages/your_specialisation.dart';
 
 class LoginSignup extends StatefulWidget {
   @override
@@ -52,7 +52,7 @@ class _LoginSignupState extends State<LoginSignup> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Name()));
+                      MaterialPageRoute(builder: (context) => Special()));
                   },
                 ),
                 new Container(
