@@ -1,7 +1,6 @@
 import 'package:artcab/artists_die.dart';
 import 'package:flutter/material.dart';
 import 'artists_die.dart';
-import 'welcome.dart';
 import 'dart:async';
 
 void main() {
