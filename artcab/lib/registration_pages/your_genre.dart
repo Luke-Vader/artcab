@@ -1,16 +1,14 @@
-import 'package:artcab/registration_pages/your_genre.dart';
 import 'package:flutter/material.dart';
 
-class Special extends StatefulWidget {
+class Genre extends StatefulWidget {
   @override
-  _SpecialState createState() => _SpecialState();
+  _GenreState createState() => _GenreState();
 }
 
-class _SpecialState extends State<Special> {
+class _GenreState extends State<Genre> {
 
   final questionColor = Colors.white;
   final formKey = new GlobalKey<FormState>();
-
 
   void validateSend() {
     final form = formKey.currentState;
@@ -23,15 +21,19 @@ class _SpecialState extends State<Special> {
   }
 
   List<String> specialList = [
-    "Director",
-    "Writer",
-    "Actor",
-    "Cinematographer",
-    "Editor",
-    "Producer",
-    "VFX",
-    "Film Production",
-    "Music and Sound",
+    "Comedy",
+    "Drama",
+    "Action",
+    "Tragedy",
+    "Thriller",
+    "Horror",
+    "Noir",
+    "Experimental",
+    "Romance",
+    "Adventure",
+    "Documentary",
+    "Animation",
+    "Silent",
   ];
 
   List<String> selectedSpecials = List();
@@ -41,7 +43,7 @@ class _SpecialState extends State<Special> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Specialisation'),
+          title: Text('Genre'),
           content: MultiSelectChip(
             specialList,
             onSelectionChanged: (selectedList) {
@@ -55,10 +57,6 @@ class _SpecialState extends State<Special> {
               child: Text("Save"),
               onPressed: () {
                 Navigator.of(context).pop();
-                Navigator.push(
-                  context, 
-                  MaterialPageRoute(builder: (context) => Genre())
-                );
                 print(selectedSpecials.length);
               }, 
             )
@@ -84,7 +82,7 @@ class _SpecialState extends State<Special> {
               child: new Container(
                 padding: const EdgeInsets.all(16.0),
                 child: new Text(
-                  'Your Specialisation?',
+                  'Your Preferred Genre?',
                   style: TextStyle(
                     fontSize: 32,
                     color: questionColor,
