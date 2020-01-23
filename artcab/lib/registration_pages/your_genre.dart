@@ -37,7 +37,7 @@ class _GenreState extends State<Genre> {
     "Silent",
   ];
 
-  List<String> selectedSpecials = List();
+  List<String> selectedGenres = List();
 
   _showDialog() {
     showDialog(
@@ -49,7 +49,7 @@ class _GenreState extends State<Genre> {
             specialList,
             onSelectionChanged: (selectedList) {
               setState(() {
-                selectedSpecials = selectedList;
+                selectedGenres = selectedList;
               });
             },
           ),
@@ -62,7 +62,7 @@ class _GenreState extends State<Genre> {
                   context, 
                   MaterialPageRoute(builder: (context) => Taste())
                 );
-                print(selectedSpecials.length);
+                print(selectedGenres.length);
               }, 
             )
           ],

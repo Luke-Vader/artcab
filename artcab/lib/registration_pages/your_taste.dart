@@ -30,7 +30,7 @@ class _TasteState extends State<Taste> {
     "Others"
   ];
 
-  List<String> selectedSpecials = List();
+  List<String> selectedTastes = List();
 
   _showDialog() {
     showDialog(
@@ -42,7 +42,7 @@ class _TasteState extends State<Taste> {
             specialList,
             onSelectionChanged: (selectedList) {
               setState(() {
-                selectedSpecials = selectedList;
+                selectedTastes = selectedList;
               });
             },
           ),
@@ -55,7 +55,7 @@ class _TasteState extends State<Taste> {
                   context, 
                   MaterialPageRoute(builder: (context) => Name())
                 );
-                print(selectedSpecials.length);
+                print(selectedTastes.length);
               }, 
             )
           ],
