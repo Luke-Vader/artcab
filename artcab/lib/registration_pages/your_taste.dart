@@ -1,3 +1,4 @@
+import 'package:artcab/registration_pages/your_name.dart';
 import 'package:flutter/material.dart';
 
 class Taste extends StatefulWidget {
@@ -50,6 +51,10 @@ class _TasteState extends State<Taste> {
               child: Text("Save"),
               onPressed: () {
                 Navigator.of(context).pop();
+                Navigator.push(
+                  context, 
+                  MaterialPageRoute(builder: (context) => Name())
+                );
                 print(selectedSpecials.length);
               }, 
             )
