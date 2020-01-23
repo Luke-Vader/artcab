@@ -26,7 +26,7 @@ class _TasteState extends State<Taste> {
     "Hollywood",
     "European",
     "Japanese",
-    "Korean"
+    "Korean",
     "Others"
   ];
 
