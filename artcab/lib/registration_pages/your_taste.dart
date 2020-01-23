@@ -1,12 +1,11 @@
-import 'package:artcab/registration_pages/your_taste.dart';
 import 'package:flutter/material.dart';
 
-class Genre extends StatefulWidget {
+class Taste extends StatefulWidget {
   @override
-  _GenreState createState() => _GenreState();
+  _TasteState createState() => _TasteState();
 }
 
-class _GenreState extends State<Genre> {
+class _TasteState extends State<Taste> {
 
   final questionColor = Colors.white;
   final formKey = new GlobalKey<FormState>();
@@ -22,19 +21,12 @@ class _GenreState extends State<Genre> {
   }
 
   List<String> specialList = [
-    "Comedy",
-    "Drama",
-    "Action",
-    "Tragedy",
-    "Thriller",
-    "Horror",
-    "Noir",
-    "Experimental",
-    "Romance",
-    "Adventure",
-    "Documentary",
-    "Animation",
-    "Silent",
+    "Bollywood",
+    "Hollywood",
+    "European",
+    "Japanese",
+    "Korean"
+    "Others"
   ];
 
   List<String> selectedSpecials = List();
@@ -44,7 +36,7 @@ class _GenreState extends State<Genre> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Genre'),
+          title: Text('Cinema Taste'),
           content: MultiSelectChip(
             specialList,
             onSelectionChanged: (selectedList) {
@@ -58,10 +50,6 @@ class _GenreState extends State<Genre> {
               child: Text("Save"),
               onPressed: () {
                 Navigator.of(context).pop();
-                Navigator.push(
-                  context, 
-                  MaterialPageRoute(builder: (context) => Taste())
-                );
                 print(selectedSpecials.length);
               }, 
             )
@@ -87,7 +75,7 @@ class _GenreState extends State<Genre> {
               child: new Container(
                 padding: const EdgeInsets.all(16.0),
                 child: new Text(
-                  'Your Preferred Genre?',
+                  'Your Cinema Taste?',
                   style: TextStyle(
                     fontSize: 32,
                     color: questionColor,
