@@ -2,6 +2,18 @@ import 'package:artcab/registration_pages/your_name.dart';
 import 'package:flutter/material.dart';
 
 class Taste extends StatefulWidget {
+
+  final List<String> specialisations;
+  final List<String> specialCategories;
+  final List<String> genre;
+
+  Taste({
+    Key key,
+    this.specialisations,
+    this.specialCategories,
+    this.genre,
+  }) : super (key: key);
+
   @override
   _TasteState createState() => _TasteState();
 }
@@ -53,7 +65,12 @@ class _TasteState extends State<Taste> {
                 Navigator.of(context).pop();
                 Navigator.push(
                   context, 
-                  MaterialPageRoute(builder: (context) => Name())
+                  MaterialPageRoute(builder: (context) => Name(
+                    genre: widget.genre,
+                    specialCategories: widget.specialCategories,
+                    specialisations: widget.specialisations,
+                    taste: selectedTastes,
+                  ))
                 );
                 print(selectedTastes.length);
               }, 

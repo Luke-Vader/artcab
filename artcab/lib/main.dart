@@ -1,5 +1,4 @@
 import 'package:artcab/artists_die.dart';
-import 'package:artcab/home.dart';
 import 'package:flutter/material.dart';
 import 'artists_die.dart';
 import 'dart:async';
@@ -20,7 +19,7 @@ class MyApp extends StatelessWidget {
       ),
       home: new SplashScreen(),
       routes: <String, WidgetBuilder>{
-        '/Login': (BuildContext context) => new HomePage(),
+        '/Login': (BuildContext context) => new Artists(),
       },
     );
   }

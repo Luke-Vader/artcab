@@ -1,4 +1,4 @@
-import 'package:artcab/registration_pages/your_genre.dart';
+import 'package:artcab/registration_pages/your_special_cat.dart';
 import 'package:flutter/material.dart';
 
 class Special extends StatefulWidget {
@@ -10,13 +10,15 @@ class _SpecialState extends State<Special> {
 
   final questionColor = Colors.white;
   final formKey = new GlobalKey<FormState>();
-
-
+  
   void validateSend() {
     final form = formKey.currentState;
     if(form.validate()) {
       form.save();
       print('Valid');
+      /*Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Genre()));*/
     } else {
       print('Invalid');
     }
@@ -29,9 +31,10 @@ class _SpecialState extends State<Special> {
     "Cinematographer",
     "Editor",
     "Producer",
-    "VFX",
+    "Visual Effects",
     "Film Production",
     "Music and Sound",
+    "Vlogger",
   ];
 
   List<String> selectedSpecials = List();
@@ -56,8 +59,8 @@ class _SpecialState extends State<Special> {
               onPressed: () {
                 Navigator.of(context).pop();
                 Navigator.push(
-                  context, 
-                  MaterialPageRoute(builder: (context) => Genre())
+                  context,
+                  MaterialPageRoute(builder: (BuildContext context) => SCategory(categories: selectedSpecials))
                 );
                 print(selectedSpecials.length);
               }, 

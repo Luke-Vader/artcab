@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -7,12 +8,18 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+  //Firestore _firestore = Firestore.instance;
   int _selectedIndex = 0;
 
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
+  List<Widget> _widgetOptions = <Widget>[
+    new Container(
+      //child: new StreamBuilder(
+        //stream: _firestore.collection(path), 
+      //)
+      child: Text(
       'Index 0: Feed',
       style: TextStyle(color: Colors.white),
+    ),
     ),
     Text(
       'Index 1: Ideas',

@@ -2,6 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:artcab/registration_pages/your_contact.dart';
 
 class Name extends StatefulWidget {
+
+  final List<String> specialisations;
+  final List<String> specialCategories;
+  final List<String> genre;
+  final List<String> taste;
+
+  Name({
+    Key key,
+    this.specialisations,
+    this.specialCategories,
+    this.genre,
+    this.taste,
+  }) : super (key: key);
+
   @override
   _NameState createState() => _NameState();
 }
