@@ -10,19 +10,19 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
   static const List<Widget> _widgetOptions = <Widget>[
-  Text(
-    'Index 0: Feed',
-    style: TextStyle(color: Colors.white),
-  ),
-  Text(
-     'Index 1: Ideas',
-     style: TextStyle(color: Colors.white),
-  ),
-  Text(
-     'Index 2: Profile',
-     style: TextStyle(color: Colors.white),
-  ),
-];
+    Text(
+      'Index 0: Feed',
+      style: TextStyle(color: Colors.white),
+    ),
+    Text(
+      'Index 1: Ideas',
+      style: TextStyle(color: Colors.white),
+    ),
+    Text(
+      'Index 2: Profile',
+      style: TextStyle(color: Colors.white),
+    ),
+  ];
 
 void _onItemTapped(int index) {
   setState(() {
@@ -33,6 +33,12 @@ void _onItemTapped(int index) {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: new AppBar(
+        title: new Text(
+          'ArtCab',
+          style: TextStyle(color: Colors.white, fontSize: 20),
+        ),
+      ),
       backgroundColor: Colors.black,
       body: new Center(
         child: _widgetOptions.elementAt(_selectedIndex),
