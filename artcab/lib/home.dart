@@ -7,20 +7,38 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  int _cIndex = 0;
+  int _selectedIndex = 0;
 
-  void _incrementTab(index) {
-    setState(() {
-      _cIndex = index;
-    });
-  }
+  static const List<Widget> _widgetOptions = <Widget>[
+  Text(
+    'Index 0: Feed',
+    style: TextStyle(color: Colors.white),
+  ),
+  Text(
+     'Index 1: Ideas',
+     style: TextStyle(color: Colors.white),
+  ),
+  Text(
+     'Index 2: Profile',
+     style: TextStyle(color: Colors.white),
+  ),
+];
+
+void _onItemTapped(int index) {
+  setState(() {
+    _selectedIndex = index;
+  });
+}
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
+      body: new Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _cIndex,
+        currentIndex: _selectedIndex,
         backgroundColor: Colors.black,
         type: BottomNavigationBarType.shifting,
         items: [
@@ -65,9 +83,7 @@ class _HomePageState extends State<HomePage> {
             )
           ),
         ],
-        onTap: (index) {
-          _incrementTab(index);
-        },
+        onTap: _onItemTapped,
       ),
     );
   }
