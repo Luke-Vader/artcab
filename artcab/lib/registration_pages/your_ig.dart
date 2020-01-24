@@ -1,3 +1,4 @@
+import 'package:artcab/home.dart';
 import 'package:flutter/material.dart';
 
 class Instagram extends StatefulWidget {
@@ -15,6 +16,10 @@ class _InstagramState extends State<Instagram> {
     if(form.validate()) {
       form.save();
       print('Valid');
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage())
+      );
     } else {
       print('Invalid');
     }

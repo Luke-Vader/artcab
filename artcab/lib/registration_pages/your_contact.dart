@@ -2,6 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:artcab/registration_pages/your_email.dart';
 
 class Contact extends StatefulWidget {
+
+  final List<String> specialisations;
+  final List<String> specialCategories;
+  final List<String> genre;
+  final List<String> taste;
+  final String name;
+
+  Contact({
+    Key key,
+    this.specialisations,
+    this.specialCategories,
+    this.genre,
+    this.taste,
+    this.name,
+  }) : super (key: key);
+
   @override
   _ContactState createState() => _ContactState();
 }

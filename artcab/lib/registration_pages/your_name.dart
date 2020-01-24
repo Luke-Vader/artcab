@@ -32,7 +32,13 @@ class _NameState extends State<Name> {
       print('Valid');
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Contact()));
+        MaterialPageRoute(builder: (context) => Contact(
+          genre: widget.genre,
+                    specialCategories: widget.specialCategories,
+                    specialisations: widget.specialisations,
+                    taste: widget.taste,
+                    //name: ,
+        )));
     } else {
       print('Invalid');
     }
