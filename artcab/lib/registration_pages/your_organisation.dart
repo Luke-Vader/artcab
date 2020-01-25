@@ -1,31 +1,12 @@
+import 'package:artcab/home.dart';
 import 'package:flutter/material.dart';
-import 'package:artcab/registration_pages/your_ig.dart';
 
-
-class Email extends StatefulWidget {
-
-  final List<String> specialisations;
-  final List<String> specialCategories;
-  final List<String> genre;
-  final List<String> taste;
-  final String contact;
-  final String name;
-
-  Email({
-    Key key,
-    this.specialisations,
-    this.specialCategories,
-    this.genre,
-    this.taste,
-    this.contact,
-    this.name,
-  }) : super (key: key);
-
+class Instagram extends StatefulWidget {
   @override
-  _EmailState createState() => _EmailState();
+  _InstagramState createState() => _InstagramState();
 }
 
-class _EmailState extends State<Email> {
+class _InstagramState extends State<Instagram> {
 
   final questionColor = Colors.white;
   final formKey = new GlobalKey<FormState>();
@@ -37,9 +18,8 @@ class _EmailState extends State<Email> {
       print('Valid');
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Instagram(
-
-        )));
+        MaterialPageRoute(builder: (context) => HomePage())
+      );
     } else {
       print('Invalid');
     }
@@ -61,7 +41,7 @@ class _EmailState extends State<Email> {
               child: new Container(
                 padding: const EdgeInsets.all(16.0),
                 child: new Text(
-                  'Your Email address?',
+                  'Your Instagram?',
                   style: TextStyle(
                     fontSize: 32,
                     color: questionColor,
@@ -74,8 +54,7 @@ class _EmailState extends State<Email> {
               child: new Container(
                 padding: const EdgeInsets.all(16.0),
                 child: new TextFormField(
-                  keyboardType: TextInputType.emailAddress,
-                  validator: (value) => value.isEmpty ? 'This can\'t be empty' : null,
+                  validator: (value) => value.isEmpty ? 'Email can\'t be empty' : null,
                   decoration: new InputDecoration(
                       fillColor: questionColor,
                       filled: true,
@@ -100,7 +79,7 @@ class _EmailState extends State<Email> {
             )
           ],
         ),
-      )
-    );
+        )
+        );
   }
 }

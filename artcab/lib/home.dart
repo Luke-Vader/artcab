@@ -13,13 +13,10 @@ class _HomePageState extends State<HomePage> {
 
   List<Widget> _widgetOptions = <Widget>[
     new Container(
-      //child: new StreamBuilder(
-        //stream: _firestore.collection(path), 
-      //)
-      child: Text(
-      'Index 0: Feed',
-      style: TextStyle(color: Colors.white),
-    ),
+      child: Scrollable(
+        axisDirection: AxisDirection.down,
+        viewportBuilder: cards,
+      ),
     ),
     Text(
       'Index 1: Ideas',
@@ -100,4 +97,17 @@ void _onItemTapped(int index) {
       ),
     );
   }
+
+  Widget cards(BuildContext context, int carouselIndex) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Text('Carousel $carouselIndex'),
+        SizedBox(
+          // you may want to use an aspect ratio here for tablet support
+          height: 200.0,
+        )
+      ],
+    );
+
 }

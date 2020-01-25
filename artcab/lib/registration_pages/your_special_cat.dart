@@ -162,7 +162,7 @@ class _SCategoryState extends State<SCategory> {
                 child: new Container(
                   padding: const EdgeInsets.all(16.0),
                   child: new Text(
-                    'Your Specialisation Sub Categories?',
+                    'Specialisation Sub Categories?',
                     style: TextStyle(
                       fontSize: 32,
                       color: questionColor,
