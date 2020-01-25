@@ -28,6 +28,7 @@ class Email extends StatefulWidget {
 class _EmailState extends State<Email> {
 
   final questionColor = Colors.white;
+  final email = TextEditingController();
   final formKey = new GlobalKey<FormState>();
 
   void validateSend() {
@@ -38,12 +39,18 @@ class _EmailState extends State<Email> {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => Instagram(
-
+          genre: widget.genre,
+                    specialCategories: widget.specialCategories,
+                    specialisations: widget.specialisations,
+                    taste: widget.taste,
+                    name: widget.name,
+                    contact: widget.contact,
+                    email: email.text,
         )));
     } else {
       print('Invalid');
     }
-  }
+  } 
 
   @override
   Widget build(BuildContext context) {
@@ -74,6 +81,7 @@ class _EmailState extends State<Email> {
               child: new Container(
                 padding: const EdgeInsets.all(16.0),
                 child: new TextFormField(
+                  controller: email,
                   keyboardType: TextInputType.emailAddress,
                   validator: (value) => value.isEmpty ? 'This can\'t be empty' : null,
                   decoration: new InputDecoration(

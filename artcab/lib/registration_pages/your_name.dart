@@ -24,6 +24,7 @@ class _NameState extends State<Name> {
 
   final questionColor = Colors.white;
   final formKey = new GlobalKey<FormState>();
+  final name = TextEditingController();
 
   void validateSend() {
     final form = formKey.currentState;
@@ -37,7 +38,7 @@ class _NameState extends State<Name> {
                     specialCategories: widget.specialCategories,
                     specialisations: widget.specialisations,
                     taste: widget.taste,
-                    //name: ,
+                    name: name.text,
         )));
     } else {
       print('Invalid');
@@ -73,6 +74,7 @@ class _NameState extends State<Name> {
               child: new Container(
                 padding: const EdgeInsets.all(16.0),
                 child: new TextFormField(
+                  controller: name,
                   keyboardType: TextInputType.text,
                   validator: (value) => value.isEmpty ? 'This can\'t be empty' : null,
                   decoration: new InputDecoration(

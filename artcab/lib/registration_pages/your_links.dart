@@ -1,32 +1,46 @@
+import 'package:artcab/registration_pages/your_picture.dart';
 import 'package:flutter/material.dart';
-import 'package:artcab/registration_pages/your_email.dart';
 
-class Contact extends StatefulWidget {
+class Links extends StatefulWidget {
 
   final List<String> specialisations;
   final List<String> specialCategories;
   final List<String> genre;
   final List<String> taste;
   final String name;
+  final String contact;
+  final String email;
+  final String instagram;
+  final String organisation;
+  final String quote;
+  final String portfolio;
 
-  Contact({
+  Links({
     Key key,
     this.specialisations,
     this.specialCategories,
     this.genre,
+    this.email,
+    this.contact,
     this.taste,
     this.name,
+    this.instagram,
+    this.organisation,
+    this.quote,
+    this.portfolio,
   }) : super (key: key);
 
   @override
-  _ContactState createState() => _ContactState();
+  _LinksState createState() => _LinksState();
 }
 
-class _ContactState extends State<Contact> {
+class _LinksState extends State<Links> {
 
   final questionColor = Colors.white;
   final formKey = new GlobalKey<FormState>();
-  final contact = TextEditingController();
+  final link1 = TextEditingController();
+  final link2 = TextEditingController();
+  final link3 = TextEditingController();
 
   void validateSend() {
     final form = formKey.currentState;
@@ -35,15 +49,20 @@ class _ContactState extends State<Contact> {
       print('Valid');
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Email(
-          genre: widget.genre,
+        MaterialPageRoute(builder: (context) => Picture(
+               genre: widget.genre,
                     specialCategories: widget.specialCategories,
                     specialisations: widget.specialisations,
                     taste: widget.taste,
                     name: widget.name,
-                    contact: contact.text,
-                    
-        )));
+                    email: widget.email,
+                    contact: widget.contact,
+                    instagram: widget.instagram,
+                    quote: widget.quote,
+                    portfolio: widget.portfolio,
+                    link1: link1.text,
+        ))
+      );
     } else {
       print('Invalid');
     }
@@ -65,7 +84,7 @@ class _ContactState extends State<Contact> {
               child: new Container(
                 padding: const EdgeInsets.all(16.0),
                 child: new Text(
-                  'Your Contact Number?',
+                  'Your Portfolio?',
                   style: TextStyle(
                     fontSize: 32,
                     color: questionColor,
@@ -78,9 +97,8 @@ class _ContactState extends State<Contact> {
               child: new Container(
                 padding: const EdgeInsets.all(16.0),
                 child: new TextFormField(
-                  controller: contact,
-                  keyboardType: TextInputType.number,
-                  validator: (value) => value.isEmpty ? 'This can\'t be empty' : null,
+                  controller: link1,
+                  validator: (value) => value.isEmpty ? 'Email can\'t be empty' : null,
                   decoration: new InputDecoration(
                       fillColor: questionColor,
                       filled: true,

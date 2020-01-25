@@ -12,11 +12,17 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
   List<Widget> _widgetOptions = <Widget>[
-    new Container(
-      child: Scrollable(
-        axisDirection: AxisDirection.down,
-        viewportBuilder: cards,
-      ),
+    new SingleChildScrollView(
+      child: new Column(
+        
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          new Card(
+            color: Colors.blue,
+            child: new Text('this'), 
+          )
+        ],
+      )
     ),
     Text(
       'Index 1: Ideas',
@@ -109,5 +115,6 @@ void _onItemTapped(int index) {
         )
       ],
     );
+  }
 
 }

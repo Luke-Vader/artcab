@@ -36,12 +36,10 @@ class _LoginSignupState extends State<LoginSignup> {
             child: new Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                new OutlineButton(
-                  borderSide: BorderSide(
-                    color: Colors.white,
-                  ),
+                new RaisedButton(
+                  color: Colors.blue,
                   shape: new RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(10.0)),
+                      borderRadius: new BorderRadius.circular(8.0)),
                   child: new Text(
                     'Become a Member',
                     style: TextStyle(
@@ -58,12 +56,10 @@ class _LoginSignupState extends State<LoginSignup> {
                 new Container(
                   height: 16,
                 ),
-                new OutlineButton(
-                  borderSide: BorderSide(
-                    color: Colors.white,
-                  ),
+                new FlatButton(
+                  color: Colors.blue,
                   shape: new RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(10.0)),
+                      borderRadius: new BorderRadius.circular(8.0)),
                   child: new Text(
                     'Already a Member',
                     style: TextStyle(
