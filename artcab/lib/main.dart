@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       ),
       home: new SplashScreen(),
       routes: <String, WidgetBuilder>{
-        '/Login': (BuildContext context) => new LoginSignup(),
+        '/Login': (BuildContext context) => new HomePage(),
       },
     );
   }

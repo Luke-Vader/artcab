@@ -51,6 +51,10 @@ flutter:
     - family: Monaco
       fonts:
         - asset: assets/fonts/monaco.ttf
+  
+  assets:
+    - assets/images/icon_full.png
+    - assets/images/icon_short.png
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 
