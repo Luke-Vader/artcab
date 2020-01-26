@@ -480,7 +480,7 @@ class _HomePageState extends State<HomePage> {
                 color: Colors.white,
               ),
               title: new Text(
-                'Feed',
+                'Networks',
                 style: TextStyle(color: Colors.white),
               )),
           BottomNavigationBarItem(
