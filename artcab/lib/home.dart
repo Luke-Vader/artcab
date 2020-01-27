@@ -20,6 +20,15 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
+            AppBar(
+              backgroundColor: Colors.white,
+              title: Text(
+                'Networks',
+                style: TextStyle(
+                  color: fontColor,
+                ),
+              ),
+            ),
             Flexible(
               flex: 1,
               child: Text(
@@ -155,9 +164,6 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-            ),
-            Divider(
-              color: fontColor,
             ),
             Flexible(
               flex: 1,
@@ -295,9 +301,6 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            Divider(
-              color: fontColor,
-            ),
             Flexible(
               flex: 1,
               child: Text(
@@ -434,9 +437,6 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            Divider(
-              color: fontColor,
-            ),
           ],
         )),
     Text(
@@ -452,18 +452,13 @@ class _HomePageState extends State<HomePage> {
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(
-        title: new Text(
-          'ArtCab',
-          style: TextStyle(color: Colors.white, fontSize: 20),
-        ),
-      ),
       backgroundColor: Colors.black,
       body: new Center(
         child: _widgetOptions.elementAt(_selectedIndex),
