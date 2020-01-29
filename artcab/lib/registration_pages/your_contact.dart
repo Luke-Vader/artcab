@@ -65,7 +65,7 @@ class _ContactState extends State<Contact> {
               child: new Container(
                 padding: const EdgeInsets.all(16.0),
                 child: new Text(
-                  'Your Contact Number?',
+                  'Your WhatsApp Contact Number?',
                   style: TextStyle(
                     fontSize: 32,
                     color: questionColor,

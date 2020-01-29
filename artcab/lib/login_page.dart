@@ -93,9 +93,6 @@ class _LoginPageState extends State<LoginPage> {
 
     return new Scaffold(
       backgroundColor: primaryBlack,
-      appBar: AppBar(
-        title: Text('ArtCab'),
-      ),
       body: new Container(
         padding: const EdgeInsets.only(bottom: 16.0, left: 16.0, right: 16.0, top: 24.0),
         child: new Form(
