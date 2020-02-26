@@ -82,7 +82,9 @@ class _SCategoryState extends State<SCategory> {
 
   List<String> selectedSpecials = List();
 
-  _showDialog() {
+  void initState() {
+    super.initState();
+    print("First");
     if (widget.categories.contains("Director")) {
       selectedSpecials += director;
     }
@@ -109,6 +111,7 @@ class _SCategoryState extends State<SCategory> {
                     specialCategories: null,
                   )));
     }
+
     showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -182,7 +185,7 @@ class _SCategoryState extends State<SCategory> {
                         color: Colors.grey,
                       ),
                     ),
-                    onPressed: () => _showDialog(),
+                    onPressed: () => showDialog(),
                   ),
                 ),
                 flex: 3,

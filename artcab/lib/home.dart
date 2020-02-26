@@ -20,15 +20,6 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            AppBar(
-              backgroundColor: Colors.white,
-              title: Text(
-                'Networks',
-                style: TextStyle(
-                  color: fontColor,
-                ),
-              ),
-            ),
             Flexible(
               flex: 1,
               child: Text(
@@ -460,6 +451,14 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
+      appBar: new AppBar(
+        title: Text(
+          'Networks',
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+      ),
       body: new Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
