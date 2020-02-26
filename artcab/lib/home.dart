@@ -7,7 +7,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  //Firestore _firestore = Firestore.instance;
+  //Firestore firestore = Firestore.instance;
   int _selectedIndex = 0;
 
   //font color for the contents inside the card
@@ -51,7 +51,43 @@ class _HomePageState extends State<HomePage> {
       scrollDirection: Axis.vertical,
       itemCount: 3,
       itemBuilder: (BuildContext context, int index) {
-        return idea(index);
+        return GestureDetector(
+            onTap: () {},
+            child: Card(
+                elevation: 4,
+                color: Colors.yellow,
+                child: Container(
+                  padding: EdgeInsets.all(8.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      Text(
+                        '\"Idea is the most important thing in the film industry as this is what defines the creativity and ambtions of this industry $index\"',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          CircleAvatar(
+                            backgroundImage:
+                                AssetImage("assets/images/icon_full.png"),
+                          ),
+                          Text(
+                            'Username',
+                            textAlign: TextAlign.start,
+                          ),
+                          Text(
+                            '18h',
+                            textAlign: TextAlign.end,
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                )));
       },
     ),
     Text(
@@ -63,6 +99,8 @@ class _HomePageState extends State<HomePage> {
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      //getData();
+      print('Something');
     });
   }
 
@@ -126,40 +164,9 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  static Widget idea(int index) {
-    return Card(
-        elevation: 4,
-        color: Colors.yellow,
-        child: Container(
-          padding: EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              Text(
-                '\"Idea is the most important thing in the film industry as this is what defines the creativity and ambtions of this industry $index\"',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  CircleAvatar(
-                    backgroundImage: AssetImage("assets/images/icon_full.png"),
-                  ),
-                  Text(
-                    'Username',
-                    textAlign: TextAlign.start,
-                  ),
-                  Text(
-                    '18h',
-                    textAlign: TextAlign.end,
-                  )
-                ],
-              )
-            ],
-          ),
-        ));
-  }
+  /*void getData() {
+    firestore.collection("ideas").getDocuments().then((QuerySnapshot snapshot) {
+      snapshot.documents.forEach((f) => print('${f.data}}'));
+    });
+  }*/
 }
