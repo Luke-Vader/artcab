@@ -38,8 +38,8 @@ public class NameActivity extends AppCompatActivity {
         goToEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (name.getText() == null) {
-                    Toast.makeText(NameActivity.this, "Please Fill in Name", Toast.LENGTH_SHORT).show();
+                if (name.getText().toString().length() == 0) {
+                    name.setError("Required");
                 } else {
                     Bundle bundle = new Bundle();
                     Intent intent = new Intent(getApplicationContext(), EmailActivity.class);

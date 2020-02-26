@@ -41,11 +41,11 @@ public class EmailActivity extends AppCompatActivity {
         goToInsta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (email.getText() == null) {
-                    Toast.makeText(getApplicationContext(), "Please Fill in Email", Toast.LENGTH_SHORT).show();
+                if (email.getText().toString().length() == 0) {
+                    email.setError("Required");
                 } else {
                     Bundle bundle = new Bundle();
-                    Intent intent = new Intent(getApplicationContext(), EmailActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), InstagramActivity.class);
                     bundle.putStringArrayList("specials", specials);
                     bundle.putStringArrayList("genres", genres);
                     bundle.putStringArrayList("tastes", tastes);
