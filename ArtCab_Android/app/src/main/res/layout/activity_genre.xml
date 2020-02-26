@@ -26,7 +26,7 @@
         <TextView
             android:id="@+id/genre_select"
             android:text="@string/choose"
-            android:textColor="@color/fontColorWhite"
+            android:textColor="@color/greyFont"
             android:textSize="18sp"
             android:layout_marginTop="16dp"
             android:layout_gravity="center"

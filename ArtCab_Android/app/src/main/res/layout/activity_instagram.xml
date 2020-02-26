@@ -45,4 +45,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
+    <Button
+        android:id="@+id/skip_insta"
+        android:layout_marginTop="32dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_below="@+id/goto_phone"
+        android:text="@string/skip"
+        android:layout_centerInParent="true"
+        android:textColor="@color/fontColorWhite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 </RelativeLayout>
