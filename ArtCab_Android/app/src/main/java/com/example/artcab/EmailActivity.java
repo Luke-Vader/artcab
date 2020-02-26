@@ -11,13 +11,14 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class NameActivity extends AppCompatActivity {
+public class EmailActivity extends AppCompatActivity {
 
     ArrayList<String> specials = new ArrayList<>();
     ArrayList<String> genres = new ArrayList<>();
     ArrayList<String> tastes = new ArrayList<>();
-    EditText name;
-    Button goToEmail;
+    String name;
+    EditText email;
+    Button goToInsta;
 
     @Override
     protected void onStart() {
@@ -26,32 +27,34 @@ public class NameActivity extends AppCompatActivity {
         specials = bundle.getStringArrayList("specials");
         genres = bundle.getStringArrayList("genres");
         tastes = bundle.getStringArrayList("tastes");
+        name = bundle.getString("name");
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_name);
-        name = findViewById(R.id.name);
-        goToEmail = findViewById(R.id.goto_email);
+        setContentView(R.layout.activity_email);
 
-        goToEmail.setOnClickListener(new View.OnClickListener() {
+        email = findViewById(R.id.email);
+        goToInsta = findViewById(R.id.goto_insta);
+
+        goToInsta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (name.getText() == null) {
-                    Toast.makeText(NameActivity.this, "Please Fill in Name", Toast.LENGTH_SHORT).show();
+                if (email.getText() == null) {
+                    Toast.makeText(getApplicationContext(), "Please Fill in Email", Toast.LENGTH_SHORT).show();
                 } else {
                     Bundle bundle = new Bundle();
                     Intent intent = new Intent(getApplicationContext(), EmailActivity.class);
                     bundle.putStringArrayList("specials", specials);
                     bundle.putStringArrayList("genres", genres);
                     bundle.putStringArrayList("tastes", tastes);
-                    bundle.putString("name", name.getText().toString());
+                    bundle.putString("name", name);
+                    bundle.putString("email", email.getText().toString());
                     intent.putExtras(bundle);
                     startActivity(intent);
                 }
             }
         });
-
     }
 }
