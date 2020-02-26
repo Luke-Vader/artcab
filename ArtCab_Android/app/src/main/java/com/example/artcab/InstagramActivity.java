@@ -3,6 +3,7 @@ package com.example.artcab;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -35,6 +36,13 @@ public class InstagramActivity extends AppCompatActivity {
         setContentView(R.layout.activity_instagram);
         instagram = findViewById(R.id.instagram);
         goToPhone = findViewById(R.id.goto_phone);
+
+        goToPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
 
 
 
