@@ -6,6 +6,7 @@
     android:background="@color/colorPrimaryDark">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/action_bar_idea"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         
@@ -17,5 +18,12 @@
             android:layout_height="wrap_content"/>
 
     </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/idea_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/action_bar_idea"/>
+
 
 </RelativeLayout>
