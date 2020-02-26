@@ -3,4 +3,7 @@
     <string name="networks">Networks</string>
     <string name="ideas">Ideas</string>
     <string name="profile">Profile</string>
+    <string name="welcome">Welcome to ArtCab</string>
+    <string name="register">Become a Member</string>
+    <string name="login">Already a Member</string>
 </resources>
