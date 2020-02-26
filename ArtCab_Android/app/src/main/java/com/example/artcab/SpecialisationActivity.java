@@ -32,7 +32,6 @@ public class SpecialisationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 showSpecials();
-                Toast.makeText(SpecialisationActivity.this, "Specials Selected", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -41,7 +40,7 @@ public class SpecialisationActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putStringArrayList("specials", specials);
-                Intent intent = new Intent(getApplicationContext(), SpecialSubActivity.class);
+                Intent intent = new Intent(getApplicationContext(), GenreActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
@@ -52,8 +51,6 @@ public class SpecialisationActivity extends AppCompatActivity {
         selected = "";
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Specialisations");
-
-// Add a checkbox list
         final String[] specialisations = {
                 "Director",
                 "Writer",
@@ -66,6 +63,7 @@ public class SpecialisationActivity extends AppCompatActivity {
                 "Music and Sound",
                 "Vlogger"
         };
+
         builder.setMultiChoiceItems(specialisations, null, new DialogInterface.OnMultiChoiceClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which, boolean isChecked) {
@@ -77,7 +75,6 @@ public class SpecialisationActivity extends AppCompatActivity {
             }
         });
 
-// Add OK and Cancel buttons
         builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -88,8 +85,6 @@ public class SpecialisationActivity extends AppCompatActivity {
             }
         });
         builder.setNegativeButton("Cancel", null);
-
-// Create and show the alert dialog
         AlertDialog dialog = builder.create();
         dialog.show();
     }

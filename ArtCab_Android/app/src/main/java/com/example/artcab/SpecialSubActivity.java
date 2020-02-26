@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -19,6 +20,9 @@ public class SpecialSubActivity extends AppCompatActivity {
         super.onStart();
         Bundle bundle = getIntent().getExtras();
         ArrayList<String> specials = bundle.getStringArrayList("specials");
+        if (specials.size() == 0) {
+
+        }
     }
 
     @Override

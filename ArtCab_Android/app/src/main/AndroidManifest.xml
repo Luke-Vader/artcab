@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SpecialSubActivity"></activity>
+        <activity android:name=".NameActivity"></activity>
+        <activity android:name=".TasteActivity" />
+        <activity android:name=".GenreActivity" />
+        <activity android:name=".SpecialSubActivity" />
         <activity android:name=".SpecialisationActivity" />
         <activity android:name=".LoginOrSignupActivity" />
         <activity android:name=".MainActivity">
