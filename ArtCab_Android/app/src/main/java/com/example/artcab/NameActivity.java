@@ -2,13 +2,54 @@ package com.example.artcab;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class NameActivity extends AppCompatActivity {
+
+    ArrayList<String> specials = new ArrayList<>();
+    ArrayList<String> genres = new ArrayList<>();
+    ArrayList<String> tastes = new ArrayList<>();
+    EditText name;
+    Button goToEmail;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Bundle bundle = new Bundle();
+        specials = bundle.getStringArrayList("specials");
+        genres = bundle.getStringArrayList("genres");
+        tastes = bundle.getStringArrayList("tastes");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_name);
+        name = findViewById(R.id.name);
+        goToEmail = findViewById(R.id.goto_email);
+
+        goToEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (name.getText() == null) {
+                    Toast.makeText(NameActivity.this, "Please Fill in Name", Toast.LENGTH_SHORT).show();
+                } else {
+                    Bundle bundle = new Bundle();
+                    Intent intent = new Intent(getApplicationContext(), EmailActivity.class);
+                    bundle.putStringArrayList("specials", specials);
+                    bundle.putStringArrayList("genres", genres);
+                    bundle.putStringArrayList("tastes", tastes);
+                    intent.putExtra("name", name.getText());
+                }
+            }
+        });
+
     }
 }
