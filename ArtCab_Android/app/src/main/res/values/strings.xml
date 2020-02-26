@@ -7,4 +7,5 @@
     <string name="register">Become a Member</string>
     <string name="login">Already a Member</string>
     <string name="choose">Tap to select one or more</string>
+    <string name="next">NEXT</string>
 </resources>

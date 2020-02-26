@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    tools:context=".SpecialisationActivity">
+    tools:context=".SpecialSubActivity">
 
     <LinearLayout
-        android:id="@+id/spc_container"
+        android:id="@+id/sub_spc_container"
         android:layout_centerInParent="true"
         android:padding="16dp"
         android:orientation="vertical"
@@ -16,7 +16,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:text="Your\nSpecialisation?"
+            android:text="Your\nSpecialisation Sub-Categories?"
             android:textSize="34sp"
             android:padding="8dp"
             android:textColor="@color/fontColorWhite"
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"/>
 
         <TextView
-            android:id="@+id/special_select"
+            android:id="@+id/sub_special_select"
             android:text="@string/choose"
             android:textColor="@color/fontColorWhite"
             android:textSize="18sp"
@@ -37,12 +37,12 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/goto_spc_sub"
+        android:id="@+id/goto_genre"
         android:text="@string/next"
         android:layout_marginTop="32dp"
         android:textColor="@color/fontColorWhite"
         android:background="@color/colorPrimaryDark"
-        android:layout_below="@+id/spc_container"
+        android:layout_below="@+id/sub_spc_container"
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
