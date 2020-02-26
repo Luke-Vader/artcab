@@ -7,10 +7,14 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class SpecialisationActivity extends AppCompatActivity {
 
     TextView selectSpecials;
+    ArrayList<String> specials = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +28,8 @@ public class SpecialisationActivity extends AppCompatActivity {
                 showSpecials();
             }
         });
+
+        Toast.makeText(this, specials.size(), Toast.LENGTH_SHORT).show();
     }
 
     private void showSpecials() {
@@ -31,12 +37,28 @@ public class SpecialisationActivity extends AppCompatActivity {
         builder.setTitle("Specialisations");
 
 // Add a checkbox list
-        String[] animals = {"horse", "cow", "camel", "sheep", "goat"};
-        boolean[] checkedItems = {true, false, false, true, false};
-        builder.setMultiChoiceItems(animals, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
+        final String[] specialisations = {
+                "Director",
+                "Writer",
+                "Actor",
+                "Cinematographer",
+                "Editor",
+                "Producer",
+                "VFX",
+                "Film Production",
+                "Music and Sound",
+                "Vlogger"
+        };
+        builder.setMultiChoiceItems(specialisations, null, new DialogInterface.OnMultiChoiceClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-                // The user checked or unchecked a box
+                if (isChecked) {
+                    // If the user checked the item, add it to the selected items
+                    specials.add(specialisations[which]);
+                } else if (specials.contains(specialisations[which])) {
+                    // Else, if the item is already in the array, remove it
+                    specials.remove(specialisations[which]);
+                }
             }
         });
 
@@ -44,7 +66,7 @@ public class SpecialisationActivity extends AppCompatActivity {
         builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // The user clicked OK
+
             }
         });
         builder.setNegativeButton("Cancel", null);
