@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "981779915920",
+    "firebase_url": "https://artcab-fa6fd.firebaseio.com",
+    "project_id": "artcab-fa6fd",
+    "storage_bucket": "artcab-fa6fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:981779915920:android:2960b162b1d0db059aa415",
+        "android_client_info": {
+          "package_name": "com.example.artcab"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "981779915920-rusg6bl91a5gbmi4ac6bv6rjuuohe1gp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.artcab",
+            "certificate_hash": "c00b76c8eaee21993e89254e37002aab35a377f0"
+          }
+        },
+        {
+          "client_id": "981779915920-8emskmn7u9j496cftuh4mq530h1ov89q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1Ij65-z4eFi6eITqDcU5TYE7Q-u6S510"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "981779915920-8emskmn7u9j496cftuh4mq530h1ov89q.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "981779915920-n0ipv30i2ssr59h5ui5l9jkmc4oi1ae7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.flutter.flutter.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
