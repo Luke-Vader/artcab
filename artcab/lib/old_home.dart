@@ -1,36 +1,26 @@
 import 'package:flutter/material.dart';
 //import 'package:cloud_firestore/cloud_firestore.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage1 extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _HomePage1State createState() => _HomePage1State();
 }
 
-class _HomePageState extends State<HomePage> {
-  //Firestore firestore = Firestore.instance;
+class _HomePage1State extends State<HomePage1> {
+
+  //Firestore _firestore = Firestore.instance;
   int _selectedIndex = 0;
-
-  //font color for the contents inside the card
-  static final cardContentColor = Colors.white;
-
-  //font color for the title of the card sections
-  static final specialFontColor = Colors.black;
-
-  static final cardColor = Colors.black;
-
   static final fontColor = Colors.white;
-  static final bgColor = Colors.white;
-
-  List<String> title = [
-    "Networks",
-    "Ideas",
-    "Profile",
-  ];
+  static final bgColor = Colors.blue[200];
 
   List<Widget> _widgetOptions = <Widget>[
-    ListView.builder(
-      itemBuilder: (context, index) {
-        return Column(
+    new SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        padding: const EdgeInsets.all(16.0),
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Flexible(
               flex: 1,
@@ -38,7 +28,7 @@ class _HomePageState extends State<HomePage> {
                 'Directors',
                 textAlign: TextAlign.start,
                 style: TextStyle(
-                  color: fontColor,
+                  color: Colors.white,
                   fontSize: 18,
                 ),
               ),
@@ -57,7 +47,7 @@ class _HomePageState extends State<HomePage> {
                       height: 180,
                       child: Card(
                         margin: EdgeInsets.all(4.0),
-                        color: Colors.grey[850],
+                        color: Colors.black,
                         elevation: 8.0,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -113,7 +103,7 @@ class _HomePageState extends State<HomePage> {
                       height: 180,
                       child: Card(
                         margin: EdgeInsets.all(4.0),
-                        color: Colors.grey[850],
+                        color: Colors.black,
                         elevation: 8.0,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -174,7 +164,7 @@ class _HomePageState extends State<HomePage> {
                 'Actors',
                 textAlign: TextAlign.start,
                 style: TextStyle(
-                  color: fontColor,
+                  color: Colors.white,
                   fontSize: 18,
                 ),
               ),
@@ -193,7 +183,7 @@ class _HomePageState extends State<HomePage> {
                       height: 180,
                       child: Card(
                         margin: EdgeInsets.all(4.0),
-                        color: Colors.grey[850],
+                        color: Colors.black,
                         elevation: 8.0,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -249,7 +239,7 @@ class _HomePageState extends State<HomePage> {
                       height: 180,
                       child: Card(
                         margin: EdgeInsets.all(4.0),
-                        color: Colors.grey[850],
+                        color: Colors.black,
                         elevation: 8.0,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -310,7 +300,7 @@ class _HomePageState extends State<HomePage> {
                 'Producers',
                 textAlign: TextAlign.start,
                 style: TextStyle(
-                  color: fontColor,
+                  color: Colors.white,
                   fontSize: 18,
                 ),
               ),
@@ -329,7 +319,7 @@ class _HomePageState extends State<HomePage> {
                       height: 180,
                       child: Card(
                         margin: EdgeInsets.all(4.0),
-                        color: Colors.grey[850],
+                        color: Colors.black,
                         elevation: 8.0,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -385,7 +375,7 @@ class _HomePageState extends State<HomePage> {
                       height: 180,
                       child: Card(
                         margin: EdgeInsets.all(4.0),
-                        color: Colors.grey[850],
+                        color: Colors.black,
                         elevation: 8.0,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -433,63 +423,18 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                           ],
-            Text('Header $index'),
-            ListView.builder(
-              itemCount: 12,
-              physics: ClampingScrollPhysics(),
-              shrinkWrap: true,
-              itemBuilder: (BuildContext context, int index) {
-                return Text('Nested List item $index');
-              },
-            )
-          ],
-        );
-      },
-      itemCount: 7,
-    ),
-    ListView.builder(
-      padding: EdgeInsets.all(16.0),
-      scrollDirection: Axis.vertical,
-      itemCount: 3,
-      itemBuilder: (BuildContext context, int index) {
-        return GestureDetector(
-            onTap: () {},
-            child: Card(
-                elevation: 4,
-                color: Colors.yellow,
-                child: Container(
-                  padding: EdgeInsets.all(8.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      Text(
-                        '\"Idea is the most important thing in the film industry as this is what defines the creativity and ambtions of this industry $index\"',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          CircleAvatar(
-                            backgroundImage:
-                                AssetImage("assets/images/icon_full.png"),
-                          ),
-                          Text(
-                            'Username',
-                            textAlign: TextAlign.start,
-                          ),
-                          Text(
-                            '18h',
-                            textAlign: TextAlign.end,
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                )));
-      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        )),
+    Text(
+      'Index 1: Ideas',
+      style: TextStyle(color: Colors.white),
     ),
     Text(
       'Index 2: Profile',
@@ -497,13 +442,11 @@ class _HomePageState extends State<HomePage> {
     ),
   ];
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-      //getData();
-      print('Something');
-    });
-  }
+void _onItemTapped(int index) {
+  setState(() {
+    _selectedIndex = index;
+  });
+}
 
   @override
   Widget build(BuildContext context) {
@@ -511,8 +454,8 @@ class _HomePageState extends State<HomePage> {
       appBar: new AppBar(
         elevation: 0,
         title: new Text(
-          title[_selectedIndex],
-          style: TextStyle(color: Colors.black, fontSize: 20),
+          'NETWORKS',
+          style: TextStyle(color: Colors.white, fontSize: 20),
         ),
         backgroundColor: bgColor,
       ),
@@ -526,48 +469,48 @@ class _HomePageState extends State<HomePage> {
         type: BottomNavigationBarType.shifting,
         items: [
           BottomNavigationBarItem(
-              backgroundColor: bgColor,
-              icon: new Icon(
-                Icons.filter_list,
-                color: Colors.black,
+            backgroundColor: bgColor,
+            icon: new Icon(
+              Icons.filter_list,
+              color: Colors.white,
+            ),
+            title: new Text(
+              'Networks',
+              style: TextStyle(
+                color: Colors.white
               ),
-              title: new Text(
-                title[0],
-                style: TextStyle(color: Colors.black),
-              )),
+            )
+          ),
           BottomNavigationBarItem(
-              backgroundColor: bgColor,
-              icon: new Icon(
-                Icons.lightbulb_outline,
-                color: Colors.black,
+            backgroundColor: bgColor,
+            icon: new Icon(
+              Icons.lightbulb_outline,
+              color: Colors.white,
+            ),
+            title: new Text(
+              'Ideas',
+              style: TextStyle(
+                color: Colors.white
               ),
-              title: new Text(
-                title[1],
-                style: TextStyle(color: Colors.black),
-              )),
+            )
+          ),
           BottomNavigationBarItem(
-              backgroundColor: bgColor,
-              activeIcon: new Icon(
-                Icons.person,
-                color: Colors.black,
+            backgroundColor: bgColor,
+            activeIcon: new Icon(Icons.person, color: Colors.white,),
+            icon: new Icon(
+              Icons.person_outline,
+              color: Colors.white,
+            ),
+            title: new Text(
+              'Profile',
+              style: TextStyle(
+                color: Colors.white
               ),
-              icon: new Icon(
-                Icons.person_outline,
-                color: Colors.black,
-              ),
-              title: new Text(
-                title[2],
-                style: TextStyle(color: Colors.black),
-              )),
+            )
+          ),
         ],
         onTap: _onItemTapped,
       ),
     );
   }
-
-  /*void getData() {
-    firestore.collection("ideas").getDocuments().then((QuerySnapshot snapshot) {
-      snapshot.documents.forEach((f) => print('${f.data}}'));
-    });
-  }*/
 }
