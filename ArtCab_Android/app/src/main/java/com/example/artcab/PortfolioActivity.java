@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -82,7 +83,7 @@ public class PortfolioActivity extends AppCompatActivity {
                 bundle.putString("phone", phone);
                 bundle.putString("whatsapp", whatsapp);
                 bundle.putString("quote", quote);
-                bundle.putString("portfolio", null);
+                bundle.putString("portfolio", "");
                 intent.putExtras(bundle);
                 startActivity(intent);
             }

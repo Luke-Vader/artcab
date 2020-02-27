@@ -31,8 +31,6 @@ public class NameActivity extends AppCompatActivity {
         genres = bundle.getStringArrayList("genres");
         tastes = bundle.getStringArrayList("tastes");
 
-        Toast.makeText(this, genres.get(0), Toast.LENGTH_SHORT).show();
-
         goToEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

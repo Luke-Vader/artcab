@@ -73,7 +73,13 @@ public class ProfilePictureActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 chooseImage();
-                Toast.makeText(ProfilePictureActivity.this, specials.get(0), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createUser();
             }
         });
     }
@@ -98,6 +104,10 @@ public class ProfilePictureActivity extends AppCompatActivity {
 
             }
         }
+    }
+
+    private void createUser() {
+
     }
 
 

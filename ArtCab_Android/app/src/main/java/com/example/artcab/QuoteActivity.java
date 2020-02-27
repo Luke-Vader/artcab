@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -78,7 +79,7 @@ public class QuoteActivity extends AppCompatActivity {
                 bundle.putString("instagram", instagram);
                 bundle.putString("phone", phone);
                 bundle.putString("whatsapp", whatsapp);
-                bundle.putString("quote", null);
+                bundle.putString("quote", "");
                 intent.putExtras(bundle);
                 startActivity(intent);
             }

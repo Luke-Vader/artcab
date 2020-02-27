@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -60,6 +61,7 @@ public class LinksActivity extends AppCompatActivity {
         goToPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                links = new ArrayList<>();
                 if (link1.getText().toString().length() == 0) {
                     link1.setError("Required");
                 } else {
@@ -88,6 +90,10 @@ public class LinksActivity extends AppCompatActivity {
         skipLinks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                links = new ArrayList<>();
+                links.add("");
+                links.add("");
+                links.add("");
                 Bundle bundle = new Bundle();
                 Intent intent = new Intent(getApplicationContext(), PasswordActivity.class);
                 bundle.putStringArrayList("specials", specials);
@@ -100,7 +106,7 @@ public class LinksActivity extends AppCompatActivity {
                 bundle.putString("whatsapp", whatsapp);
                 bundle.putString("quote", quote);
                 bundle.putString("portfolio", portfolio);
-                bundle.putString("links", null);
+                bundle.putStringArrayList("links", links);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
