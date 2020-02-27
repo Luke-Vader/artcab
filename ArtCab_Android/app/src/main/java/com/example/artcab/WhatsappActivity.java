@@ -10,7 +10,7 @@ import android.widget.EditText;
 
 import java.util.ArrayList;
 
-public class PhoneActivity extends AppCompatActivity {
+public class WhatsappActivity extends AppCompatActivity {
 
     ArrayList<String> specials = new ArrayList<>();
     ArrayList<String> genres = new ArrayList<>();
@@ -18,8 +18,10 @@ public class PhoneActivity extends AppCompatActivity {
     String name;
     String email;
     String instagram;
-    EditText phone;
-    Button goToWhatsapp;
+    String phone;
+    EditText whatsapp;
+    Button goToPicutre;
+    Button skipWhatsapp;
 
     @Override
     protected void onStart() {
@@ -31,34 +33,55 @@ public class PhoneActivity extends AppCompatActivity {
         name = bundle.getString("name");
         email = bundle.getString("email");
         instagram = bundle.getString("instagram");
+        phone = bundle.getString("phone");
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_phone);
-        phone = findViewById(R.id.phone);
-        goToWhatsapp = findViewById(R.id.goto_whatsapp);
+        setContentView(R.layout.activity_whatsapp);
+        whatsapp = findViewById(R.id.whatsapp);
+        skipWhatsapp = findViewById(R.id.skip_whatsapp);
+        goToPicutre = findViewById(R.id.goto_picture);
 
-        goToWhatsapp.setOnClickListener(new View.OnClickListener() {
+        goToPicutre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (phone.getText().toString().length() == 0) {
-                    phone.setError("Required");
+                if (whatsapp.getText().toString().length() == 0) {
+                    whatsapp.setError("Required");
                 } else {
                     Bundle bundle = new Bundle();
-                    Intent intent = new Intent(getApplicationContext(), WhatsappActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), InstagramActivity.class);
                     bundle.putStringArrayList("specials", specials);
                     bundle.putStringArrayList("genres", genres);
                     bundle.putStringArrayList("tastes", tastes);
                     bundle.putString("name", name);
                     bundle.putString("email", email);
+                    bundle.putString("phone", phone);
                     bundle.putString("instagram", instagram);
-                    bundle.putString("phone", phone.getText().toString());
+                    bundle.putString("whatsapp", whatsapp.getText().toString());
                     intent.putExtras(bundle);
                     startActivity(intent);
                 }
             }
         });
+
+        skipWhatsapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                Intent intent = new Intent(getApplicationContext(), QuoteActivity.class);
+                bundle.putStringArrayList("specials", specials);
+                bundle.putStringArrayList("genres", genres);
+                bundle.putStringArrayList("tastes", tastes);
+                bundle.putString("name", name);
+                bundle.putString("email", email);
+                bundle.putString("instagram", instagram);
+                bundle.putString("phone", phone);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+
     }
 }
