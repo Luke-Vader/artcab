@@ -27,8 +27,8 @@
             android:id="@+id/profile_image"
             android:src="@drawable/profile_icon"
             android:layout_gravity="center"
-            android:layout_width="72dp"
-            android:layout_height="72dp"/>
+            android:layout_width="128dp"
+            android:layout_height="128dp"/>
 
     </LinearLayout>
 

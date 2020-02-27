@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -21,18 +22,14 @@ public class GenreActivity extends AppCompatActivity {
     Button goToTaste;
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        Bundle bundle = getIntent().getExtras();
-        specials = bundle.getStringArrayList("specials");
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_genre);
         selectGenres = findViewById(R.id.genre_select);
         goToTaste = findViewById(R.id.goto_taste);
+
+        Bundle bundle = getIntent().getExtras();
+        specials = bundle.getStringArrayList("specials");
 
         selectGenres.setOnClickListener(new View.OnClickListener() {
             @Override

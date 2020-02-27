@@ -22,23 +22,19 @@ public class PhoneActivity extends AppCompatActivity {
     Button goToWhatsapp;
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        Bundle bundle = new Bundle();
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_phone);
+        phone = findViewById(R.id.phone);
+        goToWhatsapp = findViewById(R.id.goto_whatsapp);
+
+        Bundle bundle = getIntent().getExtras();
         specials = bundle.getStringArrayList("specials");
         genres = bundle.getStringArrayList("genres");
         tastes = bundle.getStringArrayList("tastes");
         name = bundle.getString("name");
         email = bundle.getString("email");
         instagram = bundle.getString("instagram");
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_phone);
-        phone = findViewById(R.id.phone);
-        goToWhatsapp = findViewById(R.id.goto_whatsapp);
 
         goToWhatsapp.setOnClickListener(new View.OnClickListener() {
             @Override

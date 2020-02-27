@@ -26,9 +26,14 @@ public class PortfolioActivity extends AppCompatActivity {
     Button skipPortFolio;
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        Bundle bundle = new Bundle();
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_portfolio);
+        portfolio = findViewById(R.id.portfolio);
+        goToLinks = findViewById(R.id.goto_links);
+        skipPortFolio = findViewById(R.id.skip_portfolio);
+
+        Bundle bundle = getIntent().getExtras();
         specials = bundle.getStringArrayList("specials");
         genres = bundle.getStringArrayList("genres");
         tastes = bundle.getStringArrayList("tastes");
@@ -38,15 +43,6 @@ public class PortfolioActivity extends AppCompatActivity {
         phone = bundle.getString("phone");
         whatsapp = bundle.getString("whatsapp");
         quote = bundle.getString("quote");
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_portfolio);
-        portfolio = findViewById(R.id.portfolio);
-        goToLinks = findViewById(R.id.goto_links);
-        skipPortFolio = findViewById(R.id.skip_portfolio);
 
         goToLinks.setOnClickListener(new View.OnClickListener() {
             @Override

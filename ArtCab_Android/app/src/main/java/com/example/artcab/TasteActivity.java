@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.jar.Attributes;
@@ -23,19 +24,15 @@ public class TasteActivity extends AppCompatActivity {
     Button goToName;
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        Bundle bundle = getIntent().getExtras();
-        specials = bundle.getStringArrayList("specials");
-        genres = bundle.getStringArrayList("genres");
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_taste);
         selectTaste = findViewById(R.id.taste_select);
         goToName = findViewById(R.id.goto_name);
+
+        Bundle bundle = getIntent().getExtras();
+        specials = bundle.getStringArrayList("specials");
+        genres = bundle.getStringArrayList("genres");
 
         selectTaste.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -22,23 +22,19 @@ public class InstagramActivity extends AppCompatActivity {
     Button skipInsta;
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        Bundle bundle = new Bundle();
-        specials = bundle.getStringArrayList("specials");
-        genres = bundle.getStringArrayList("genres");
-        tastes = bundle.getStringArrayList("tastes");
-        name = bundle.getString("name");
-        email = bundle.getString("email");
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instagram);
         instagram = findViewById(R.id.instagram);
         goToPhone = findViewById(R.id.goto_phone);
         skipInsta = findViewById(R.id.skip_insta);
+
+        Bundle bundle = getIntent().getExtras();
+        specials = bundle.getStringArrayList("specials");
+        genres = bundle.getStringArrayList("genres");
+        tastes = bundle.getStringArrayList("tastes");
+        name = bundle.getString("name");
+        email = bundle.getString("email");
 
         goToPhone.setOnClickListener(new View.OnClickListener() {
             @Override

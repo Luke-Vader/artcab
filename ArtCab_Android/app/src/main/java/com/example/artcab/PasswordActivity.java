@@ -28,9 +28,14 @@ public class PasswordActivity extends AppCompatActivity {
     Button goToProfilePicture;
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        Bundle bundle = new Bundle();
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_password);
+        password = findViewById(R.id.password);
+        confirmPassword = findViewById(R.id.confirm_password);
+        goToProfilePicture = findViewById(R.id.goto_profile_picture);
+
+        Bundle bundle = getIntent().getExtras();
         specials = bundle.getStringArrayList("specials");
         genres = bundle.getStringArrayList("genres");
         tastes = bundle.getStringArrayList("tastes");
@@ -42,15 +47,6 @@ public class PasswordActivity extends AppCompatActivity {
         quote = bundle.getString("quote");
         portfolio = bundle.getString("portfolio");
         links = bundle.getStringArrayList("links");
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_password);
-        password = findViewById(R.id.password);
-        confirmPassword = findViewById(R.id.confirm_password);
-        goToProfilePicture = findViewById(R.id.goto_profile_picture);
 
         goToProfilePicture.setOnClickListener(new View.OnClickListener() {
             @Override

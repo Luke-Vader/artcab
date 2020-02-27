@@ -24,9 +24,14 @@ public class WhatsappActivity extends AppCompatActivity {
     Button skipWhatsapp;
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        Bundle bundle = new Bundle();
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_whatsapp);
+        whatsapp = findViewById(R.id.whatsapp);
+        skipWhatsapp = findViewById(R.id.skip_whatsapp);
+        goToQuote = findViewById(R.id.goto_quote);
+
+        Bundle bundle = getIntent().getExtras();
         specials = bundle.getStringArrayList("specials");
         genres = bundle.getStringArrayList("genres");
         tastes = bundle.getStringArrayList("tastes");
@@ -34,15 +39,6 @@ public class WhatsappActivity extends AppCompatActivity {
         email = bundle.getString("email");
         instagram = bundle.getString("instagram");
         phone = bundle.getString("phone");
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_whatsapp);
-        whatsapp = findViewById(R.id.whatsapp);
-        skipWhatsapp = findViewById(R.id.skip_whatsapp);
-        goToQuote = findViewById(R.id.goto_quote);
 
         goToQuote.setOnClickListener(new View.OnClickListener() {
             @Override

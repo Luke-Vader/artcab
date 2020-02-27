@@ -20,20 +20,18 @@ public class NameActivity extends AppCompatActivity {
     Button goToEmail;
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        Bundle bundle = new Bundle();
-        specials = bundle.getStringArrayList("specials");
-        genres = bundle.getStringArrayList("genres");
-        tastes = bundle.getStringArrayList("tastes");
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_name);
         name = findViewById(R.id.name);
         goToEmail = findViewById(R.id.goto_email);
+
+        Bundle bundle = getIntent().getExtras();
+        specials = bundle.getStringArrayList("specials");
+        genres = bundle.getStringArrayList("genres");
+        tastes = bundle.getStringArrayList("tastes");
+
+        Toast.makeText(this, genres.get(0), Toast.LENGTH_SHORT).show();
 
         goToEmail.setOnClickListener(new View.OnClickListener() {
             @Override

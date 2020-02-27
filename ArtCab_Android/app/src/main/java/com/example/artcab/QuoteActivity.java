@@ -25,9 +25,14 @@ public class QuoteActivity extends AppCompatActivity {
     Button skipQuote;
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        Bundle bundle = new Bundle();
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_quote);
+        quote = findViewById(R.id.quote);
+        goToPortFolio = findViewById(R.id.goto_portfolio);
+        skipQuote = findViewById(R.id.skip_quote);
+
+        Bundle bundle = getIntent().getExtras();
         specials = bundle.getStringArrayList("specials");
         genres = bundle.getStringArrayList("genres");
         tastes = bundle.getStringArrayList("tastes");
@@ -36,15 +41,6 @@ public class QuoteActivity extends AppCompatActivity {
         instagram = bundle.getString("instagram");
         phone = bundle.getString("phone");
         whatsapp = bundle.getString("whatsapp");
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quote);
-        quote = findViewById(R.id.quote);
-        goToPortFolio = findViewById(R.id.goto_portfolio);
-        skipQuote = findViewById(R.id.skip_quote);
 
         goToPortFolio.setOnClickListener(new View.OnClickListener() {
             @Override

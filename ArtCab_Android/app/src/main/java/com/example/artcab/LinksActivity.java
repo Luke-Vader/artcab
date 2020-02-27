@@ -32,17 +32,7 @@ public class LinksActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Bundle bundle = new Bundle();
-        specials = bundle.getStringArrayList("specials");
-        genres = bundle.getStringArrayList("genres");
-        tastes = bundle.getStringArrayList("tastes");
-        name = bundle.getString("name");
-        email = bundle.getString("email");
-        instagram = bundle.getString("instagram");
-        phone = bundle.getString("phone");
-        whatsapp = bundle.getString("whatsapp");
-        quote = bundle.getString("quote");
-        portfolio = bundle.getString("portfolio");
+
     }
 
     @Override
@@ -54,6 +44,18 @@ public class LinksActivity extends AppCompatActivity {
         link3 = findViewById(R.id.link_3);
         goToPassword = findViewById(R.id.goto_password);
         skipLinks = findViewById(R.id.skip_links);
+
+        Bundle bundle = getIntent().getExtras();
+        specials = bundle.getStringArrayList("specials");
+        genres = bundle.getStringArrayList("genres");
+        tastes = bundle.getStringArrayList("tastes");
+        name = bundle.getString("name");
+        email = bundle.getString("email");
+        instagram = bundle.getString("instagram");
+        phone = bundle.getString("phone");
+        whatsapp = bundle.getString("whatsapp");
+        quote = bundle.getString("quote");
+        portfolio = bundle.getString("portfolio");
 
         goToPassword.setOnClickListener(new View.OnClickListener() {
             @Override

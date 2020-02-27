@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
@@ -44,9 +45,13 @@ public class ProfilePictureActivity extends AppCompatActivity {
     private Uri filepath;
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        Bundle bundle = new Bundle();
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_profile_picture);
+        register = findViewById(R.id.register);
+        profilePicture = findViewById(R.id.profile_image);
+
+        Bundle bundle = getIntent().getExtras();
         specials = bundle.getStringArrayList("specials");
         genres = bundle.getStringArrayList("genres");
         tastes = bundle.getStringArrayList("tastes");
@@ -59,14 +64,6 @@ public class ProfilePictureActivity extends AppCompatActivity {
         portfolio = bundle.getString("portfolio");
         links = bundle.getStringArrayList("links");
         password = bundle.getString("password");
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile_picture);
-        register = findViewById(R.id.register);
-        profilePicture = findViewById(R.id.profile_image);
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
@@ -76,6 +73,7 @@ public class ProfilePictureActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 chooseImage();
+                Toast.makeText(ProfilePictureActivity.this, specials.get(0), Toast.LENGTH_SHORT).show();
             }
         });
     }
