@@ -1,5 +1,6 @@
 package com.example.artcab;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,9 +15,17 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -41,8 +50,10 @@ public class ProfilePictureActivity extends AppCompatActivity {
     StorageReference storageReference;
     FirebaseStorage storage;
     FirebaseFirestore db;
+    FirebaseAuth auth;
     final private int PICK_IMG_REQUEST = 71;
     private Uri filepath;
+    UploadTask uploadTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +79,7 @@ public class ProfilePictureActivity extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         db = FirebaseFirestore.getInstance();
+        auth = FirebaseAuth.getInstance();
 
         profilePicture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,6 +103,13 @@ public class ProfilePictureActivity extends AppCompatActivity {
         startActivityForResult(Intent.createChooser(intent,"Select Profile Picture"),PICK_IMG_REQUEST);
     }
 
+    private void uploadImage(FirebaseUser firebaseUser) {
+        if (filepath != null) {
+            final StorageReference ref = storageReference.child("user/" + firebaseUser.getUid());
+            uploadTask = ref.putFile(filepath);
+        }
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -107,8 +126,50 @@ public class ProfilePictureActivity extends AppCompatActivity {
     }
 
     private void createUser() {
-
+        auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            FirebaseUser firebaseUser = auth.getCurrentUser();
+                            uploadUser(firebaseUser);
+                        } else {
+                            Toast.makeText(ProfilePictureActivity.this, "Registration Failed", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 
+    private void uploadUser(FirebaseUser firebaseUser){
+        User user = new User();
+        user.setUserId(firebaseUser.getUid());
+        user.setName(name);
+        user.setEmail(email);
+        user.setSpecialisations(specials);
+        user.setGenres(genres);
+        user.setInstagram(instagram);
+        user.setLinks(links);
+        user.setPhone(phone);
+        user.setWhatsapp(whatsapp);
+        user.setPortfolio(portfolio);
+        user.setTastes(tastes);
+        user.setQuote(quote);
 
+        db.collection("users").document(firebaseUser.getUid()).set(user)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Toast.makeText(ProfilePictureActivity.this, "User Created", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        finish();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(ProfilePictureActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                    }
+                });
+        uploadImage(firebaseUser);
+    }
 }
