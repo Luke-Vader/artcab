@@ -62,6 +62,7 @@ public class PasswordActivity extends AppCompatActivity {
                         bundle.putStringArrayList("specials", specials);
                         bundle.putStringArrayList("genres", genres);
                         bundle.putStringArrayList("tastes", tastes);
+                        bundle.putStringArrayList("links", links);
                         bundle.putString("name", name);
                         bundle.putString("email", email);
                         bundle.putString("phone", phone);
@@ -69,7 +70,6 @@ public class PasswordActivity extends AppCompatActivity {
                         bundle.putString("whatsapp", whatsapp);
                         bundle.putString("quote", quote);
                         bundle.putString("portfolio", portfolio);
-                        bundle.putStringArrayList("links", links);
                         bundle.putString("password", password.getText().toString());
                         intent.putExtras(bundle);
                         startActivity(intent);
