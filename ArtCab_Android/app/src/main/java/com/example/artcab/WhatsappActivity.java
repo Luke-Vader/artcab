@@ -42,7 +42,7 @@ public class WhatsappActivity extends AppCompatActivity {
         setContentView(R.layout.activity_whatsapp);
         whatsapp = findViewById(R.id.whatsapp);
         skipWhatsapp = findViewById(R.id.skip_whatsapp);
-        goToQuote = findViewById(R.id.goto_picture);
+        goToQuote = findViewById(R.id.goto_quote);
 
         goToQuote.setOnClickListener(new View.OnClickListener() {
             @Override

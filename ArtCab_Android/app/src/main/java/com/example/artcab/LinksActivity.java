@@ -26,7 +26,7 @@ public class LinksActivity extends AppCompatActivity {
     EditText link1;
     EditText link2;
     EditText link3;
-    Button goToProfilePicture;
+    Button goToPassword;
     Button skipLinks;
 
     @Override
@@ -52,10 +52,10 @@ public class LinksActivity extends AppCompatActivity {
         link1 = findViewById(R.id.link_1);
         link2 =findViewById(R.id.link_2);
         link3 = findViewById(R.id.link_3);
-        goToProfilePicture = findViewById(R.id.goto_password);
+        goToPassword = findViewById(R.id.goto_password);
         skipLinks = findViewById(R.id.skip_links);
 
-        goToProfilePicture.setOnClickListener(new View.OnClickListener() {
+        goToPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (link1.getText().toString().length() == 0) {
@@ -65,7 +65,7 @@ public class LinksActivity extends AppCompatActivity {
                     links.add(link2.getText().toString());
                     links.add(link3.getText().toString());
                     Bundle bundle = new Bundle();
-                    Intent intent = new Intent(getApplicationContext(), LinksActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), PasswordActivity.class);
                     bundle.putStringArrayList("specials", specials);
                     bundle.putStringArrayList("genres", genres);
                     bundle.putStringArrayList("tastes", tastes);
@@ -87,7 +87,7 @@ public class LinksActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                Intent intent = new Intent(getApplicationContext(), LinksActivity.class);
+                Intent intent = new Intent(getApplicationContext(), PasswordActivity.class);
                 bundle.putStringArrayList("specials", specials);
                 bundle.putStringArrayList("genres", genres);
                 bundle.putStringArrayList("tastes", tastes);
