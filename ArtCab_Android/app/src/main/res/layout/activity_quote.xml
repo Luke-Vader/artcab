@@ -8,7 +8,7 @@
     tools:context=".QuoteActivity">
 
     <LinearLayout
-        android:id="@+id/whatsapp_container"
+        android:id="@+id/quote_container"
         android:layout_centerInParent="true"
         android:padding="16dp"
         android:orientation="vertical"
@@ -16,7 +16,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:text="Your WhatsApp Number?"
+            android:text="A Film Quote that Defines You?"
             android:textSize="34sp"
             android:padding="8dp"
             android:textColor="@color/fontColorWhite"
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"/>
 
         <EditText
-            android:id="@+id/whatsapp"
+            android:id="@+id/quote"
             android:background="@color/fontColorWhite"
             android:textSize="24sp"
             android:inputType="phone"
@@ -35,21 +35,21 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/goto_picture"
+        android:id="@+id/goto_portfolio"
         android:text="@string/next"
         android:layout_marginTop="32dp"
         android:textColor="@color/fontColorWhite"
         android:background="@color/colorPrimaryDark"
-        android:layout_below="@+id/whatsapp_container"
+        android:layout_below="@+id/quote_container"
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <Button
-        android:id="@+id/skip_whatsapp"
+        android:id="@+id/skip_quote"
         android:layout_marginTop="32dp"
         android:background="@color/colorPrimaryDark"
-        android:layout_below="@+id/goto_picture"
+        android:layout_below="@+id/goto_portfolio"
         android:text="@string/skip"
         android:layout_centerInParent="true"
         android:textColor="@color/fontColorWhite"

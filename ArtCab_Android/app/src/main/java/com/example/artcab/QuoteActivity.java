@@ -2,7 +2,9 @@ package com.example.artcab;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -40,5 +42,50 @@ public class QuoteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quote);
+        quote = findViewById(R.id.quote);
+        goToPortFolio = findViewById(R.id.goto_portfolio);
+        skipQuote = findViewById(R.id.skip_quote);
+
+        goToPortFolio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (quote.getText().toString().length() == 0) {
+                    quote.setError("Required");
+                } else {
+                    Bundle bundle = new Bundle();
+                    Intent intent = new Intent(getApplicationContext(), InstagramActivity.class);
+                    bundle.putStringArrayList("specials", specials);
+                    bundle.putStringArrayList("genres", genres);
+                    bundle.putStringArrayList("tastes", tastes);
+                    bundle.putString("name", name);
+                    bundle.putString("email", email);
+                    bundle.putString("phone", phone);
+                    bundle.putString("instagram", instagram);
+                    bundle.putString("whatsapp", whatsapp);
+                    bundle.putString("quote", quote.getText().toString());
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+            }
+        });
+
+        skipQuote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                Intent intent = new Intent(getApplicationContext(), QuoteActivity.class);
+                bundle.putStringArrayList("specials", specials);
+                bundle.putStringArrayList("genres", genres);
+                bundle.putStringArrayList("tastes", tastes);
+                bundle.putString("name", name);
+                bundle.putString("email", email);
+                bundle.putString("instagram", instagram);
+                bundle.putString("phone", phone);
+                bundle.putString("whatsapp", whatsapp);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+
     }
 }
