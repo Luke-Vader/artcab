@@ -53,7 +53,7 @@ public class QuoteActivity extends AppCompatActivity {
                     quote.setError("Required");
                 } else {
                     Bundle bundle = new Bundle();
-                    Intent intent = new Intent(getApplicationContext(), InstagramActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), PortfolioActivity.class);
                     bundle.putStringArrayList("specials", specials);
                     bundle.putStringArrayList("genres", genres);
                     bundle.putStringArrayList("tastes", tastes);
@@ -73,7 +73,7 @@ public class QuoteActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                Intent intent = new Intent(getApplicationContext(), QuoteActivity.class);
+                Intent intent = new Intent(getApplicationContext(), PortfolioActivity.class);
                 bundle.putStringArrayList("specials", specials);
                 bundle.putStringArrayList("genres", genres);
                 bundle.putStringArrayList("tastes", tastes);
@@ -82,10 +82,10 @@ public class QuoteActivity extends AppCompatActivity {
                 bundle.putString("instagram", instagram);
                 bundle.putString("phone", phone);
                 bundle.putString("whatsapp", whatsapp);
+                bundle.putString("quote", null);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
         });
-
     }
 }

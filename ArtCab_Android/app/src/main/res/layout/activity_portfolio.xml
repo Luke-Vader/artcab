@@ -1,9 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     tools:context=".PortfolioActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/portfolio_container"
+        android:layout_centerInParent="true"
+        android:padding="16dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Your Portfolio?"
+            android:textSize="34sp"
+            android:padding="8dp"
+            android:textColor="@color/fontColorWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/portfolio"
+            android:background="@color/fontColorWhite"
+            android:textSize="24sp"
+            android:inputType="textMultiLine|textCapSentences"
+            android:padding="8dp"
+            android:maxLength="300"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/goto_links"
+        android:text="@string/next"
+        android:layout_marginTop="32dp"
+        android:textColor="@color/fontColorWhite"
+        android:background="@color/colorPrimaryDark"
+        android:layout_below="@+id/portfolio_container"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/skip_portfolio"
+        android:layout_marginTop="32dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_below="@+id/goto_links"
+        android:text="@string/skip"
+        android:layout_centerInParent="true"
+        android:textColor="@color/fontColorWhite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

@@ -51,7 +51,7 @@ public class WhatsappActivity extends AppCompatActivity {
                     whatsapp.setError("Required");
                 } else {
                     Bundle bundle = new Bundle();
-                    Intent intent = new Intent(getApplicationContext(), InstagramActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), QuoteActivity.class);
                     bundle.putStringArrayList("specials", specials);
                     bundle.putStringArrayList("genres", genres);
                     bundle.putStringArrayList("tastes", tastes);

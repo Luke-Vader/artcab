@@ -27,7 +27,8 @@
             android:id="@+id/quote"
             android:background="@color/fontColorWhite"
             android:textSize="24sp"
-            android:inputType="phone"
+            android:maxLength="100"
+            android:inputType="textMultiLine|textCapSentences"
             android:padding="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
