@@ -20,7 +20,7 @@ public class WhatsappActivity extends AppCompatActivity {
     String instagram;
     String phone;
     EditText whatsapp;
-    Button goToPicutre;
+    Button goToQuote;
     Button skipWhatsapp;
 
     @Override
@@ -42,9 +42,9 @@ public class WhatsappActivity extends AppCompatActivity {
         setContentView(R.layout.activity_whatsapp);
         whatsapp = findViewById(R.id.whatsapp);
         skipWhatsapp = findViewById(R.id.skip_whatsapp);
-        goToPicutre = findViewById(R.id.goto_picture);
+        goToQuote = findViewById(R.id.goto_picture);
 
-        goToPicutre.setOnClickListener(new View.OnClickListener() {
+        goToQuote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (whatsapp.getText().toString().length() == 0) {
