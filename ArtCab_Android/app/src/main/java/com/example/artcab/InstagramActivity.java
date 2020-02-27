@@ -64,7 +64,7 @@ public class InstagramActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                Intent intent = new Intent(getApplicationContext(), InstagramActivity.class);
+                Intent intent = new Intent(getApplicationContext(), PhoneActivity.class);
                 bundle.putStringArrayList("specials", specials);
                 bundle.putStringArrayList("genres", genres);
                 bundle.putStringArrayList("tastes", tastes);
