@@ -12,9 +12,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class ProfileFragment extends Fragment {
 
     Button login;
+
+    FirebaseFirestore db;
+    FirebaseAuth auth;
 
     @Nullable
     @Override
@@ -25,7 +31,11 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        login = getActivity().findViewById(R.id.login_button);
+
+        db = FirebaseFirestore.getInstance();
+        auth = FirebaseAuth.getInstance();
+
+        /*login = getActivity().findViewById(R.id.login_button);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,6 +44,6 @@ public class ProfileFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), LoginOrSignupActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
     }
 }
