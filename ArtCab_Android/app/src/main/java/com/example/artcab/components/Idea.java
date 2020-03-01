@@ -2,24 +2,24 @@ package com.example.artcab.components;
 
 public class Idea {
 
-    private String quote;
+    private String idea;
     private String user;
     private String time;
     private String userProfile;
 
     public Idea(String quote, String user, String time, String userImage) {
-        this.quote = quote;
+        this.idea = quote;
         this.user = user;
         this.time = time;
         this.userProfile = userImage;
     }
 
-    public String getQuote() {
-        return quote;
+    public String getIdea() {
+        return idea;
     }
 
-    public void setQuote(String quote) {
-        this.quote = quote;
+    public void setIdea(String idea) {
+        this.idea = idea;
     }
 
     public String getUser() {

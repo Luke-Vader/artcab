@@ -16,15 +16,14 @@
         android:text="The Quote itself"
         android:textSize="22sp" />
 
-    <TextView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:layout_below="@id/idea_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="P" />
+        android:layout_marginBottom="8dp" />
 
     <TextView
         android:id="@+id/username"
@@ -32,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/idea_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
         android:layout_toEndOf="@id/profile_image"
         android:text="Username" />
@@ -43,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/idea_content"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         android:text="17h" />

@@ -11,10 +11,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.artcab.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
 public class IdeaAdapter extends RecyclerView.Adapter<IdeaAdapter.ViewHolder> {
+
+    FirebaseFirestore db;
+    FirebaseAuth auth;
+    StorageReference storageReference;
 
     private ArrayList<Idea> ideas = new ArrayList<>();
     private Context context;
@@ -31,12 +39,29 @@ public class IdeaAdapter extends RecyclerView.Adapter<IdeaAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
 
-        holder.quote.setText(ideas.get(position).getQuote());
+        db = FirebaseFirestore.getInstance();
+        auth = FirebaseAuth.getInstance();
+        storageReference = FirebaseStorage.getInstance().getReference();
+
+        holder.quote.setText(ideas.get(position).getIdea());
         holder.user.setText(ideas.get(position).getUser());
         holder.time.setText(ideas.get(position).getTime());
-        //Image has to be set
+
+        /*storageReference.child("users/" + ).getDownloadUrl()
+                .addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Picasso.get().load(uri).fit().centerCrop().into(holder.userImage);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(context, "Profile Photo Missing", Toast.LENGTH_SHORT).show();
+                    }
+                });*/
 
     }
 
@@ -57,6 +82,7 @@ public class IdeaAdapter extends RecyclerView.Adapter<IdeaAdapter.ViewHolder> {
             quote = itemView.findViewById(R.id.idea_content);
             user = itemView.findViewById(R.id.username);
             time = itemView.findViewById(R.id.time_elapsed);
+            userImage = itemView.findViewById(R.id.profile_image);
 
         }
     }
