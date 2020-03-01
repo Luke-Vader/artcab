@@ -103,6 +103,8 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/special_recycler"
+                android:layout_marginTop="2dp"
+                android:layout_below="@id/profile_quote"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -146,6 +148,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/links_recycler"
+                android:layout_below="@+id/works_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 

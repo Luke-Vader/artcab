@@ -15,8 +15,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.artcab.components.LinkAdapter;
 import com.example.artcab.components.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -27,6 +29,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
+import io.opencensus.trace.export.SpanData;
 
 public class ProfileFragment extends Fragment {
 
@@ -40,12 +44,12 @@ public class ProfileFragment extends Fragment {
     TextView name;
     TextView quote;
     TextView portfolio;
-    ArrayList<String> link;
-    ArrayList<String> specials;
     RecyclerView specialisations;
     RecyclerView links;
     RelativeLayout signedIn;
     RelativeLayout signIn;
+    LinkAdapter linkAdapter;
+    LinkAdapter specialAdapter;
 
     private FirebaseFirestore db;
     private FirebaseAuth auth;
@@ -123,6 +127,7 @@ public class ProfileFragment extends Fragment {
                         name.setText(user.getName());
                         quote.setText(user.getQuote());
                         portfolio.setText(user.getPortfolio());
+                        setAdapter();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -131,6 +136,16 @@ public class ProfileFragment extends Fragment {
                         Toast.makeText(getActivity(), "No User Found", Toast.LENGTH_SHORT).show();
                     }
                 });
+
+        links.setLayoutManager(new LinearLayoutManager(getActivity()));
+        specialisations.setLayoutManager(new LinearLayoutManager(getActivity()));
+    }
+
+    private void setAdapter() {
+        linkAdapter = new LinkAdapter(user.getLinks(), getActivity());
+        specialAdapter = new LinkAdapter(user.getSpecialisations(), getActivity());
+        links.setAdapter(linkAdapter);
+        specialisations.setAdapter(specialAdapter);
     }
 
 }
