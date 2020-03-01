@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.artcab.components.Idea;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -26,6 +27,9 @@ public class IdeaFragment extends Fragment {
     FirebaseAuth auth;
     FirebaseFirestore db;
 
+    String idea;
+    String username;
+    String userId;
     RecyclerView recyclerView;
     Dialog ideaDialog;
 
@@ -71,6 +75,9 @@ public class IdeaFragment extends Fragment {
         ideaDialog = new Dialog(getActivity(), android.R.style.Theme_DeviceDefault_DialogWhenLarge_NoActionBar);
         ideaDialog.setContentView(ideaView);
         ideaDialog.show();
+
+        db.collection("ideas").document(auth.getCurrentUser().getUid()).set(idea)
+
     }
 
 }
