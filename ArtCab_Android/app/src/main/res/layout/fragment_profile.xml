@@ -24,7 +24,18 @@
         android:id="@+id/login_interface"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        
+
+        <TextView
+            android:text="You ain't logged in"
+            android:layout_centerHorizontal="true"
+            android:textAlignment="center"
+            android:layout_above="@+id/icon"
+            android:textSize="18sp"
+            android:layout_marginBottom="24dp"
+            android:textColor="@color/greyFont"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
         <ImageView
             android:id="@+id/icon"
             android:layout_centerInParent="true"

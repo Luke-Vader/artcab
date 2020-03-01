@@ -20,13 +20,13 @@ public class LoginOrSignupActivity extends AppCompatActivity {
         login = findViewById(R.id.sign_in_button);
         register = findViewById(R.id.sign_up_button);
 
-        /*login.setOnClickListener(new View.OnClickListener() {
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), SpecialisationActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
             }
-        });*/
+        });
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,6 +35,5 @@ public class LoginOrSignupActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 }

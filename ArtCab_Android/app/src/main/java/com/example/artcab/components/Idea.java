@@ -1,4 +1,4 @@
-package com.example.artcab;
+package com.example.artcab.components;
 
 public class Idea {
 

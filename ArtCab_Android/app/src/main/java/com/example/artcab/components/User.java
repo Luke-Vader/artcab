@@ -1,4 +1,4 @@
-package com.example.artcab;
+package com.example.artcab.components;
 
 import com.google.firebase.firestore.IgnoreExtraProperties;
 import com.google.firebase.firestore.ServerTimestamp;

@@ -17,10 +17,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
+import com.example.artcab.components.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -88,7 +87,6 @@ public class ProfileFragment extends Fragment {
             signIn.setVisibility(View.GONE);
             getData();
         }
-
     }
 
     private void login() {
@@ -125,7 +123,6 @@ public class ProfileFragment extends Fragment {
                         name.setText(user.getName());
                         quote.setText(user.getQuote());
                         portfolio.setText(user.getPortfolio());
-
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
