@@ -49,7 +49,6 @@ public class IdeaAdapter extends RecyclerView.Adapter<IdeaAdapter.ViewHolder> {
         holder.quote.setText(ideas.get(holder.getAdapterPosition()).getIdea());
         holder.user.setText(ideas.get(position).getUser());
         holder.time.setText(ideas.get(holder.getAdapterPosition()).getTimestamp().toString());
-        Toast.makeText(context, holder.quote.getText(), Toast.LENGTH_SHORT).show();
 
         /*storageReference.child("users/" + ).getDownloadUrl()
                 .addOnSuccessListener(new OnSuccessListener<Uri>() {

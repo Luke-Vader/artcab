@@ -43,6 +43,7 @@ public class ProfilePictureActivity extends AppCompatActivity {
     String quote;
     String portfolio;
     String password;
+    String imageLink;
     Button register;
     ImageView profilePicture;
 
@@ -106,6 +107,7 @@ public class ProfilePictureActivity extends AppCompatActivity {
         if (filepath != null) {
             final StorageReference ref = storageReference.child("user/" + firebaseUser.getUid());
             uploadTask = ref.putFile(filepath);
+            imageLink = ref.getDownloadUrl().toString();
         }
     }
 
@@ -170,5 +172,6 @@ public class ProfilePictureActivity extends AppCompatActivity {
                     }
                 });
         uploadImage(firebaseUser);
+        Toast.makeText(this, imageLink, Toast.LENGTH_SHORT).show();
     }
 }

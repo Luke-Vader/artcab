@@ -10,13 +10,30 @@
         android:id="@+id/profile_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        
-        <androidx.appcompat.widget.Toolbar
-            app:title="@string/profile"
-            app:titleTextColor="@color/fontColorWhite"
-            android:background="@color/colorPrimaryDark"
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                app:title="Profile"
+                app:titleTextColor="@color/fontColorWhite"
+                android:background="@color/colorPrimaryDark"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"/>
+
+            <Button
+                android:id="@+id/logout"
+                android:text="LOGOUT"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
+                android:textColor="@color/fontColorWhite"
+                android:background="@color/colorPrimaryDark"
+                android:layout_alignParentEnd="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 

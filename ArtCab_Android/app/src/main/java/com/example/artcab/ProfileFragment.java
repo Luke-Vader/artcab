@@ -35,6 +35,7 @@ import io.opencensus.trace.export.SpanData;
 public class ProfileFragment extends Fragment {
 
     Button login;
+    Button logout;
     private ImageView instagram;
     private ImageView whatsApp;
     private ImageView email;
@@ -77,6 +78,7 @@ public class ProfileFragment extends Fragment {
         specialisations = getActivity().findViewById(R.id.special_recycler);
         links = getActivity().findViewById(R.id.links_recycler);
         login = getActivity().findViewById(R.id.login_button);
+        logout = getActivity().findViewById(R.id.logout);
 
         db = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
@@ -84,6 +86,7 @@ public class ProfileFragment extends Fragment {
 
         if (auth.getCurrentUser() == null) {
             signedIn.setVisibility(View.GONE);
+            logout.setVisibility(View.GONE);
             signIn.setVisibility(View.VISIBLE);
             login();
         } else {
@@ -91,7 +94,17 @@ public class ProfileFragment extends Fragment {
             signIn.setVisibility(View.GONE);
             getData();
         }
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                auth.signOut();
+                startActivity(new Intent(getActivity(), MainActivity.class));
+            }
+        });
+
     }
+
 
     private void login() {
         login.setOnClickListener(new View.OnClickListener() {
