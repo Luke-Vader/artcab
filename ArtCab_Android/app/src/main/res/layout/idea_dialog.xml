@@ -3,19 +3,53 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorPrimaryDark">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/idea_toolbar"
+        android:background="@color/colorPrimaryDark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.Toolbar
-            app:title="Your Idea"
-            app:titleTextColor="@color/fontColorWhite"
-            android:background="@color/colorPrimaryDark"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/collapse"
+                android:src="@drawable/close_icon"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:scaleType="fitCenter"
+                android:layout_alignParentStart="true"
+                android:background="@color/colorPrimaryDark"
+                android:layout_centerVertical="true"
+                android:layout_width="24dp"
+                android:layout_height="?attr/actionBarSize"/>
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/post_idea_toolbar"
+                android:layout_toEndOf="@+id/collapse"
+                app:title="Your Idea"
+                app:titleTextColor="@color/fontColorWhite"
+                android:background="@color/colorPrimaryDark"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"/>
+
+            <Button
+                android:id="@+id/post_idea"
+                android:text="POST"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
+                android:textColor="@color/fontColorWhite"
+                android:background="@color/colorPrimaryDark"
+                android:layout_alignParentEnd="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+        </RelativeLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -30,5 +64,27 @@
         android:hint="Idea"
         android:background="@color/colorPrimary"
         android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/genre_text"
+        android:layout_below="@+id/idea_text"
+        android:textColor="@color/fontColorWhite"
+        android:text="Genre: "
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Spinner
+        android:id="@+id/genre_spinner"
+        android:background="@color/colorPrimary"
+        android:layout_below="@id/idea_text"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_toEndOf="@+id/genre_text"
+        android:layout_width="match_parent"
+        android:layout_height="22dp"/>
 
 </RelativeLayout>

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,7 +25,7 @@ public class IdeaAdapter extends RecyclerView.Adapter<IdeaAdapter.ViewHolder> {
     FirebaseAuth auth;
     StorageReference storageReference;
 
-    private ArrayList<Idea> ideas = new ArrayList<>();
+    private ArrayList<Idea> ideas;
     private Context context;
 
     public IdeaAdapter(Context context, ArrayList<Idea> ideas) {
@@ -45,9 +46,10 @@ public class IdeaAdapter extends RecyclerView.Adapter<IdeaAdapter.ViewHolder> {
         auth = FirebaseAuth.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference();
 
-        holder.quote.setText(ideas.get(position).getIdea());
+        holder.quote.setText(ideas.get(holder.getAdapterPosition()).getIdea());
         holder.user.setText(ideas.get(position).getUser());
-        holder.time.setText(ideas.get(position).getTime());
+        holder.time.setText(ideas.get(holder.getAdapterPosition()).getTimestamp().toString());
+        Toast.makeText(context, holder.quote.getText(), Toast.LENGTH_SHORT).show();
 
         /*storageReference.child("users/" + ).getDownloadUrl()
                 .addOnSuccessListener(new OnSuccessListener<Uri>() {

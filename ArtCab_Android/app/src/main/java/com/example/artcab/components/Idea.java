@@ -1,17 +1,25 @@
 package com.example.artcab.components;
 
+import com.google.firebase.firestore.IgnoreExtraProperties;
+import com.google.firebase.firestore.ServerTimestamp;
+
+import java.util.Date;
+
+@IgnoreExtraProperties
 public class Idea {
 
     private String idea;
     private String user;
-    private String time;
-    private String userProfile;
+    private String genre;
+    private @ServerTimestamp Date timestamp;
 
-    public Idea(String quote, String user, String time, String userImage) {
-        this.idea = quote;
+    public Idea() { }
+
+    public Idea(String idea, String user, Date timestamp, String genre) {
+        this.idea = idea;
         this.user = user;
-        this.time = time;
-        this.userProfile = userImage;
+        this.timestamp = timestamp;
+        this.genre = genre;
     }
 
     public String getIdea() {
@@ -30,19 +38,19 @@ public class Idea {
         this.user = user;
     }
 
-    public String getTime() {
-        return time;
+    public Date getTimestamp() {
+        return timestamp;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
     }
 
-    public String getUserProfile() {
-        return userProfile;
+    public String getGenre() {
+        return genre;
     }
 
-    public void setUserProfile(String userProfile) {
-        this.userProfile = userProfile;
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 }

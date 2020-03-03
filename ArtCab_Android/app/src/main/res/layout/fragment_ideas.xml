@@ -11,11 +11,13 @@
         android:layout_height="wrap_content">
         
         <androidx.appcompat.widget.Toolbar
+            android:id="@+id/idea_toolbar"
             app:title="@string/ideas"
             app:titleTextColor="@color/fontColorWhite"
             android:background="@color/colorPrimaryDark"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="?attr/actionBarSize"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
