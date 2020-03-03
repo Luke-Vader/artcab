@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.artcab.components.LinkAdapter;
+import com.example.artcab.components.SpecialisationAdapter;
 import com.example.artcab.components.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -50,7 +51,7 @@ public class ProfileFragment extends Fragment {
     RelativeLayout signedIn;
     RelativeLayout signIn;
     LinkAdapter linkAdapter;
-    LinkAdapter specialAdapter;
+    SpecialisationAdapter specialAdapter;
 
     private FirebaseFirestore db;
     private FirebaseAuth auth;
@@ -124,12 +125,6 @@ public class ProfileFragment extends Fragment {
                     public void onSuccess(Uri uri) {
                         Picasso.get().load(uri).fit().centerCrop().into(profilePicture);
                     }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getActivity(), "Profile Photo Missing", Toast.LENGTH_SHORT).show();
-                    }
                 });
 
         db.collection("users").document(auth.getCurrentUser().getUid()).get()
@@ -156,7 +151,7 @@ public class ProfileFragment extends Fragment {
 
     private void setAdapter() {
         linkAdapter = new LinkAdapter(user.getLinks(), getActivity());
-        specialAdapter = new LinkAdapter(user.getSpecialisations(), getActivity());
+        specialAdapter = new SpecialisationAdapter(user.getSpecialisations(), getActivity());
         links.setAdapter(linkAdapter);
         specialisations.setAdapter(specialAdapter);
     }

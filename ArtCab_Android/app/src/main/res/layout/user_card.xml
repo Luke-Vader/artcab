@@ -10,6 +10,7 @@
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/network_profile_image"
         android:layout_marginStart="16dp"
+        android:src="@drawable/user_dark_icon"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="4dp"

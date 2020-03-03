@@ -1,9 +1,12 @@
 package com.example.artcab.components;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,12 +29,28 @@ public class LinkAdapter extends RecyclerView.Adapter<LinkAdapter.ViewHolder> {
     @NonNull
     @Override
     public LinkAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new LinkAdapter.ViewHolder(LayoutInflater.from(context).inflate(R.layout.link_container, parent, false));
+        return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.link_container, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull LinkAdapter.ViewHolder holder, int position) {
-        holder.link.setText(links.get(holder.getAdapterPosition()));
+    public void onBindViewHolder(@NonNull final LinkAdapter.ViewHolder holder, int position) {
+        int index = holder.getAdapterPosition()+1;
+        String link = "#" + index + " " + links.get(holder.getAdapterPosition());
+        holder.link.setText(link);
+
+        holder.container.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!links.get(holder.getAdapterPosition()).startsWith("http://")) {
+                    String url = "http://" + links.get(holder.getAdapterPosition());
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    context.startActivity(browserIntent);
+                } else {
+                    context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(links.get(holder.getAdapterPosition()))));
+                }
+            }
+        });
+
     }
 
     @Override
@@ -39,14 +58,15 @@ public class LinkAdapter extends RecyclerView.Adapter<LinkAdapter.ViewHolder> {
         return links.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView link;
+        RelativeLayout container;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             link = itemView.findViewById(R.id.link);
+            container = itemView.findViewById(R.id.link_box);
         }
     }
-
 }

@@ -2,11 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/idea_parent"
     android:layout_width="match_parent"
-    android:layout_height="124dp"
+    android:layout_height="wrap_content"
     android:layout_marginStart="16dp"
     android:layout_marginEnd="16dp"
-    android:layout_marginTop="2dp"
-    android:layout_marginBottom="2dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
     android:background="@color/colorPrimary"
     android:orientation="vertical">
 
@@ -18,12 +18,12 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="The Quote itself"
         android:textSize="18sp" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
         android:layout_width="32dp"
+        android:src="@drawable/user_dark_icon"
         android:layout_height="32dp"
         android:layout_below="@id/idea_content"
         android:layout_marginStart="16dp"
@@ -38,8 +38,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
-        android:layout_toEndOf="@id/profile_image"
-        android:text="Username" />
+        android:layout_toEndOf="@id/profile_image"/>
 
     <TextView
         android:id="@+id/time_elapsed"

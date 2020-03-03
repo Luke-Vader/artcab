@@ -9,13 +9,30 @@
         android:id="@+id/network_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        
-        <androidx.appcompat.widget.Toolbar
-            app:title="@string/networks"
-            app:titleTextColor="@color/fontColorWhite"
-            android:background="@color/colorPrimaryDark"
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                app:title="Networks"
+                app:titleTextColor="@color/fontColorWhite"
+                android:background="@color/colorPrimaryDark"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"/>
+
+            <ImageButton
+                android:id="@+id/filter_networks"
+                android:src="@drawable/filter_icon"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
+                android:scaleType="fitCenter"
+                android:background="@color/colorPrimaryDark"
+                android:layout_alignParentEnd="true"
+                android:layout_width="24dp"
+                android:layout_height="24dp"/>
+
+        </RelativeLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 

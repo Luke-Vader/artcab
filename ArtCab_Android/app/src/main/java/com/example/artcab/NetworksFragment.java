@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,6 +33,7 @@ public class NetworksFragment extends Fragment {
     FirebaseFirestore db;
     RecyclerView recyclerView;
     NetworkAdapter adapter;
+    ImageButton sort;
     ArrayList<User> users;
 
     @Nullable
@@ -48,8 +50,16 @@ public class NetworksFragment extends Fragment {
         db = FirebaseFirestore.getInstance();
 
         recyclerView = getActivity().findViewById(R.id.network_container);
+        sort = getActivity().findViewById(R.id.filter_networks);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        sort.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "Filter is WIP, Not forgotten ;-)", Toast.LENGTH_SHORT).show();
+            }
+        });
+        
         users = new ArrayList<>();
         db.collection("users").get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -70,11 +80,11 @@ public class NetworksFragment extends Fragment {
                         Toast.makeText(getActivity(), "No Users", Toast.LENGTH_SHORT).show();
                     }
                 });
-
     }
 
     private void setAdapter() {
         adapter = new NetworkAdapter(users, getActivity());
         recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 }

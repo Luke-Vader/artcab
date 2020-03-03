@@ -54,6 +54,7 @@ public class IdeaFragment extends Fragment {
     RecyclerView recyclerView;
     Dialog ideaDialog;
     ImageButton close;
+    ImageButton sort;
     Button post;
     Spinner genreSelect;
 
@@ -72,6 +73,14 @@ public class IdeaFragment extends Fragment {
 
         addIdea = getActivity().findViewById(R.id.add_idea);
         recyclerView = getActivity().findViewById(R.id.idea_container);
+        sort = getActivity().findViewById(R.id.filter_ideas);
+
+        sort.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "Filter is WIP, Not Forgotten ;-)", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         ideas = new ArrayList<>();
         db.collection("ideas").get()
@@ -107,19 +116,6 @@ public class IdeaFragment extends Fragment {
             }
         });
 
-        db.collection("ideas").document().get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getActivity(), "Idea Error", Toast.LENGTH_SHORT).show();
-                    }
-                });
     }
 
     private void setAdapter() {

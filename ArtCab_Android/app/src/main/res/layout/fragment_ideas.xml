@@ -9,15 +9,30 @@
         android:id="@+id/action_bar_idea"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/idea_toolbar"
-            app:title="@string/ideas"
-            app:titleTextColor="@color/fontColorWhite"
-            android:background="@color/colorPrimaryDark"
-            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"/>
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                app:title="Ideas"
+                app:titleTextColor="@color/fontColorWhite"
+                android:background="@color/colorPrimaryDark"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"/>
+
+            <ImageButton
+                android:id="@+id/filter_ideas"
+                android:src="@drawable/filter_icon"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
+                android:scaleType="fitCenter"
+                android:background="@color/colorPrimaryDark"
+                android:layout_alignParentEnd="true"
+                android:layout_width="24dp"
+                android:layout_height="24dp"/>
+
+        </RelativeLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 

@@ -1,6 +1,8 @@
 package com.example.artcab.components;
 
 import android.content.Context;
+import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +14,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.artcab.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -47,23 +53,23 @@ public class IdeaAdapter extends RecyclerView.Adapter<IdeaAdapter.ViewHolder> {
         storageReference = FirebaseStorage.getInstance().getReference();
 
         holder.quote.setText(ideas.get(holder.getAdapterPosition()).getIdea());
-        holder.user.setText(ideas.get(position).getUser());
-        holder.time.setText(ideas.get(holder.getAdapterPosition()).getTimestamp().toString());
+        //holder.time.setText(ideas.get(holder.getAdapterPosition()).getTimestamp().toString());
 
-        /*storageReference.child("users/" + ).getDownloadUrl()
+        db.collection("users").document(ideas.get(holder.getAdapterPosition()).getUser()).get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        holder.user.setText(documentSnapshot.getString("name"));
+                    }
+                });
+
+        storageReference.child("user/" + ideas.get(holder.getAdapterPosition()).getUser()).getDownloadUrl()
                 .addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
                         Picasso.get().load(uri).fit().centerCrop().into(holder.userImage);
                     }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(context, "Profile Photo Missing", Toast.LENGTH_SHORT).show();
-                    }
-                });*/
-
+                });
     }
 
     @Override

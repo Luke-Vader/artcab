@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,6 +21,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
@@ -135,7 +137,9 @@ public class ProfilePictureActivity extends AppCompatActivity {
                             FirebaseUser firebaseUser = auth.getCurrentUser();
                             uploadUser(firebaseUser);
                         } else {
-                            Toast.makeText(ProfilePictureActivity.this, "Registration Failed", Toast.LENGTH_SHORT).show();
+                            FirebaseAuthException e = (FirebaseAuthException) task.getException();
+                            Toast.makeText(ProfilePictureActivity.this, "Failed Registration: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                            Log.e("LoginActivity", "Failed Registration", e);
                         }
                     }
                 });
@@ -168,7 +172,7 @@ public class ProfilePictureActivity extends AppCompatActivity {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(ProfilePictureActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ProfilePictureActivity.this, "User Creation Failed", Toast.LENGTH_SHORT).show();
                     }
                 });
         uploadImage(firebaseUser);
