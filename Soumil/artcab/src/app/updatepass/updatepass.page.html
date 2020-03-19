@@ -1,0 +1,42 @@
+<ion-header>
+  	<ion-toolbar>
+	    <ion-title class="ion-no-padding">
+	    	<ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+	    		<ion-col size="2" class="ion-no-padding">
+	    			<ion-back-button style="color: #fff"></ion-back-button>
+	    		</ion-col>
+	    		<ion-col size="10" class="ion-no-padding">
+	    			<img class="ion_topbar_avatar" src="assets/icon/artcab.png">
+	    		</ion-col>
+	    	</ion-row>    	
+	    </ion-title>
+  	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-grid style="height: 100%">
+	  	<ion-row class="ion-align-items-center ion-justify-content-center" style="height: 50%">
+	  		<ion-text style="color: #ff80ab;">{{pass_error}}</ion-text>
+	    	<ion-col size="12">	   
+				<ion-item class="pass">
+		  			<ion-label position="floating">Enter New Password</ion-label>
+		  			<ion-input type="password" id="pass" name="pass" [(ngModel)]="password" clearInput></ion-input>
+				</ion-item>
+				<ion-item class="conf_pass">
+		  			<ion-label position="floating">Confirm Your Password</ion-label>
+		  			<ion-input type="password" id="conf_pass" name="conf_pass" [(ngModel)]="conf_password" clearInput></ion-input>
+				</ion-item>						
+	    	</ion-col>	    	
+	    	<ion-col size="6">
+	  			<ion-fab horizontal="center">
+		    		<ion-fab-button size="small" color="dark" (click)="dismiss();"><ion-icon name="md-close"></ion-icon></ion-fab-button>
+		    	</ion-fab>
+		    </ion-col>
+		    <ion-col size="6">
+		    	<ion-fab horizontal="center">
+					<ion-fab-button size="small" color="dark" (click)="updatePass();" [disabled]="!password || !conf_password || password !== conf_password"><ion-icon name="md-checkmark"></ion-icon></ion-fab-button>
+		    	</ion-fab>
+	  		</ion-col>
+	  	</ion-row>				  	
+	</ion-grid>
+</ion-content>

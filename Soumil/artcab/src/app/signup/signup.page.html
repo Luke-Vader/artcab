@@ -1,0 +1,263 @@
+<ion-header>
+  	<ion-toolbar>
+	    <ion-title class="ion-no-padding">
+	    	<ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+	    		<ion-col size="2" class="ion-no-padding">
+	    			<ion-back-button style="color: #fff"></ion-back-button>
+	    		</ion-col>
+	    		<ion-col size="10" class="ion-no-padding">
+	    			<img class="ion_topbar_avatar" src="assets/icon/artcab.png">
+	    		</ion-col>
+	    	</ion-row>    	
+	    </ion-title>
+  	</ion-toolbar>
+</ion-header>
+
+<ion-content>	
+	<ion-slides style="height: 100%;" #slides>
+        <ion-slide>
+			<ion-grid tabindex="-1">
+			  	<ion-row>
+			    	<ion-col size="12">	   
+        				<ion-item class="user">
+				  			<ion-label position="floating">Your Name</ion-label>
+				  			<ion-input type="text" id="fname" name="fname" [(ngModel)]="fullname" clearInput></ion-input>
+						</ion-item>		
+			    	</ion-col>	    	
+			    	<ion-col size="12">
+			  			<ion-fab horizontal="center">
+				    		<ion-fab-button size="small" color="dark" (click)="nextSlide();" [disabled]="!fullname"><ion-icon name="arrow-forward"></ion-icon></ion-fab-button>
+				    	</ion-fab>
+			  		</ion-col>
+			  	</ion-row>				  	
+			</ion-grid>
+		</ion-slide>
+
+		<ion-slide>
+			<ion-grid tabindex="-1">
+			  	<ion-row>
+			    	<ion-col size="12">	   
+        				<ion-item class="user">
+				  			<ion-label position="floating">Your Email ID</ion-label>
+				  			<ion-input type="email" id="email" name="email" [(ngModel)]="emailid" clearInput (ionInput)="checkEmailExist($event.target.value)"></ion-input>
+						</ion-item>
+						<ion-text style="color: #ff80ab; font-size: 14px;">{{email_warning}}</ion-text>
+			    	</ion-col>	    	
+			    	<ion-col size="6">
+			  			<ion-fab horizontal="center">
+				    		<ion-fab-button size="small" color="dark" (click)="prevSlide()"><ion-icon name="arrow-back"></ion-icon></ion-fab-button>
+				    	</ion-fab>
+				    </ion-col>
+				    <ion-col size="6">
+				    	<ion-fab horizontal="center">
+							<ion-fab-button size="small" color="dark" (click)="nextSlide()" [disabled]="!emailid || email_error != false"><ion-icon name="arrow-forward"></ion-icon></ion-fab-button>
+				    	</ion-fab>
+			  		</ion-col>				  		
+			  	</ion-row>				  	
+			</ion-grid>
+		</ion-slide>
+
+		<ion-slide>				
+			<ion-grid tabindex="-1">
+			  	<ion-row>
+			    	<ion-col size="12">	   
+        				<ion-item class="user">
+				  			<ion-label position="floating">Enter Password</ion-label>
+				  			<ion-input type="password" id="pass" name="pass" [(ngModel)]="password" clearInput></ion-input>
+						</ion-item>
+						<ion-item class="user">
+				  			<ion-label position="floating">Confirm Password</ion-label>
+				  			<ion-input type="password" id="conf_pass" name="conf_pass" [(ngModel)]="conf_password" clearInput></ion-input>
+						</ion-item>						
+			    	</ion-col>	    	
+			    	<ion-col size="6">
+			  			<ion-fab horizontal="center">
+				    		<ion-fab-button size="small" color="dark" (click)="prevSlide();"><ion-icon name="arrow-back"></ion-icon></ion-fab-button>
+				    	</ion-fab>
+				    </ion-col>
+				    <ion-col size="6">
+				    	<ion-fab horizontal="center">
+							<ion-fab-button size="small" color="dark" (click)="getSpec(); nextSlide(); specSelection=true" [disabled]="!password || !conf_password || password !== conf_password"><ion-icon name="arrow-forward"></ion-icon></ion-fab-button>
+				    	</ion-fab>
+			  		</ion-col>
+			  	</ion-row>				  	
+			</ion-grid>				
+		</ion-slide>
+
+		<ion-slide>
+			<div style="overflow-y: auto; width: 100%; height: 100%; padding-bottom: 60px;">
+				<ion-grid tabindex="-1">
+					<ion-row>
+				  		<ion-col size="12">
+				  			<ion-list>
+				  				<ion-list-header>Specialization</ion-list-header>
+					  			<ion-item *ngFor="let sp of specList; let i = index">
+								    <ion-label>{{sp.spec_name}}</ion-label>
+								    <ion-checkbox color="dark" slot="start" [name]="'specList'+'_'+i" [(ngModel)]="sp.isChecked" (ionChange)="checkMark('spec')"></ion-checkbox>
+								</ion-item>
+							</ion-list>
+				  		</ion-col>
+				  		<ion-col size="6">
+				  			<ion-fab horizontal="center">
+					    		<ion-fab-button size="small" color="dark" (click)="prevSlide();"><ion-icon name="arrow-back"></ion-icon></ion-fab-button>
+					    	</ion-fab>
+					    </ion-col>
+					    <ion-col size="6">
+					    	<ion-fab horizontal="center">
+								<ion-fab-button size="small" color="dark" (click)="getCheckedBoxes(); nextSlide(); subSpecSelection=true" [disabled]='specSelection'><ion-icon name="arrow-forward"></ion-icon></ion-fab-button>
+					    	</ion-fab>
+				  		</ion-col>
+				  	</ion-row>				  	
+				</ion-grid>
+			</div>
+		</ion-slide>
+
+		<ion-slide>		
+			<div style="overflow-y: auto; width: 100%; height: 100%; padding-bottom: 60px;">
+				<ion-grid tabindex="-1">
+					<ion-row>
+				  		<ion-col size="12">
+				  			<ion-list>
+				  				<ion-list-header>Sub Specialization</ion-list-header>
+				  				<ng-container *ngFor="let sp of checkedItems">
+				  					<ion-list-header>{{sp.spec_name}}</ion-list-header>
+						  			<ng-container *ngFor="let ssp of subSpecList">
+						  				<ng-container *ngFor="let sub of ssp; let j = index">
+						  					<ng-container *ngIf="sp.spec_sl == sub.spec_sl_no">
+						  						<ion-item>
+												    <ion-label>{{sub.sub_spec_name}}</ion-label>
+												    <ion-checkbox color="dark" slot="start" [name]="'subSpecList'+'_'+sp.spec_sl+'_'+j" [(ngModel)]="sub.isChecked" (ionChange)="checkMark('subspec')"></ion-checkbox>
+												</ion-item>
+											</ng-container>
+										</ng-container>
+									</ng-container>
+								</ng-container>
+							</ion-list>
+				  		</ion-col>
+				  		<ion-col size="6">
+				  			<ion-fab horizontal="center">
+					    		<ion-fab-button size="small" color="dark" (click)="prevSlide()"><ion-icon name="arrow-back"></ion-icon></ion-fab-button>
+					    	</ion-fab>
+					    </ion-col>
+					    <ion-col size="6">
+					    	<ion-fab horizontal="center">
+								<ion-fab-button size="small" color="dark" (click)="getGenre(); nextSlide(); genreSelection=true" [disabled]="subSpecSelection"><ion-icon name="arrow-forward"></ion-icon></ion-fab-button>
+					    	</ion-fab>
+				  		</ion-col>
+				  	</ion-row>				  	
+				</ion-grid>
+			</div>
+		</ion-slide>
+
+		<ion-slide>
+			<div style="overflow-y: auto; width: 100%; height: 100%; padding-bottom: 60px;">
+				<ion-grid tabindex="-1">
+					<ion-row>
+				  		<ion-col size="12">
+				  			<ion-list>
+				  				<ion-list-header>Genre</ion-list-header>
+					  			<ion-item *ngFor="let gnr of genreList; let i = index">
+								    <ion-label>{{gnr.genre_name}}</ion-label>
+								    <ion-checkbox color="dark" slot="start" [name]="'genreList'+i" [(ngModel)]="gnr.isChecked" (ionChange)="checkMark('genre')"></ion-checkbox>
+								</ion-item>
+							</ion-list>
+				  		</ion-col>
+				  		<ion-col size="6">
+				  			<ion-fab horizontal="center">
+					    		<ion-fab-button size="small" color="dark" (click)="prevSlide()"><ion-icon name="arrow-back"></ion-icon></ion-fab-button>
+					    	</ion-fab>
+					    </ion-col>
+					    <ion-col size="6">
+					    	<ion-fab horizontal="center">
+								<ion-fab-button size="small" color="dark" (click)="getTaste(); nextSlide(); tasteSelection=true" [disabled]="genreSelection"><ion-icon name="arrow-forward"></ion-icon></ion-fab-button>
+					    	</ion-fab>
+				  		</ion-col>
+				  	</ion-row>				  	
+				</ion-grid>
+			</div>
+		</ion-slide>
+
+		<ion-slide>
+			<div style="overflow-y: auto; width: 100%; height: 100%; padding-bottom: 60px;">
+				<ion-grid tabindex="-1">
+					<ion-row>
+				  		<ion-col size="12">
+				  			<ion-list>
+				  				<ion-list-header>Cinema Taste</ion-list-header>
+					  			<ion-item *ngFor="let tst of tasteList; let i = index">
+								    <ion-label>{{tst.taste_name}}</ion-label>
+								    <ion-checkbox color="dark" slot="start" [name]="'tasteList'+i" [(ngModel)]="tst.isChecked" (ionChange)="checkMark('taste')"></ion-checkbox>
+								</ion-item>
+							</ion-list>
+				  		</ion-col>
+				  		<ion-col size="6">
+				  			<ion-fab horizontal="center">
+					    		<ion-fab-button size="small" color="dark" (click)="prevSlide()"><ion-icon name="arrow-back"></ion-icon></ion-fab-button>
+					    	</ion-fab>
+					    </ion-col>
+					    <ion-col size="6">
+					    	<ion-fab horizontal="center">
+								<ion-fab-button size="small" color="dark" (click)="nextSlide();" [disabled]="tasteSelection"><ion-icon name="arrow-forward"></ion-icon></ion-fab-button>
+					    	</ion-fab>
+				  		</ion-col>
+				  	</ion-row>				  	
+				</ion-grid>
+			</div>
+		</ion-slide>
+
+		<ion-slide>
+			<ion-grid tabindex="-1">
+			  	<ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+			    	<ion-col size="12">	   
+        				<ion-item class="user">
+				  			<ion-label position="floating">A film quote that defines you</ion-label>
+				  			<ion-textarea type="text" id="filmquote" name="filmquote" [(ngModel)]="filmqt" clearInput></ion-textarea>
+						</ion-item>						
+			    	</ion-col>
+			    	<ion-col size="6">
+			  			<ion-fab horizontal="center">
+				    		<ion-fab-button size="small" color="dark" (click)="prevSlide();"><ion-icon name="arrow-back"></ion-icon></ion-fab-button>
+				    	</ion-fab>
+				    </ion-col>
+				    <ion-col size="6">
+				    	<ion-fab horizontal="center">
+							<ion-fab-button size="small" color="dark" (click)="nextSlide()" [disabled]="!filmqt"><ion-icon name="arrow-forward"></ion-icon></ion-fab-button>
+				    	</ion-fab>
+			  		</ion-col>	    	
+			  	</ion-row>				  	
+			</ion-grid>
+		</ion-slide>
+
+		<ion-slide>
+			<ion-grid tabindex="-1">
+			  	<ion-row>
+			    	<ion-col size="12">	   
+			    		<ion-label style="color: #fff;">3 links of your best work (optional)</ion-label>
+        				<ion-item class="user" style="margin-top: 20px;">
+				  			<ion-label position="floating">Link 1</ion-label>
+				  			<ion-input type="url" id="link1" name="link1" [(ngModel)]="link1" clearInput></ion-input>
+						</ion-item>
+						<ion-item class="user">
+				  			<ion-label position="floating">Link 2</ion-label>
+				  			<ion-input type="url" id="link2" name="link2" [(ngModel)]="link2" clearInput></ion-input>
+						</ion-item>
+						<ion-item class="user">
+				  			<ion-label position="floating">Link 3</ion-label>
+				  			<ion-input type="url" id="link3" name="link3" [(ngModel)]="link3" clearInput></ion-input>
+						</ion-item>						
+			    	</ion-col>	    	
+			    	<ion-col size="6">
+			  			<ion-fab horizontal="center">
+				    		<ion-fab-button size="small" color="dark" (click)="prevSlide()"><ion-icon name="arrow-back"></ion-icon></ion-fab-button>
+				    	</ion-fab>
+				    </ion-col>
+				    <ion-col size="6">
+				    	<ion-fab horizontal="center">
+							<ion-fab-button size="small" color="dark" (click)="confirmRegister()"><ion-icon name="md-checkmark"></ion-icon></ion-fab-button>
+				    	</ion-fab>
+			  		</ion-col>
+			  	</ion-row>				  	
+			</ion-grid>
+		</ion-slide>			
+    </ion-slides>	
+</ion-content>

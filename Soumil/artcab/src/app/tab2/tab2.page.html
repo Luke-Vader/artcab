@@ -1,0 +1,101 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title class="ion-no-padding">
+            <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+                <ion-col size="2" class="ion-no-padding">
+                    <ion-back-button style="color: #fff"></ion-back-button>
+                </ion-col>
+                <ion-col size="10" class="ion-no-padding">
+                    <img class="ion_topbar_avatar" src="assets/icon/artcab.png">
+                </ion-col>
+            </ion-row>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="card" style="background-color: #646464; margin-bottom: 10px;" class="ion-no-padding">
+        <ion-grid>
+            <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+                <ion-col size="8">
+                    <div class="item item-text-wrap" style="color: #fff; text-align: left;">Ideas</div>
+                </ion-col>
+                <ion-col size="2">
+                    <div class="item item-text-wrap" style="color: #fff; font-size: 20px; text-align: right; cursor: pointer" data-toggle="modal" data-target="#myModal">
+                        <ion-icon name="md-add"></ion-icon>
+                    </div>
+                </ion-col>
+                <ion-col size="2">
+                    <div class="item item-text-wrap" style="color: #fff; font-size: 20px; text-align: right; cursor: pointer" (click)='displayGenreList()'>
+                        <ion-icon name="ios-funnel"></ion-icon>
+                    </div>
+                    <ion-item [hidden]='hideList'>
+                        <ion-label>Genre</ion-label>
+                        <ion-select [interfaceOptions]="customPopoverOptions" interface="alert" id="genre" #gnrList multiple (ionChange)="viewGenreIdea($event)">
+                            <ion-select-option color="dark" *ngFor="let gn of genreList" value="{{gn.genre_sl}}">{{gn.genre_name}}</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+
+    <div *ngFor="let gnr of filterGenreList">
+        <div class="ion-no-padding" style="color: #fff; font-size: 16px; text-transform: uppercase;">
+            <ion-grid>
+                <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+                    <ion-col>
+                        <div class="item item-text-wrap" style="color: #fff; text-align: left;">{{gnr.genre_name}}</div>
+                    </ion-col>                   
+                </ion-row>
+            </ion-grid>
+        </div>
+        <ion-slides *ngFor="let ideas of ideaList">            
+            <ion-slide *ngFor="let idea of ideas">
+                <ion-card *ngIf="gnr.genre_sl == idea.genre_sl_no">
+                    <ion-card-content>
+                        <ion-grid>
+                            <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+                                <ion-col size="3" class="ion-no-padding">
+                                    <img src="assets/icon/art_cab.png">
+                                </ion-col>
+                                <ion-col size="9">
+                                    <span style="font-weight: bold; cursor: pointer;" (click)="showProfile(idea.user_sl_no)">{{idea.user_name}}</span><br><br>
+                                    <ion-label style="overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;  ">{{idea.genre_idea}}</ion-label>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-card-content>
+                </ion-card>
+            </ion-slide>                    
+        </ion-slides>
+    </div>
+</ion-content>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog" data-backdrop="false" style="position: fixed; top: 5%;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title">Share your own idea</h6>
+                <button type="button" class="close" data-dismiss="modal" style="text-align: right;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <ion-item>
+                    <ion-label>Genre</ion-label>
+                    <ion-select [interfaceOptions]="customPopoverOptions" interface="popover" id="gen" name="gen" [(ngModel)]="gen">
+                        <ion-select-option color="dark" *ngFor="let gn of genreList" value="{{gn.genre_sl}}">{{gn.genre_name}}</ion-select-option>
+                    </ion-select>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Write something...</ion-label>
+                    <ion-textarea id="about_gen" name="about_gen" [(ngModel)]="about_gen" rows="6"></ion-textarea>
+                </ion-item>
+            </div>
+            <div class="modal-footer">
+                <ion-button shape="round" color="medium" size="small" data-dismiss="modal">Close</ion-button>
+                <ion-button shape="round" color="dark" size="small" (click)="shareIdea()" [disabled]="!gen || !about_gen">Share</ion-button>
+            </div>
+        </div>
+    </div>
+</div>

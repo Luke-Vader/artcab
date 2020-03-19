@@ -1,0 +1,85 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title class="ion-no-padding">
+            <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+                <ion-col size="2" class="ion-no-padding">
+                    <ion-back-button style="color: #fff"></ion-back-button>
+                </ion-col>
+                <ion-col size="10" class="ion-no-padding">
+                    <img class="ion_topbar_avatar" src="assets/icon/artcab.png">
+                </ion-col>
+            </ion-row>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div class="card" style="background-color: #646464; margin-bottom: 10px;" class="ion-no-padding">
+        <ion-grid>
+            <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+                <ion-col size="2" class="ion-no-padding">
+                    <img src="assets/icon/art_cab.png">
+                </ion-col>
+                <ion-col size="10">
+                    <div class="item item-text-wrap" style="color: #fff; text-align: center">
+                    	<b>{{user_full_name}}</b><br>
+                    	{{user_film_quote}}
+                    </div>                    
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+    <ion-card>
+    	<ion-card-header class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+        	<!-- <ion-card-subtitle>Get Started</ion-card-subtitle> -->
+        	<ion-card-title style="color: #fff; text-align: center">{{user_spec}}</ion-card-title>
+      	</ion-card-header>
+        <ion-card-content style="color: #fff">
+        	{{user_portfolio}}
+        </ion-card-content>
+    </ion-card>
+    <ion-card>    	
+        <ion-card-content>
+        	<a href="{{work_link1}}" style="color: #fff;"><ion-icon name="md-link" style="font-size: 20px;"></ion-icon>&emsp;{{work_link1}}</a><br>
+            <a href="{{work_link2}}" style="color: #fff;"><ion-icon name="md-link" style="font-size: 20px;"></ion-icon>&emsp;{{work_link2}}</a><br>
+            <a href="{{work_link3}}" style="color: #fff;"><ion-icon name="md-link" style="font-size: 20px;"></ion-icon>&emsp;{{work_link3}}</a>        	
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+    	<ion-card-content>
+    		<ion-grid>
+    			<ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">    				
+					<ion-fab-button color="dark" size="small"><ion-icon name="logo-facebook"></ion-icon></ion-fab-button>
+				
+					<ion-fab-button color="dark" size="small"><ion-icon name="logo-twitter"></ion-icon></ion-fab-button>
+				
+					<ion-fab-button color="dark" size="small"><ion-icon name="logo-whatsapp"></ion-icon></ion-fab-button>
+				
+					<ion-fab-button color="dark" size="small"><ion-icon name="md-mail"></ion-icon></ion-fab-button>
+				
+					<ion-fab-button color="dark" size="small"><ion-icon name="logo-linkedin"></ion-icon></ion-fab-button>
+				
+					<ion-fab-button color="dark" size="small"><ion-icon name="logo-instagram"></ion-icon></ion-fab-button>
+    			</ion-row>
+    		</ion-grid>
+    	</ion-card-content>
+    </ion-card>
+    <!-- <ion-tabs>
+	    <ion-tab-bar slot="bottom">
+	        <ion-tab-button tab="tab1">
+	            <ion-icon name="funnel"></ion-icon>
+	            <ion-label>Network</ion-label>
+	        </ion-tab-button>
+
+	        <ion-tab-button tab="tab2">
+	            <ion-icon name="bulb"></ion-icon>
+	            <ion-label>Ideate</ion-label>
+	        </ion-tab-button>
+
+	        <ion-tab-button tab="tab3">
+	            <ion-icon name="person"></ion-icon>
+	            <ion-label>Profile</ion-label>
+	        </ion-tab-button>
+	    </ion-tab-bar>
+	</ion-tabs> -->
+</ion-content>

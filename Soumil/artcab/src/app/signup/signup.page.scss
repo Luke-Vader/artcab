@@ -1,0 +1,31 @@
+img.ion_topbar_avatar
+{
+	width: 26%;
+}
+
+ion-title
+{
+	background-color: #242424;
+}
+
+ion-content
+{
+	--background: #333333;
+}
+
+ion-item.user {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+ion-grid
+{
+	outline: none;
+}
+
+::-webkit-scrollbar {
+    width: 0px !important;  /* Remove scrollbar space */
+    background: transparent !important;  /* Optional: just make scrollbar invisible */
+}

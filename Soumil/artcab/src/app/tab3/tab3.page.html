@@ -1,0 +1,425 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title class="ion-no-padding">
+            <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+                <ion-col size="2" class="ion-no-padding">
+                    <ion-back-button style="color: #fff"></ion-back-button>
+                </ion-col>
+                <ion-col size="10" class="ion-no-padding">
+                    <img class="ion_topbar_avatar" src="assets/icon/artcab.png">
+                </ion-col>
+            </ion-row>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>	
+	<ng-container *ngFor="let pro of profileInfo">
+		<div class="card" style="background-color: #646464; margin-bottom: 10px;" class="ion-no-padding">
+	        <ion-grid>
+	            <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+	                <ion-col size="3" class="ion-no-padding">
+	                    <img src="assets/icon/art_cab.png">
+	                </ion-col>
+	                <ion-col size="7">
+	                    <div class="item item-text-wrap" style="color: #fff; text-align: left;">{{pro.user_name}}</div>
+	                </ion-col>
+	                <ion-col size="1">
+	                    <div class="item item-text-wrap" style="color: #fff; font-size: 20px; text-align: right; cursor: pointer" data-toggle="modal" data-target="#editProfilePic">
+	                        <ion-icon name="md-create"></ion-icon>
+	                    </div>	                    
+	                </ion-col>
+	                <ion-col size="1">
+	                    <div class="item item-text-wrap" style="color: #fff; font-size: 20px; text-align: right; cursor: pointer" (click)='moreOption()'>
+	                        <ion-icon name="md-more"></ion-icon>
+	                    </div>	                    
+	                </ion-col>
+	            </ion-row>
+	        </ion-grid>
+	    </div>
+
+	    <div>
+	    	<ion-grid>
+	    		<ion-row>
+	    			<ion-col size="12">
+	    				<ion-text style="color: #fff; text-align: left;">Specialization</ion-text>
+	    			</ion-col>
+	    		</ion-row>
+	    	</ion-grid>
+		    <ng-container *ngFor="let sp of pro.specInfo">
+			    <ion-card>
+		            <ion-card-content>
+		                <ion-grid>
+		                    <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+		                        <ion-col size="12" class="ion-no-padding">
+		                            <span style="color: #fff">{{sp.spec_name}}</span>&emsp;|&emsp;<span style="color: #fff">{{sp.sub_spec_name}}</span>
+		                        </ion-col>	                       
+		                    </ion-row>
+		                </ion-grid>
+		            </ion-card-content>
+		        </ion-card>
+		    </ng-container>
+		</div>
+
+		<div>
+	    	<ion-grid>
+	    		<ion-row>
+	    			<ion-col size="8">
+	    				<ion-text style="color: #fff; text-align: left;">Genre</ion-text>
+	    			</ion-col>
+	    			<ion-col size="4">
+	    				<div style="text-align: right;" data-toggle="modal" data-target="#addGenre" (click)="getGenre()">
+	    					<ion-icon name="md-add" style="font-size: 20px; color: #fff;"></ion-icon>
+	    				</div>
+	    			</ion-col>
+	    		</ion-row>
+	    	</ion-grid>
+		    <ng-container *ngFor="let gn of pro.genreInfo">
+			    <ion-card>
+		            <ion-card-content>
+		                <ion-grid>
+		                    <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+		                        <ion-col size="8" class="ion-no-padding">
+		                            <span style="color: #fff">{{gn.genre_name}}</span>
+		                        </ion-col>	        
+		                        <ion-col size="4">
+		                        	<div style="text-align: right;" (click)="deleteGenre(gn.genre_rel_id)">
+				    					<ion-icon name="md-close" style="font-size: 20px; color: #fff;"></ion-icon>
+				    				</div>
+		                        </ion-col>               
+		                    </ion-row>
+		                </ion-grid>
+		            </ion-card-content>
+		        </ion-card>
+		    </ng-container>
+		</div>
+
+		<div>
+	    	<ion-grid>
+	    		<ion-row>
+	    			<ion-col size="8">
+	    				<ion-text style="color: #fff; text-align: left;">Taste</ion-text>
+	    			</ion-col>
+	    			<ion-col size="4">
+	    				<div style="text-align: right;" data-toggle="modal" data-target="#addTaste" (click)="getTaste()">
+	    					<ion-icon name="md-add" style="font-size: 20px; color: #fff;"></ion-icon>
+	    				</div>
+	    			</ion-col>
+	    		</ion-row>
+	    	</ion-grid>
+		    <ng-container *ngFor="let ts of pro.tasteInfo">
+			    <ion-card>
+		            <ion-card-content>
+		                <ion-grid>
+		                    <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+		                        <ion-col size="8" class="ion-no-padding">
+		                            <span style="color: #fff">{{ts.taste_name}}</span>
+		                        </ion-col>	        
+		                        <ion-col size="4">
+		                        	<div style="text-align: right;" (click)="deleteTaste(ts.taste_rel_id)">
+				    					<ion-icon name="md-close" style="font-size: 20px; color: #fff;"></ion-icon>
+				    				</div>
+		                        </ion-col>         
+		                    </ion-row>
+		                </ion-grid>
+		            </ion-card-content>
+		        </ion-card>
+		    </ng-container>
+		</div>
+
+		<div>
+			<ion-grid>
+	    		<ion-row>
+	    			<ion-col size="8">
+	    				<ion-text style="color: #fff; text-align: left;">Portfolio</ion-text>
+	    			</ion-col>
+	    			<ion-col size="4">
+                    	<div style="text-align: right;" data-toggle="modal" data-target="#editPortfolio">
+	    					<ion-icon name="md-create" style="font-size: 20px; color: #fff;"></ion-icon>
+	    				</div>
+                    </ion-col>
+	    		</ion-row>
+	    	</ion-grid>
+			<ion-card>
+	            <ion-card-content>
+	                <ion-grid>
+	                    <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+	                        <ion-col size="12" class="ion-no-padding">
+	                            {{pro.portfolio}}
+	                        </ion-col>	                       
+	                    </ion-row>
+	                </ion-grid>
+	            </ion-card-content>
+	        </ion-card>	    				    	
+		</div>
+
+		<div>
+			<ion-grid>
+	    		<ion-row>
+	    			<ion-col size="8">
+	    				<ion-text style="color: #fff; text-align: left;">Social Link</ion-text>
+	    			</ion-col>
+	    			<ion-col size="4">
+                    	<div style="text-align: right;" data-toggle="modal" data-target="#editSocial">
+	    					<ion-icon name="md-create" style="font-size: 20px; color: #fff;"></ion-icon>
+	    				</div>
+                    </ion-col>
+	    		</ion-row>
+	    	</ion-grid>
+			<ion-card>
+	            <ion-card-content>
+	                <ion-grid>
+	                    <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+	                        <ion-col size="12" class="ion-no-padding">
+	                            <a href="{{pro.fb_link}}" style="color: #fff;"><ion-icon name="logo-facebook" style="font-size: 20px;"></ion-icon>&emsp;{{pro.fb_link}}</a><br>
+	                            <a href="{{pro.tw_link}}" style="color: #fff;"><ion-icon name="logo-twitter" style="font-size: 20px;"></ion-icon>&emsp;{{pro.tw_link}}</a><br>
+	                            <a href="{{pro.lnkd_link}}" style="color: #fff;"><ion-icon name="logo-linkedin" style="font-size: 20px;"></ion-icon>&emsp;{{pro.lnkd_link}}</a><br>
+	                            <a href="{{pro.insta_link}}" style="color: #fff;"><ion-icon name="logo-instagram" style="font-size: 20px;"></ion-icon>&emsp;{{pro.insta_link}}</a>
+	                        </ion-col>	                       
+	                    </ion-row>
+	                </ion-grid>
+	            </ion-card-content>
+	        </ion-card>	    				    	
+		</div>
+
+		<div>
+			<ion-grid>
+	    		<ion-row>
+	    			<ion-col size="8">
+	    				<ion-text style="color: #fff; text-align: left;">Contact</ion-text>
+	    			</ion-col>
+	    			<ion-col size="4">
+                    	<div style="text-align: right;" data-toggle="modal" data-target="#editContact">
+	    					<ion-icon name="md-create" style="font-size: 20px; color: #fff;"></ion-icon>
+	    				</div>
+                    </ion-col>
+	    		</ion-row>
+	    	</ion-grid>
+			<ion-card>
+	            <ion-card-content>
+	                <ion-grid>
+	                    <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+	                        <ion-col size="12" class="ion-no-padding">
+	                            <a href="mailto:{{pro.email_id}}" style="color: #fff;"><ion-icon name="md-mail" style="font-size: 20px;"></ion-icon>&emsp;{{pro.email_id}}</a><br>
+	                            <a href="tel:{{pro.mobile_no}}" style="color: #fff;"><ion-icon name="md-call" style="font-size: 20px;"></ion-icon>&emsp;{{pro.mobile_no}}</a><br>
+	                            <a href="https://api.whatsapp.com/send?phone={{pro.wa_no}}" style="color: #fff;"><ion-icon name="logo-whatsapp" style="font-size: 20px;"></ion-icon>&emsp;{{pro.wa_no}}</a>
+	                        </ion-col>	                       
+	                    </ion-row>
+	                </ion-grid>
+	            </ion-card-content>
+	        </ion-card>	    				    	
+		</div>
+
+		<div>
+			<ion-grid>
+	    		<ion-row>
+	    			<ion-col size="8">
+	    				<ion-text style="color: #fff; text-align: left;">3 links of work</ion-text>
+	    			</ion-col>
+	    			<ion-col size="4">
+                    	<div style="text-align: right;" data-toggle="modal" data-target="#editWorkLink">
+	    					<ion-icon name="md-create" style="font-size: 20px; color: #fff;"></ion-icon>
+	    				</div>
+                    </ion-col>
+	    		</ion-row>
+	    	</ion-grid>
+			<ion-card>
+	            <ion-card-content>
+	                <ion-grid>
+	                    <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+	                        <ion-col size="12" class="ion-no-padding">
+	                            <a href="{{pro.work_link1}}" style="color: #fff;"><ion-icon name="md-link" style="font-size: 20px;"></ion-icon>&emsp;{{pro.work_link1}}</a><br>
+	                            <a href="{{pro.work_link2}}" style="color: #fff;"><ion-icon name="md-link" style="font-size: 20px;"></ion-icon>&emsp;{{pro.work_link2}}</a><br>
+	                            <a href="{{pro.work_link3}}" style="color: #fff;"><ion-icon name="md-link" style="font-size: 20px;"></ion-icon>&emsp;{{pro.work_link3}}</a>
+	                        </ion-col>	                       
+	                    </ion-row>
+	                </ion-grid>
+	            </ion-card-content>
+	        </ion-card>	    				    	
+		</div>
+	</ng-container>	
+</ion-content>
+
+<!-- Modal -->
+<div id="editProfilePic" class="modal fade" role="dialog" data-backdrop="false" style="position: fixed; top: 5%;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title">Update Profile Picture</h6>
+                <button type="button" class="close" data-dismiss="modal" style="text-align: right;">&times;</button>
+            </div>
+            <div class="modal-body">
+	  			<ion-item>				   
+				    <input type="file" name="file" (change)="onselect($event)">
+				</ion-item>				
+            </div>
+            <div class="modal-footer">
+                <ion-button shape="round" color="medium" size="small" data-dismiss="modal">Close</ion-button>
+                <ion-button shape="round" color="dark" size="small" (click)="updateProfilePic()">Update</ion-button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="addGenre" class="modal fade" role="dialog" data-backdrop="false" style="position: fixed; top: 5%;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title">Add New Genre</h6>
+                <button type="button" class="close" data-dismiss="modal" style="text-align: right;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <ion-list>	  				
+		  			<ion-item *ngFor="let gnr of genreList; let i = index">
+					    <ion-label>{{gnr.genre_name}}</ion-label>
+					    <ion-checkbox color="dark" slot="start" [name]="'genreList'+'_'+i" [(ngModel)]="gnr.isChecked" (ionChange)="checkMark('genre')"></ion-checkbox>
+					</ion-item>
+				</ion-list>
+            </div>
+            <div class="modal-footer">
+                <ion-button shape="round" color="medium" size="small" data-dismiss="modal">Close</ion-button>
+                <ion-button shape="round" color="dark" size="small" (click)="addGenre()" [disabled]="gnrSelection">Add</ion-button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="addTaste" class="modal fade" role="dialog" data-backdrop="false" style="position: fixed; top: 5%;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title">Add New Cinema Taste</h6>
+                <button type="button" class="close" data-dismiss="modal" style="text-align: right;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <ion-list>	  				
+		  			<ion-item *ngFor="let tst of tasteList; let i = index">
+					    <ion-label>{{tst.taste_name}}</ion-label>
+					    <ion-checkbox color="dark" slot="start" [name]="'tasteList'+'_'+i" [(ngModel)]="tst.isChecked" (ionChange)="checkMark('taste')"></ion-checkbox>
+					</ion-item>
+				</ion-list>
+            </div>
+            <div class="modal-footer">
+                <ion-button shape="round" color="medium" size="small" data-dismiss="modal">Close</ion-button>
+                <ion-button shape="round" color="dark" size="small" (click)="addTaste()" [disabled]="tstSelection">Add</ion-button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="editPortfolio" class="modal fade" role="dialog" data-backdrop="false" style="position: fixed; top: 5%;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title">Update Portfolio</h6>
+                <button type="button" class="close" data-dismiss="modal" style="text-align: right;">&times;</button>
+            </div>
+            <div class="modal-body">
+	  			<ion-item>				   
+				    <ion-textarea id="portfl" name="portfl" [(ngModel)]="portfl" rows="6"></ion-textarea>
+				</ion-item>				
+            </div>
+            <div class="modal-footer">
+                <ion-button shape="round" color="medium" size="small" data-dismiss="modal">Close</ion-button>
+                <ion-button shape="round" color="dark" size="small" (click)="updatePortfolio()" [disabled]="!portfl">Update</ion-button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="editSocial" class="modal fade" role="dialog" data-backdrop="false" style="position: fixed; top: 5%;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title">Update Social Link</h6>
+                <button type="button" class="close" data-dismiss="modal" style="text-align: right;">&times;</button>
+            </div>
+            <div class="modal-body">            	
+	  			<ion-item>
+	  				<ion-label position="stacked">Facebook Link</ion-label>		
+				    <ion-input type="text" id="fblink" name="fblink" [(ngModel)]="fblink"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label position="stacked">Twitter Link</ion-label>		
+				    <ion-input type="text" id="twlink" name="twlink" [(ngModel)]="twlink"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label position="stacked">Linkedin Link</ion-label>		
+				    <ion-input type="text" id="lnkdlink" name="lnkdlink" [(ngModel)]="lnkdlink"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label position="stacked">Instagram Link</ion-label>		
+				    <ion-input type="text" id="instalink" name="instalink" [(ngModel)]="instalink"></ion-input>
+				</ion-item>
+            </div>
+            <div class="modal-footer">
+                <ion-button shape="round" color="medium" size="small" data-dismiss="modal">Close</ion-button>
+                <ion-button shape="round" color="dark" size="small" (click)="updateSocial()">Update</ion-button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="editContact" class="modal fade" role="dialog" data-backdrop="false" style="position: fixed; top: 5%;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title">Update Contact</h6>
+                <button type="button" class="close" data-dismiss="modal" style="text-align: right;">&times;</button>
+            </div>
+            <div class="modal-body">            	
+	  			<ion-item>
+	  				<ion-label position="stacked">Email ID</ion-label>		
+				    <ion-input type="text" id="email" name="email" [(ngModel)]="email"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label position="stacked">Phone No.</ion-label>		
+				    <ion-input type="text" id="phone" name="phone" [(ngModel)]="phone"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label position="stacked">WhatsApp No.</ion-label>		
+				    <ion-input type="text" id="whatsapp" name="whatsapp" [(ngModel)]="whatsapp"></ion-input>
+				</ion-item>				
+            </div>
+            <div class="modal-footer">
+                <ion-button shape="round" color="medium" size="small" data-dismiss="modal">Close</ion-button>
+                <ion-button shape="round" color="dark" size="small" (click)="updateContact()">Update</ion-button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="editWorkLink" class="modal fade" role="dialog" data-backdrop="false" style="position: fixed; top: 5%;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title">Update Work Links</h6>
+                <button type="button" class="close" data-dismiss="modal" style="text-align: right;">&times;</button>
+            </div>
+            <div class="modal-body">            	
+	  			<ion-item>
+	  				<ion-label position="stacked">Link 1</ion-label>		
+				    <ion-input type="text" id="link1" name="link1" [(ngModel)]="link1"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label position="stacked">Link 2</ion-label>		
+				    <ion-input type="text" id="link2" name="link2" [(ngModel)]="link2"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label position="stacked">Link 3</ion-label>		
+				    <ion-input type="text" id="link3" name="link3" [(ngModel)]="link3"></ion-input>
+				</ion-item>				
+            </div>
+            <div class="modal-footer">
+                <ion-button shape="round" color="medium" size="small" data-dismiss="modal">Close</ion-button>
+                <ion-button shape="round" color="dark" size="small" (click)="updateWorkLinks()">Update</ion-button>
+            </div>
+        </div>
+    </div>
+</div>

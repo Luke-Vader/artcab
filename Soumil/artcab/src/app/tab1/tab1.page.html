@@ -1,0 +1,103 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title class="ion-no-padding">
+            <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+                <ion-col size="2" class="ion-no-padding">
+                    <ion-back-button style="color: #fff"></ion-back-button>
+                </ion-col>
+                <ion-col size="10" class="ion-no-padding">
+                    <img class="ion_topbar_avatar" src="assets/icon/artcab.png">
+                </ion-col>
+            </ion-row>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="card" style="background-color: #646464; margin-bottom: 10px;" class="ion-no-padding">
+        <ion-grid>
+            <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+                <ion-col size="10">
+                    <div class="item item-text-wrap" style="color: #fff; text-align: left;">My Network</div>
+                </ion-col>
+                <ion-col size="2">
+                    <div class="item item-text-wrap" style="color: #fff; font-size: 20px; text-align: right; cursor: pointer" (click)='displaySpecList()'><ion-icon name="ios-funnel"></ion-icon></div>
+                    <ion-item [hidden]='hideList'>
+                        <ion-label>Specialization</ion-label>
+                        <ion-select [interfaceOptions]="customPopoverOptions" interface="alert" id="specs" #spList multiple (ionChange)="viewUserSpec($event)">
+                            <ion-select-option color="dark" *ngFor="let sp of specList" value="{{sp.spec_sl}}">{{sp.spec_name}}</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+    <div *ngFor="let sp of filterSpecList">
+        <div class="ion-no-padding" style="color: #fff; font-size: 16px; text-transform: uppercase;">
+            <ion-grid>
+                <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+                    <ion-col size="10">
+                        <div class="item item-text-wrap" style="color: #fff; text-align: left;">{{sp.spec_name}}</div>
+                    </ion-col>
+                    <ion-col size="2">
+                        <div class="item item-text-wrap" style="color: #fff; font-size: 20px; text-align: right; cursor: pointer" (click)="displaySubSpecList(sp.spec_sl)"><ion-icon name="ios-funnel"></ion-icon></div>
+                        <ion-item [hidden]='hideList'>
+                            <ion-label>Sub-Specialization</ion-label>
+                            <ion-select [interfaceOptions]="customPopoverOptions" interface="alert" id="subspecs{{sp.spec_sl}}" (ionChange)="viewSubSpec($event, sp.spec_sl)" multiple>
+                                <ng-container *ngFor="let subsp of subSpecList">
+                                    <ng-container *ngFor="let sub of subsp">
+                                        <ng-container *ngIf="sp.spec_sl == sub.spec_sl_no">
+                                            <ion-select-option color="dark" value="{{sub.sub_spec_sl}}">{{sub.sub_spec_name}}</ion-select-option>
+                                        </ng-container>
+                                    </ng-container>
+                                </ng-container>
+                            </ion-select>      
+                        </ion-item>                         
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+        <ion-slides *ngFor="let person of personList">       
+            <ng-container *ngIf="!subList; else elseBlock">     
+                <ion-slide *ngFor="let usr of person">
+                    <ion-card *ngIf="sp.spec_sl == usr.spec_sl_no">
+                        <ion-card-content>
+                            <ion-grid>
+                                <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+                                    <ion-col size="3" class="ion-no-padding">
+                                        <img src="assets/icon/art_cab.png">
+                                    </ion-col>
+                                    <ion-col size="9">
+                                        <span style="font-weight: bold; cursor: pointer;" (click)="showProfile(usr.user_sl_no)">{{usr.user_name}}</span><br><br>
+                                        "{{usr.film_quote}}"
+                                    </ion-col>
+                                </ion-row>
+                            </ion-grid>
+                        </ion-card-content>
+                    </ion-card>
+                </ion-slide>
+            </ng-container>             
+            <ng-template #elseBlock>       
+                <ng-container *ngFor="let usr of person">
+                    <ion-slide *ngFor="let subs of subList; let i = index">
+                        <ion-card *ngIf="sp.spec_sl == subs.spec_sl_no">
+                            <ion-card-content>
+                                <ion-grid>
+                                    <ion-row class="ion-align-items-center ion-justify-content-center" style="height: 100%">
+                                        <ion-col size="3" class="ion-no-padding">
+                                            <img src="assets/icon/art_cab.png">
+                                        </ion-col>
+                                        <ion-col size="9">
+                                            <span style="font-weight: bold; cursor: pointer;" (click)="showProfile(subs.user_sl_no)">{{subs.user_name}}</span><br><br>
+                                            "{{subs.film_quote}}"
+                                        </ion-col>
+                                    </ion-row>
+                                </ion-grid>
+                            </ion-card-content>
+                        </ion-card>                        
+                    </ion-slide>
+                </ng-container>
+            </ng-template>
+        </ion-slides>
+    </div>
+</ion-content>
