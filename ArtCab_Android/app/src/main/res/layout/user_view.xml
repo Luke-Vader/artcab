@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimaryDark">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/profile_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:background="@color/colorPrimaryDark"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/collapse"
+                android:src="@drawable/close_icon"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:scaleType="fitCenter"
+                android:layout_alignParentStart="true"
+                android:background="@color/colorPrimaryDark"
+                android:layout_centerVertical="true"
+                android:layout_width="24dp"
+                android:layout_height="?attr/actionBarSize"/>
+
+            <androidx.appcompat.widget.Toolbar
+                app:title="Profile"
+                android:layout_toEndOf="@+id/collapse"
+                app:titleTextColor="@color/fontColorWhite"
+                android:background="@color/colorPrimaryDark"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"/>
+
+        </RelativeLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        android:id="@+id/login_interface"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:text="You ain't logged in"
+            android:layout_centerHorizontal="true"
+            android:textAlignment="center"
+            android:layout_above="@+id/icon"
+            android:textSize="18sp"
+            android:layout_marginBottom="24dp"
+            android:textColor="@color/greyFont"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_centerInParent="true"
+            android:src="@drawable/big_user_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/login_button"
+            android:text="Login"
+            android:layout_marginTop="24dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/icon"
+            android:textColor="@color/fontColorWhite"
+            android:background="@color/colorAccent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/profile_interface"
+        android:layout_below="@id/profile_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/top_container"
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/user_profile"
+                android:src="@drawable/profile_icon"
+                android:layout_margin="16dp"
+                android:layout_width="104dp"
+                android:layout_height="104dp"/>
+
+            <TextView
+                android:id="@+id/profile_name"
+                android:layout_marginEnd="16dp"
+                android:textAlignment="center"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/fontColorWhite"
+                android:layout_toEndOf="@id/user_profile"
+                android:textSize="24sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/profile_quote"
+                android:layout_below="@+id/profile_name"
+                android:layout_width="match_parent"
+                android:layout_marginEnd="16dp"
+                android:textColor="@color/fontColorWhite"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp"
+                android:textAlignment="center"
+                android:lines="4"
+                android:layout_toEndOf="@id/user_profile"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/specialisation_header"
+                android:text="Specialisations"
+                android:layout_marginTop="4dp"
+                android:layout_below="@+id/user_profile"
+                android:textColor="@color/fontColorWhite"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textSize="22sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/special_recycler"
+                android:layout_marginTop="2dp"
+                android:layout_margin="16dp"
+                android:layout_below="@id/specialisation_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_below="@+id/top_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/portfolio_header"
+                android:text="Portfolio"
+                android:textColor="@color/fontColorWhite"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textSize="22sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/portfolio_text"
+                android:layout_below="@id/portfolio_header"
+                android:textColor="@color/fontColorWhite"
+                android:textSize="16sp"
+                android:padding="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:maxLines="6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/works_header"
+                android:text="Previous Works"
+                android:layout_below="@+id/portfolio_text"
+                android:textColor="@color/fontColorWhite"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textSize="22sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/links_recycler"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_below="@+id/works_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/connect_header"
+                android:text="Connect"
+                android:textColor="@color/fontColorWhite"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_width="match_parent"
+                android:textSize="18sp"
+                android:layout_below="@id/links_recycler"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:id="@+id/experience_container"
+                android:layout_below="@+id/connect_header"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/whatsapp_connect"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_margin="16dp"
+                    android:src="@drawable/whatsapp_icon"
+                    android:layout_height="48dp"/>
+
+                <ImageView
+                    android:id="@+id/instagram_connect"
+                    android:layout_weight="1"
+                    android:src="@drawable/instagram_icon"
+                    android:layout_margin="16dp"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"/>
+
+                <ImageView
+                    android:id="@+id/email_connect"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:src="@drawable/email_icon"
+                    android:layout_margin="16dp"
+                    android:layout_height="48dp"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
