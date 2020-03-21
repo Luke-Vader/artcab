@@ -40,9 +40,6 @@ public class ProfileFragment extends Fragment {
 
     Button login;
     Button logout;
-    private ImageView instagram;
-    private ImageView whatsApp;
-    private ImageView email;
     private ImageView profilePicture;
 
     User user;
@@ -73,9 +70,6 @@ public class ProfileFragment extends Fragment {
         signIn = getActivity().findViewById(R.id.login_interface);
         signedIn = getActivity().findViewById(R.id.profile_interface);
         profilePicture = getActivity().findViewById(R.id.user_profile);
-        whatsApp = getActivity().findViewById(R.id.whatsapp_connect);
-        instagram = getActivity().findViewById(R.id.instagram_connect);
-        email = getActivity().findViewById(R.id.email_connect);
         name = getActivity().findViewById(R.id.profile_name);
         quote = getActivity().findViewById(R.id.profile_quote);
         portfolio = getActivity().findViewById(R.id.portfolio_text);

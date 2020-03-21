@@ -198,40 +198,6 @@
                 android:layout_below="@id/links_recycler"
                 android:layout_height="wrap_content"/>
 
-            <LinearLayout
-                android:layout_below="@+id/connect_header"
-                android:visibility="gone"
-                android:orientation="horizontal"
-                android:weightSum="3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/whatsapp_connect"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_margin="16dp"
-                    android:src="@drawable/whatsapp_icon"
-                    android:layout_height="48dp"/>
-
-                <ImageView
-                    android:id="@+id/instagram_connect"
-                    android:layout_weight="1"
-                    android:src="@drawable/instagram_icon"
-                    android:layout_margin="16dp"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"/>
-
-                <ImageView
-                    android:id="@+id/email_connect"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:src="@drawable/email_icon"
-                    android:layout_margin="16dp"
-                    android:layout_height="48dp"/>
-
-            </LinearLayout>
-
         </RelativeLayout>
 
     </RelativeLayout>
