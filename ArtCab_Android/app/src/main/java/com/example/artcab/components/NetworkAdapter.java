@@ -10,12 +10,17 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.artcab.R;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
@@ -25,6 +30,7 @@ import java.util.ArrayList;
 public class NetworkAdapter extends RecyclerView.Adapter<NetworkAdapter.ViewHolder> {
 
     StorageReference storageReference;
+    FirebaseFirestore db;
 
     Dialog userDialog;
     ArrayList<User> users;
@@ -44,6 +50,7 @@ public class NetworkAdapter extends RecyclerView.Adapter<NetworkAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         storageReference = FirebaseStorage.getInstance().getReference();
+        db = FirebaseFirestore.getInstance();
 
         holder.name.setText(users.get(holder.getAdapterPosition()).getName());
         holder.quote.setText(users.get(holder.getAdapterPosition()).getQuote());
@@ -100,6 +107,16 @@ public class NetworkAdapter extends RecyclerView.Adapter<NetworkAdapter.ViewHold
         final ImageView userImage = userDialog.findViewById(R.id.user_profile);
         RecyclerView specials = userDialog.findViewById(R.id.special_recycler);
         RecyclerView links = userDialog.findViewById(R.id.links_recycler);
+        LinkAdapter linkAdapter;
+        SpecialisationAdapter specialAdapter;
+
+        linkAdapter = new LinkAdapter(user.getLinks(), context);
+        specialAdapter = new SpecialisationAdapter(user.getSpecialisations(), context);
+        links.setAdapter(linkAdapter);
+        specials.setAdapter(specialAdapter);
+
+        links.setLayoutManager(new LinearLayoutManager(context));
+        specials.setLayoutManager(new LinearLayoutManager(context));
 
         storageReference.child("user/" + user.getUserId()).getDownloadUrl()
                 .addOnSuccessListener(new OnSuccessListener<Uri>() {
