@@ -1,4 +1,4 @@
-package com.example.artcab;
+package com.example.artcab.fragments;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -18,6 +18,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.artcab.LoginOrSignupActivity;
+import com.example.artcab.MainActivity;
+import com.example.artcab.R;
 import com.example.artcab.components.LinkAdapter;
 import com.example.artcab.components.SpecialisationAdapter;
 import com.example.artcab.components.User;

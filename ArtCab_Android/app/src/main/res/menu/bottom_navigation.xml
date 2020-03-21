@@ -12,6 +12,16 @@
         android:title="@string/ideas" />
 
     <item
+        android:id="@+id/bottom_nav_jobs"
+        android:icon="@drawable/jobs_icon"
+        android:title="@string/jobs" />
+
+    <item
+        android:id="@+id/bottom_nav_studio"
+        android:icon="@drawable/studio_icon"
+        android:title="@string/studios" />
+
+    <item
         android:id="@+id/bottom_nav_profile"
         android:icon="@drawable/profile_icon"
         android:title="@string/profile" />

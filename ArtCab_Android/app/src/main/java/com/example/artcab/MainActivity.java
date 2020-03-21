@@ -4,10 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import android.net.Network;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.artcab.fragments.IdeaFragment;
+import com.example.artcab.fragments.JobsFragment;
+import com.example.artcab.fragments.NetworksFragment;
+import com.example.artcab.fragments.ProfileFragment;
+import com.example.artcab.fragments.StudioFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -36,6 +40,14 @@ public class MainActivity extends AppCompatActivity {
 
                         case R.id.bottom_nav_idea:
                             selectedFragment = new IdeaFragment();
+                            break;
+
+                        case R.id.bottom_nav_jobs:
+                            selectedFragment = new JobsFragment();
+                            break;
+
+                        case R.id.bottom_nav_studio:
+                            selectedFragment = new StudioFragment();
                             break;
 
                         case R.id.bottom_nav_profile:

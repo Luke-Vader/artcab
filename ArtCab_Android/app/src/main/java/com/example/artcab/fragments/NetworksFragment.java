@@ -1,4 +1,4 @@
-package com.example.artcab;
+package com.example.artcab.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.artcab.R;
 import com.example.artcab.components.IdeaAdapter;
 import com.example.artcab.components.NetworkAdapter;
 import com.example.artcab.components.User;

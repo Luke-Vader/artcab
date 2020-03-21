@@ -1,4 +1,4 @@
-package com.example.artcab;
+package com.example.artcab.fragments;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -22,6 +22,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.artcab.LoginOrSignupActivity;
+import com.example.artcab.R;
 import com.example.artcab.components.Idea;
 import com.example.artcab.components.IdeaAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
