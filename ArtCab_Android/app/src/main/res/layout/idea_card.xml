@@ -37,6 +37,7 @@
         android:layout_below="@id/idea_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:textColor="@color/fontColorBlack"
         android:layout_marginBottom="8dp"
         android:layout_toEndOf="@id/profile_image"
         android:textStyle="bold" />
