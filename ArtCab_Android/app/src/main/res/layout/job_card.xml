@@ -1,5 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginEnd="16dp"
+    android:background="@color/colorPrimary"
+    android:layout_marginStart="16dp"
+    android:layout_height="138dp">
+
+    <TextView
+        android:id="@+id/job_title"
+        android:layout_marginTop="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Director"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/job_organisation"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/job_title"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginTop="4dp"
+        android:text="RK Studios"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/job_location"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/job_title"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="16dp"
+        android:layout_toEndOf="@+id/job_organisation"
+        android:text="Chembur"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/job_description"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/job_organisation"
+        android:maxLines="4"
+        android:text="Marianne or husbands if at stronger ye. Considered is as middletons uncommonly."
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/days_ago"
+        android:layout_below="@+id/job_description"
+        android:text="4 Days Ago"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/posted_by"
+        android:layout_below="@+id/days_ago"
+        android:text="Posted By Rishabh Banerjee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>
