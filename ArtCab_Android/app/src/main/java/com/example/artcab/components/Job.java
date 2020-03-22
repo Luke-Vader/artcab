@@ -11,18 +11,20 @@ public class Job {
     String description;
     String postedBy;
     String location;
+    String adminName;
     private @ServerTimestamp Date timestamp;
 
-    public Job(String title, String organisation, String description, String postedBy, String location, Date timestamp) {
+    public Job() { }
+
+    public Job(String title, String organisation, String description, String postedBy, String location, String adminName, Date timestamp) {
         this.title = title;
         this.organisation = organisation;
         this.description = description;
         this.postedBy = postedBy;
         this.location = location;
+        this.adminName = adminName;
         this.timestamp = timestamp;
     }
-
-    public Job() { }
 
     public String getTitle() {
         return title;
@@ -62,6 +64,14 @@ public class Job {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getAdminName() {
+        return adminName;
+    }
+
+    public void setAdminName(String adminName) {
+        this.adminName = adminName;
     }
 
     public Date getTimestamp() {
