@@ -89,3 +89,4 @@ public class NetworksFragment extends Fragment {
         adapter.notifyDataSetChanged();
     }
 }
+3

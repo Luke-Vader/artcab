@@ -75,7 +75,7 @@ public class JobsFragment extends Fragment {
     }
 
     private void setAdapter() {
-        jobAdapter =
+        jobAdapter = 
     }
 
 }
