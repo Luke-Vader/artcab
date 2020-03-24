@@ -75,7 +75,9 @@ public class JobsFragment extends Fragment {
     }
 
     private void setAdapter() {
-        jobAdapter = 
+        jobAdapter = new JobAdapter(jobs, getActivity());
+        jobsRecyclerView.setAdapter(jobAdapter);
+        jobAdapter.notifyDataSetChanged();
     }
 
 }
