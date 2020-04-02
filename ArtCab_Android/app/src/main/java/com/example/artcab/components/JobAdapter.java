@@ -28,10 +28,10 @@ import java.util.ArrayList;
 
 public class JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
 
-    StorageReference storageReference;
-    FirebaseFirestore db;
+    private StorageReference storageReference;
+    private FirebaseFirestore db;
 
-    Dialog userDialog;
+    private Dialog userDialog;
     private ArrayList<Job> jobs;
     private Context context;
 

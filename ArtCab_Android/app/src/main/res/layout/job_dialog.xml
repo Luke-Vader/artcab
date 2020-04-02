@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorPrimaryDark">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/job_toolbar"
+        android:background="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/collapse"
+                android:src="@drawable/close_icon"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:scaleType="fitCenter"
+                android:layout_alignParentStart="true"
+                android:background="@color/colorPrimaryDark"
+                android:layout_centerVertical="true"
+                android:layout_width="24dp"
+                android:layout_height="?attr/actionBarSize"/>
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/post_job_toolbar"
+                android:layout_toEndOf="@+id/collapse"
+                app:title="Add Job"
+                app:titleTextColor="@color/fontColorWhite"
+                android:background="@color/colorPrimaryDark"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"/>
+
+            <Button
+                android:id="@+id/post_job"
+                android:text="POST"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
+                android:textColor="@color/fontColorWhite"
+                android:background="@color/colorPrimaryDark"
+                android:layout_alignParentEnd="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+        </RelativeLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <EditText
+        android:id="@+id/job_title"
+        android:layout_below="@+id/job_toolbar"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Title"
+        android:layout_marginTop="4dp"
+        android:inputType="textCapWords"
+        android:layout_marginBottom="4dp"
+        android:padding="8dp"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/job_description"
+        android:layout_below="@+id/job_title"
+        android:layout_width="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:inputType="textCapSentences|textMultiLine"
+        android:padding="8dp"
+        android:lines="4"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
+        android:hint="Description"
+        android:background="@color/colorPrimary"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/job_organisation"
+        android:layout_below="@+id/job_description"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Organisation"
+        android:layout_marginTop="4dp"
+        android:inputType="textCapSentences"
+        android:layout_marginBottom="4dp"
+        android:padding="8dp"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/job_location"
+        android:layout_below="@+id/job_organisation"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:inputType="textCapSentences"
+        android:hint="Location"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:padding="8dp"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>
