@@ -165,8 +165,10 @@ public class ProfilePictureActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         Toast.makeText(ProfilePictureActivity.this, "User Created", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                        finish();
+                        Intent main = new Intent(getApplicationContext(), MainActivity.class);
+                        main.setFlags( Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NO_HISTORY);
+                        startActivity(main);
+
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

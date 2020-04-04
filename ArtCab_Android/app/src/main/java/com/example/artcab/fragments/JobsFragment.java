@@ -27,6 +27,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -141,7 +142,6 @@ public class JobsFragment extends Fragment {
                     job.setOrganisation(organisation.getText().toString());
                     job.setTitle(title.getText().toString());
                     job.setPostedBy(auth.getCurrentUser().getUid());
-                    job.setAdminName(auth.getCurrentUser().getDisplayName());
                     db.collection("jobs").document(uuid.toString()).set(job)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override

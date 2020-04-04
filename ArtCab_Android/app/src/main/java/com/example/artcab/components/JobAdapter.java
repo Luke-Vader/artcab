@@ -56,7 +56,14 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
         holder.title.setText(jobs.get(holder.getAdapterPosition()).getTitle());
         holder.location.setText(jobs.get(holder.getAdapterPosition()).getLocation());
         holder.organisation.setText(jobs.get(holder.getAdapterPosition()).getOrganisation());
-        holder.adminName.setText(jobs.get(holder.getAdapterPosition()).getAdminName());
+
+        db.collection("users").document(jobs.get(holder.getAdapterPosition()).getPostedBy()).get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        holder.adminName.setText("Posted By " + documentSnapshot.getString("name"));
+                    }
+                });
 
         holder.adminName.setOnClickListener(new View.OnClickListener() {
             @Override
