@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,7 +49,7 @@ public class ProfileFragment extends Fragment {
     TextView portfolio;
     RecyclerView specialisations;
     RecyclerView links;
-    RelativeLayout signedIn;
+    ScrollView signedIn;
     RelativeLayout signIn;
     LinkAdapter linkAdapter;
     SpecialisationAdapter specialAdapter;
