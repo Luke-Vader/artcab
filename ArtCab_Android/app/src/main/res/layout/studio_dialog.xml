@@ -1,5 +1,267 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorPrimaryDark">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/studio_toolbar"
+        android:background="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/collapse"
+                android:src="@drawable/close_icon"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:scaleType="fitCenter"
+                android:layout_alignParentStart="true"
+                android:background="@color/colorPrimaryDark"
+                android:layout_centerVertical="true"
+                android:layout_width="24dp"
+                android:layout_height="?attr/actionBarSize"/>
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/post_studio_toolbar"
+                android:layout_toEndOf="@+id/collapse"
+                app:title="Studio"
+                app:titleTextColor="@color/fontColorWhite"
+                android:background="@color/colorPrimaryDark"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"/>
+
+            <Button
+                android:id="@+id/post_studio"
+                android:text="POST"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
+                android:textColor="@color/fontColorWhite"
+                android:background="@color/colorPrimaryDark"
+                android:layout_alignParentEnd="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+        </RelativeLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <EditText
+        android:id="@+id/studio_name"
+        android:layout_below="@+id/studio_toolbar"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Name"
+        android:layout_marginTop="4dp"
+        android:inputType="textCapWords"
+        android:layout_marginBottom="4dp"
+        android:padding="8dp"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/carpet_label"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/studio_name"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Carpet Area:"
+        android:layout_marginTop="8dp"
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimary"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/studio_area"
+        android:background="@color/colorPrimary"
+        android:layout_below="@+id/studio_name"
+        android:padding="4dp"
+        android:textAlignment="center"
+        android:hint="sqft"
+        android:layout_marginEnd="16dp"
+        android:layout_toEndOf="@+id/carpet_label"
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/rent_label"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/carpet_label"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Rent:"
+        android:layout_marginTop="8dp"
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimary"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/studio_rent"
+        android:background="@color/colorPrimary"
+        android:layout_marginTop="4dp"
+        android:layout_below="@+id/studio_area"
+        android:padding="4dp"
+        android:textAlignment="center"
+        android:hint="$"
+        android:layout_marginEnd="16dp"
+        android:layout_toEndOf="@+id/carpet_label"
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/parking_label"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/rent_label"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Parking:"
+        android:layout_marginTop="8dp"
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimary"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/yes_parking"
+        android:layout_toEndOf="@+id/carpet_label"
+        android:layout_below="@id/studio_rent"
+        android:text="NO"
+        android:layout_marginEnd="4dp"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Switch
+        android:id="@+id/studio_parking"
+        android:layout_below="@id/rent_label"
+        android:layout_toEndOf="@id/yes_parking"
+        android:layout_marginTop="8dp"
+        android:thumbTint="@color/colorPrimary"
+        android:trackTint="@color/colorPrimary"
+        android:elevation="4dp"
+        android:layout_marginStart="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/no_parking"
+        android:layout_toEndOf="@+id/studio_parking"
+        android:layout_below="@id/studio_rent"
+        android:text="YES"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/equipment_label"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/parking_label"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Equipment:"
+        android:layout_marginTop="8dp"
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimary"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/no_equipment"
+        android:layout_toEndOf="@+id/carpet_label"
+        android:layout_below="@id/studio_parking"
+        android:text="NO"
+        android:layout_marginEnd="4dp"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Switch
+        android:id="@+id/studio_equipment"
+        android:layout_below="@id/parking_label"
+        android:layout_toEndOf="@id/yes_parking"
+        android:layout_marginTop="8dp"
+        android:thumbTint="@color/colorPrimary"
+        android:trackTint="@color/colorPrimary"
+        android:elevation="4dp"
+        android:layout_marginStart="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/yes_equipment"
+        android:layout_toEndOf="@+id/studio_parking"
+        android:layout_below="@id/studio_parking"
+        android:text="YES"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/deposit_label"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/equipment_label"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Deposit:"
+        android:layout_marginTop="8dp"
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimary"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/studio_deposit"
+        android:background="@color/colorPrimary"
+        android:layout_marginTop="4dp"
+        android:layout_below="@+id/no_equipment"
+        android:padding="4dp"
+        android:textAlignment="center"
+        android:hint="$"
+        android:layout_marginEnd="16dp"
+        android:layout_toEndOf="@+id/carpet_label"
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/studio_description"
+        android:layout_below="@+id/deposit_label"
+        android:layout_width="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:inputType="textCapSentences|textMultiLine"
+        android:padding="8dp"
+        android:lines="4"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
+        android:hint="Description"
+        android:background="@color/colorPrimary"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_below="@id/studio_description"
+        android:textSize="18sp"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/colorPrimary"
+        android:text="Images:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </RelativeLayout>

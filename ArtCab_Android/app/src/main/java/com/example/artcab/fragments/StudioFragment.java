@@ -3,10 +3,12 @@ package com.example.artcab.fragments;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -45,6 +47,7 @@ public class StudioFragment extends Fragment {
     ArrayList<Studio> studios;
     StudioAdapter studioAdapter;
     FloatingActionButton addStudio;
+    ImageButton test;
 
     @Nullable
     @Override
@@ -62,7 +65,20 @@ public class StudioFragment extends Fragment {
 
         addStudio = view.findViewById(R.id.add_studio);
         studioRecycler = view.findViewById(R.id.studio_container);
+        test = view.findViewById(R.id.filter_studios);
 
+        test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Creates an Intent that will load a map of San Francisco
+                Uri gmmIntentUri = Uri.parse("geo:0,0?q=34.99,-106.61(Treasure)");
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                startActivity(mapIntent);
+            }
+        });
+
+        studios = new ArrayList<>();
         db.collection("studios").get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -101,7 +117,6 @@ public class StudioFragment extends Fragment {
         uuid = uuid.randomUUID();
 
         View studioView = getLayoutInflater().inflate(R.layout.studio_dialog, null);
-        Context context;
         studioDialog = new Dialog(getActivity(), android.R.style.Theme_DeviceDefault_DialogWhenLarge_NoActionBar);
         studioDialog.setContentView(studioView);
         studioDialog.show();

@@ -10,10 +10,11 @@ public class Studio {
     private String postedBy;
     private String deposit;
     private String equipped;
+    private String description;
 
     public Studio() {}
 
-    public Studio(String name, String location, String carpetArea, String rent, String parking, String postedBy, String deposit, String equipped) {
+    public Studio(String name, String location, String carpetArea, String rent, String parking, String postedBy, String deposit, String equipped, String description) {
         this.name = name;
         this.location = location;
         this.carpetArea = carpetArea;
@@ -22,6 +23,7 @@ public class Studio {
         this.postedBy = postedBy;
         this.deposit = deposit;
         this.equipped = equipped;
+        this.description = description;
     }
 
     public String getName() {
@@ -86,5 +88,13 @@ public class Studio {
 
     public void setEquipped(String equipped) {
         this.equipped = equipped;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
