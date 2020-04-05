@@ -12,7 +12,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,12 +21,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.artcab.LoginOrSignupActivity;
 import com.example.artcab.R;
-import com.example.artcab.components.JobAdapter;
 import com.example.artcab.components.Studio;
 import com.example.artcab.components.StudioAdapter;
 import com.example.artcab.components.StudioImageAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.libraries.places.api.model.Place;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -181,7 +178,7 @@ public class StudioFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (validate()) {
-
+                    
                 }
             }
         });
@@ -248,11 +245,11 @@ public class StudioFragment extends Fragment {
                 for (int i = 0; i < data.getClipData().getItemCount(); ++i) {
                     images.add(data.getClipData().getItemAt(i).getUri());
                 }
-                imageRecycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-                setUploadAdapter();
             } else if (data.getData() != null) {
-
+                images.add(data.getData());
             }
+            imageRecycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+            setUploadAdapter();
         }
 
     }
