@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -96,11 +97,15 @@ public class NetworkAdapter extends RecyclerView.Adapter<NetworkAdapter.ViewHold
             } else {
                 String filterPattern = constraint.toString().toLowerCase().trim();
                 String specials[] = filterPattern.split(" ");
-                for (String s : specials) {
+                List<String> con = Arrays.asList(specials);
+                Toast.makeText(context, con.toString(), Toast.LENGTH_SHORT).show();
+                for (String s : con) {
                     for (User user : allUsers) {
                         for (String special : user.getSpecialisations()) {
                             if (special.toLowerCase().contains(s)) {
-                                filtered.add(user);
+                                if (!filtered.contains(user)) {
+                                    filtered.add(user);
+                                }
                             }
                         }
                     }

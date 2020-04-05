@@ -62,6 +62,7 @@ public class NetworksFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 filterDialog();
+                specials.clear();
                 //adapter.getFilter().filter("cinematographer");
             }
         });
@@ -124,7 +125,7 @@ public class NetworksFragment extends Fragment {
         specialsFilter.setPositiveButton("Save", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String selected = null;
+                String selected = "";
                 for (String special : specials) {
                     selected += special + " ";
                 }
@@ -134,7 +135,6 @@ public class NetworksFragment extends Fragment {
         specialsFilter.setNegativeButton("Cancel", null);
         AlertDialog dialog = specialsFilter.create();
         dialog.show();
-
 
     }
 }
