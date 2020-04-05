@@ -2,6 +2,7 @@ package com.example.artcab.fragments;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,7 +55,7 @@ public class StudioFragment extends Fragment {
     ArrayList<Studio> studios;
     StudioAdapter studioAdapter;
     FloatingActionButton addStudio;
-    //ImageButton test;
+    ImageButton test;
     EditText name;
     EditText carpetArea;
     EditText rent;
@@ -92,7 +93,7 @@ public class StudioFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // Creates an Intent that will load a map of San Francisco
-                Uri gmmIntentUri = Uri.parse("geo:0,0?q=34.99,-106.61(Treasure)");
+                Uri gmmIntentUri = Uri.parse("geo:0,0?q=19.0530475733,73.07346(Studio)");
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                 mapIntent.setPackage("com.google.android.apps.maps");
                 startActivity(mapIntent);
@@ -144,11 +145,37 @@ public class StudioFragment extends Fragment {
         deposit = studioView.findViewById(R.id.studio_deposit);
         description = studioView.findViewById(R.id.studio_description);
         location = studioView.findViewById(R.id.studio_location);
+        post = studioView.findViewById(R.id.post_studio);
+        close = studioView.findViewById(R.id.collapse);
+        addImages = studioView.findViewById(R.id.add_images);
+
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                studioDialog.dismiss();
+            }
+        });
+
+        addImages.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showPlacePicker();
+            }
+        });
+
+        post.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (validate()) {
+
+                }
             }
         });
 
@@ -160,23 +187,25 @@ public class StudioFragment extends Fragment {
         studioAdapter.notifyDataSetChanged();
     }
 
+    private boolean validate() {
+        if (name.getText().toString().isEmpty() || description.getText().toString().isEmpty() || carpetArea.getText().toString().isEmpty() || rent.getText().toString().isEmpty() || deposit.getText().toString().isEmpty()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     private void showPlacePicker() {
         PingPlacePicker.IntentBuilder builder = new PingPlacePicker.IntentBuilder();
         builder.setAndroidApiKey("AIzaSyAv4dlLRkzDZScczNsC0E2XLu_-IBo8VA4")
                 .setMapsApiKey("AIzaSyAv4dlLRkzDZScczNsC0E2XLu_-IBo8VA4");
-
-        // If you want to set a initial location rather then the current device location.
-        // NOTE: enable_nearby_search MUST be true.
-        // builder.setLatLng(new LatLng(37.4219999, -122.0862462))
 
         try {
             Intent placeIntent = builder.build(getActivity());
             startActivityForResult(placeIntent, REQUEST_PLACE_PICKER);
         }
         catch (Exception ex) {
-            Toast.makeText(getActivity(), "WELL SHIT", Toast.LENGTH_SHORT).show();
             ex.printStackTrace();
-            // Google Play services is not available...
         }
     }
 
@@ -185,10 +214,15 @@ public class StudioFragment extends Fragment {
         if ((requestCode == REQUEST_PLACE_PICKER) && (resultCode == RESULT_OK)) {
             Place place = PingPlacePicker.getPlace(data);
             if (place != null) {
+                StringBuilder coordinates = new StringBuilder();
                 String latitude = String.valueOf(place.getLatLng().latitude);
                 String longitude = String.valueOf(place.getLatLng().longitude);
-                location.setText(latitude);
-                Toast.makeText(getActivity(), latitude, Toast.LENGTH_SHORT).show();
+                coordinates.append("geo:0,0?q=");
+                coordinates.append(latitude);
+                coordinates.append(",");
+                coordinates.append(longitude);
+                coordinates.append("(Studio)");
+                location.setText(coordinates);
             }
         }
     }
