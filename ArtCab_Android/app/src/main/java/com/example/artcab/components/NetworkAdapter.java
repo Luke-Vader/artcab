@@ -6,11 +6,12 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,19 +25,23 @@ import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-public class NetworkAdapter extends RecyclerView.Adapter<NetworkAdapter.ViewHolder> {
+public class NetworkAdapter extends RecyclerView.Adapter<NetworkAdapter.ViewHolder> implements Filterable {
 
     StorageReference storageReference;
     FirebaseFirestore db;
 
     Dialog userDialog;
     ArrayList<User> users;
+    ArrayList<User> allUsers;
     Context context;
 
     public NetworkAdapter(ArrayList<User> users, Context context) {
         this.users = users;
         this.context = context;
+        allUsers = new ArrayList<>(users);
     }
 
     @NonNull
@@ -49,11 +54,12 @@ public class NetworkAdapter extends RecyclerView.Adapter<NetworkAdapter.ViewHold
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         storageReference = FirebaseStorage.getInstance().getReference();
         db = FirebaseFirestore.getInstance();
+        final User currentUser = users.get(position);
 
-        holder.name.setText(users.get(holder.getAdapterPosition()).getName());
-        holder.quote.setText(users.get(holder.getAdapterPosition()).getQuote());
+        holder.name.setText(currentUser.getName());
+        holder.quote.setText(currentUser.getQuote());
 
-        storageReference.child("user/" + users.get(holder.getAdapterPosition()).getUserId()).getDownloadUrl()
+        storageReference.child("user/" + currentUser.getUserId()).getDownloadUrl()
                 .addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
@@ -65,7 +71,7 @@ public class NetworkAdapter extends RecyclerView.Adapter<NetworkAdapter.ViewHold
             @Override
             public void onClick(View v) {
 
-                displayUser(users.get(holder.getAdapterPosition()));
+                displayUser(currentUser);
             }
         });
 
@@ -75,6 +81,44 @@ public class NetworkAdapter extends RecyclerView.Adapter<NetworkAdapter.ViewHold
     public int getItemCount() {
         return users.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return specialisation;
+    }
+
+    private Filter specialisation = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            ArrayList<User> filtered = new ArrayList<>();
+            if (constraint == null || constraint.length() == 0) {
+                filtered.addAll(users);
+            } else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                String specials[] = filterPattern.split(" ");
+                for (String s : specials) {
+                    for (User user : allUsers) {
+                        for (String special : user.getSpecialisations()) {
+                            if (special.toLowerCase().contains(s)) {
+                                filtered.add(user);
+                            }
+                        }
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filtered;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            users.clear();
+            users.addAll((ArrayList) results.values);
+            notifyDataSetChanged();
+
+        }
+    };
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 

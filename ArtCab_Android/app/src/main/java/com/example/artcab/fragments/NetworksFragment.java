@@ -1,5 +1,6 @@
 package com.example.artcab.fragments;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,6 +28,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class NetworksFragment extends Fragment {
@@ -36,6 +39,7 @@ public class NetworksFragment extends Fragment {
     NetworkAdapter adapter;
     ImageButton sort;
     ArrayList<User> users;
+    ArrayList<String> specials = new ArrayList<>();
 
     @Nullable
     @Override
@@ -57,7 +61,8 @@ public class NetworksFragment extends Fragment {
         sort.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Filter is WIP, Not forgotten ;-)", Toast.LENGTH_SHORT).show();
+                filterDialog();
+                //adapter.getFilter().filter("cinematographer");
             }
         });
         
@@ -87,5 +92,49 @@ public class NetworksFragment extends Fragment {
         adapter = new NetworkAdapter(users, getActivity());
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+    }
+
+    private void filterDialog() {
+        AlertDialog.Builder specialsFilter = new AlertDialog.Builder(getActivity());
+        specialsFilter.setTitle("Filter By Specialisation");
+        final String[] specialisations = {
+                "Director",
+                "Writer",
+                "Actor",
+                "Cinematographer",
+                "Editor",
+                "Producer",
+                "VFX",
+                "Film Production",
+                "Music and Sound",
+                "Vlogger"
+        };
+
+        specialsFilter.setMultiChoiceItems(specialisations, null, new DialogInterface.OnMultiChoiceClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+                if (isChecked) {
+                    specials.add(specialisations[which]);
+                } else if (specials.contains(specialisations[which])) {
+                    specials.remove(specialisations[which]);
+                }
+            }
+        });
+
+        specialsFilter.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String selected = null;
+                for (String special : specials) {
+                    selected += special + " ";
+                }
+                adapter.getFilter().filter(selected);
+            }
+        });
+        specialsFilter.setNegativeButton("Cancel", null);
+        AlertDialog dialog = specialsFilter.create();
+        dialog.show();
+
+
     }
 }
