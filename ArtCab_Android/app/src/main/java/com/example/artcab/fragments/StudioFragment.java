@@ -22,8 +22,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.artcab.LoginOrSignupActivity;
 import com.example.artcab.R;
+import com.example.artcab.components.JobAdapter;
 import com.example.artcab.components.Studio;
 import com.example.artcab.components.StudioAdapter;
+import com.example.artcab.components.StudioImageAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -45,11 +47,13 @@ import static android.app.Activity.RESULT_OK;
 public class StudioFragment extends Fragment {
 
     int REQUEST_PLACE_PICKER = 71;
+    private static final int PICK_IMG_REQUEST = 1;
     FirebaseFirestore db;
     FirebaseAuth auth;
     StorageReference storage;
 
     RecyclerView studioRecycler;
+    RecyclerView imageRecycler;
     Dialog studioDialog;
     UUID uuid;
     ArrayList<Studio> studios;
@@ -67,6 +71,8 @@ public class StudioFragment extends Fragment {
     Button addImages;
     Button post;
     ImageButton close;
+    ArrayList<Uri> images;
+    StudioImageAdapter imageAdapter;
 
     @Nullable
     @Override
@@ -148,6 +154,7 @@ public class StudioFragment extends Fragment {
         post = studioView.findViewById(R.id.post_studio);
         close = studioView.findViewById(R.id.collapse);
         addImages = studioView.findViewById(R.id.add_images);
+        imageRecycler = studioView.findViewById(R.id.studio_image_container);
 
         close.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,7 +166,7 @@ public class StudioFragment extends Fragment {
         addImages.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                chooseImage();
             }
         });
 
@@ -179,6 +186,14 @@ public class StudioFragment extends Fragment {
             }
         });
 
+    }
+
+    private void chooseImage() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent,"Select Studio Pictures"),PICK_IMG_REQUEST);
     }
 
     private void setAdapter() {
@@ -225,6 +240,26 @@ public class StudioFragment extends Fragment {
                 location.setText(coordinates);
             }
         }
+
+        images = new ArrayList<>();
+        if (requestCode == PICK_IMG_REQUEST && resultCode == RESULT_OK) {
+            addImages.setVisibility(View.GONE);
+            if (data.getClipData() != null) {
+                for (int i = 0; i < data.getClipData().getItemCount(); ++i) {
+                    images.add(data.getClipData().getItemAt(i).getUri());
+                }
+                imageRecycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+                setUploadAdapter();
+            } else if (data.getData() != null) {
+
+            }
+        }
+
+    }
+
+    private void setUploadAdapter() {
+        imageAdapter = new StudioImageAdapter(getActivity(), images);
+        imageRecycler.setAdapter(imageAdapter);
     }
 
 }
