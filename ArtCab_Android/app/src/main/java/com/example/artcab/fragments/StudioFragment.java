@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,6 +26,8 @@ import com.example.artcab.components.Studio;
 import com.example.artcab.components.StudioAdapter;
 import com.example.artcab.components.StudioImageAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.libraries.places.api.model.Place;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -34,6 +37,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.rtchagas.pingplacepicker.PingPlacePicker;
 
 import java.util.ArrayList;
@@ -178,7 +182,38 @@ public class StudioFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (validate()) {
-                    
+                    Studio studio = new Studio();
+                    studio.setCarpetArea(carpetArea.getText().toString());
+                    studio.setName(name.getText().toString());
+                    studio.setRent(rent.getText().toString());
+                    if (parking.isChecked()) {
+                        studio.setParking("0");
+                    } else {
+                        studio.setParking("1");
+                    }
+                    if (equipment.isChecked()) {
+                        studio.setEquipped("0");
+                    } else {
+                        studio.setEquipped("1");
+                    }
+                    studio.setDeposit(deposit.getText().toString());
+                    studio.setDescription(description.getText().toString());
+                    studio.setLocation(location.getText().toString());
+                    studio.setPostedBy(auth.getCurrentUser().getUid());
+                    db.collection("studios").document(uuid.toString()).set(studio)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    Toast.makeText(getActivity(), "Studio Posted", Toast.LENGTH_SHORT).show();
+                                    studioDialog.dismiss();
+                                }
+                            });
+                    for (int i = 0; i < images.size(); ++i) {
+                        storage.child("studios").child(uuid.toString()).child(Integer.toString(i + 1)).putFile(images.get(i));
+                    }
+
+                } else {
+                    Toast.makeText(getActivity(), "All fields are required", Toast.LENGTH_SHORT).show();
                 }
             }
         });
