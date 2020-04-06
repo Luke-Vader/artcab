@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -20,9 +21,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.artcab.LoginOrSignupActivity;
-import com.example.artcab.MainActivity;
 import com.example.artcab.R;
 import com.example.artcab.components.LinkAdapter;
+import com.example.artcab.components.ProfileBottomSheet;
 import com.example.artcab.components.SpecialisationAdapter;
 import com.example.artcab.components.User;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -33,14 +34,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-
-import io.opencensus.trace.export.SpanData;
-
 public class ProfileFragment extends Fragment {
 
     Button login;
-    Button logout;
+    ImageButton options;
     private ImageView profilePicture;
 
     User user;
@@ -53,6 +50,7 @@ public class ProfileFragment extends Fragment {
     RelativeLayout signIn;
     LinkAdapter linkAdapter;
     SpecialisationAdapter specialAdapter;
+    ProfileBottomSheet profileBottomSheet;
 
     private FirebaseFirestore db;
     private FirebaseAuth auth;
@@ -65,7 +63,7 @@ public class ProfileFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         signIn = getActivity().findViewById(R.id.login_interface);
@@ -77,7 +75,7 @@ public class ProfileFragment extends Fragment {
         specialisations = getActivity().findViewById(R.id.special_recycler);
         links = getActivity().findViewById(R.id.links_recycler);
         login = getActivity().findViewById(R.id.login_button);
-        logout = getActivity().findViewById(R.id.logout);
+        options = getActivity().findViewById(R.id.profile_options);
 
         db = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
@@ -85,7 +83,7 @@ public class ProfileFragment extends Fragment {
 
         if (auth.getCurrentUser() == null) {
             signedIn.setVisibility(View.GONE);
-            logout.setVisibility(View.GONE);
+            options.setVisibility(View.GONE);
             signIn.setVisibility(View.VISIBLE);
             login();
         } else {
@@ -94,11 +92,11 @@ public class ProfileFragment extends Fragment {
             getData();
         }
 
-        logout.setOnClickListener(new View.OnClickListener() {
+        options.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                auth.signOut();
-                startActivity(new Intent(getActivity(), MainActivity.class));
+                profileBottomSheet = new ProfileBottomSheet();
+                profileBottomSheet.show(getActivity().getSupportFragmentManager(), profileBottomSheet.getTag());
             }
         });
 

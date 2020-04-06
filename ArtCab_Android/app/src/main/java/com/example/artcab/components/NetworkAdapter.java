@@ -1,7 +1,9 @@
 package com.example.artcab.components;
 
 import android.app.Dialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.artcab.R;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
@@ -42,7 +45,7 @@ public class NetworkAdapter extends RecyclerView.Adapter<NetworkAdapter.ViewHold
     public NetworkAdapter(ArrayList<User> users, Context context) {
         this.users = users;
         this.context = context;
-        allUsers = new ArrayList<>(users);
+        this.allUsers = new ArrayList<>(users);
     }
 
     @NonNull
@@ -65,6 +68,12 @@ public class NetworkAdapter extends RecyclerView.Adapter<NetworkAdapter.ViewHold
                     @Override
                     public void onSuccess(Uri uri) {
                         Picasso.get().load(uri).fit().centerCrop().into(holder.image);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        holder.image.setImageResource(R.drawable.user_dark_icon);
                     }
                 });
 
@@ -93,12 +102,11 @@ public class NetworkAdapter extends RecyclerView.Adapter<NetworkAdapter.ViewHold
         protected FilterResults performFiltering(CharSequence constraint) {
             ArrayList<User> filtered = new ArrayList<>();
             if (constraint == null || constraint.length() == 0) {
-                filtered.addAll(users);
+                filtered.addAll(allUsers);
             } else {
                 String filterPattern = constraint.toString().toLowerCase().trim();
                 String specials[] = filterPattern.split(" ");
                 List<String> con = Arrays.asList(specials);
-                Toast.makeText(context, con.toString(), Toast.LENGTH_SHORT).show();
                 for (String s : con) {
                     for (User user : allUsers) {
                         for (String special : user.getSpecialisations()) {
@@ -142,7 +150,7 @@ public class NetworkAdapter extends RecyclerView.Adapter<NetworkAdapter.ViewHold
         }
     }
 
-    private void displayUser(User user) {
+    private void displayUser(final User user) {
         userDialog = new Dialog(context, android.R.style.Theme_DeviceDefault_DialogWhenLarge_NoActionBar);
         userDialog.setContentView(R.layout.user_view);
         userDialog.show();
@@ -151,6 +159,9 @@ public class NetworkAdapter extends RecyclerView.Adapter<NetworkAdapter.ViewHold
         TextView username = userDialog.findViewById(R.id.profile_name);
         TextView quote = userDialog.findViewById(R.id.profile_quote);
         TextView portfolio = userDialog.findViewById(R.id.portfolio_text);
+        ImageView whatsapp = userDialog.findViewById(R.id.whatsapp_connect);
+        ImageView instagram = userDialog.findViewById(R.id.instagram_connect);
+        ImageView email = userDialog.findViewById(R.id.email_connect);
         final ImageView userImage = userDialog.findViewById(R.id.user_profile);
         RecyclerView specials = userDialog.findViewById(R.id.special_recycler);
         RecyclerView links = userDialog.findViewById(R.id.links_recycler);
@@ -181,6 +192,47 @@ public class NetworkAdapter extends RecyclerView.Adapter<NetworkAdapter.ViewHold
             @Override
             public void onClick(View v) {
                 userDialog.dismiss();
+            }
+        });
+
+        whatsapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri whatsappUri = Uri.parse("smsto:" + user.getWhatsapp());
+                Intent whatsapp = new Intent(Intent.ACTION_SENDTO, whatsappUri);
+                whatsapp.setPackage("com.whatsapp");
+                try {
+                    context.startActivity(whatsapp);
+                } catch (Exception e) {
+                    Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+        instagram.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri instaUri = Uri.parse("http://instagram.com/_u/" + user.getInstagram());
+                Intent instagram = new Intent(Intent.ACTION_VIEW, instaUri);
+                instagram.setPackage("com.instagram.android");
+
+                try {
+                    context.startActivity(instagram);
+                } catch (ActivityNotFoundException e) {
+                    context.startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("http://instagram.com/" + user.getInstagram())));
+                }
+            }
+        });
+
+        email.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Intent.ACTION_SENDTO);
+                intent.setData(android.net.Uri.parse("mailto:" + user.getEmail()));
+                Intent.createChooser(intent,"Email");
+                context.startActivity(intent);
             }
         });
 

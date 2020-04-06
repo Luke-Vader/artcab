@@ -69,6 +69,12 @@ public class IdeaAdapter extends RecyclerView.Adapter<IdeaAdapter.ViewHolder> {
                     public void onSuccess(Uri uri) {
                         Picasso.get().load(uri).fit().centerCrop().into(holder.userImage);
                     }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        holder.userImage.setImageResource(R.drawable.user_dark_icon);
+                    }
                 });
     }
 
