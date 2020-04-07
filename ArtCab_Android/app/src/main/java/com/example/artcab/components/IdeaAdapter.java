@@ -25,8 +25,10 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 public class IdeaAdapter extends RecyclerView.Adapter<IdeaAdapter.ViewHolder> implements Filterable {
@@ -58,7 +60,14 @@ public class IdeaAdapter extends RecyclerView.Adapter<IdeaAdapter.ViewHolder> im
         auth = FirebaseAuth.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference();
 
+        if ((new Date().getTime() - ideas.get(position).getTimestamp().getTime())/(1000*60) < 60 && (new Date().getTime() - ideas.get(position).getTimestamp().getTime())/(1000*60) >= 0) {
+            holder.time.setText(Long.toString((new Date().getTime() - ideas.get(position).getTimestamp().getTime())/(1000*60)) + "m");
+        } else {
+            holder.time.setText(Long.toString((new Date().getTime() - ideas.get(position).getTimestamp().getTime())/(1000*60*60)) + "h");
+        }
+
         holder.quote.setText(ideas.get(holder.getAdapterPosition()).getIdea());
+
         //holder.time.setText(ideas.get(holder.getAdapterPosition()).getTimestamp().toString());
 
         db.collection("users").document(ideas.get(holder.getAdapterPosition()).getUser()).get()

@@ -39,7 +39,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.UUID;
 
 public class IdeaFragment extends Fragment {
@@ -96,7 +98,9 @@ public class IdeaFragment extends Fragment {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()){
                                 Idea serverIdea = document.toObject(Idea.class);
-                                ideas.add(serverIdea);
+                                if ((new Date().getTime() - serverIdea.getTimestamp().getTime())/(1000*60*60) < 24) {
+                                    ideas.add(serverIdea);
+                                }
                             }
                             setAdapter();
                         }
@@ -159,7 +163,7 @@ public class IdeaFragment extends Fragment {
             public void onClick(View v) {
                 if (validate()) {
                     Idea idea = new Idea();
-                    idea.setIdea(ideaText.getText().toString());
+                    idea.setIdea(ideaText.getText().toString().trim());
                     idea.setGenre(genreSelect.getSelectedItem().toString());
                     idea.setUser(auth.getCurrentUser().getUid());
                     db.collection("ideas").document(uuid.toString()).set(idea)
