@@ -57,7 +57,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
                             .addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    //Toast.makeText(ChangePasswordActivity.this, "Nahi Hua", Toast.LENGTH_SHORT).show();
+                                    currentPassword.setError("Incorrect Password");
                                     e.printStackTrace();
 
                                 }
