@@ -114,7 +114,7 @@ public class StudioFragment extends Fragment {
                                 Studio serverStudio = documentSnapshot.toObject(Studio.class);
                                 studios.add(serverStudio);
                             }
-                            //setAdapter();
+                            setAdapter();
                         }
                     }
                 });
