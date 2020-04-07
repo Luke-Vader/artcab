@@ -2,7 +2,6 @@ package com.example.artcab.components;
 
 import android.content.Context;
 import android.net.Uri;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,6 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,7 +23,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -60,8 +57,10 @@ public class IdeaAdapter extends RecyclerView.Adapter<IdeaAdapter.ViewHolder> im
         auth = FirebaseAuth.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference();
 
-        if ((new Date().getTime() - ideas.get(position).getTimestamp().getTime())/(1000*60) < 60 && (new Date().getTime() - ideas.get(position).getTimestamp().getTime())/(1000*60) >= 0) {
-            holder.time.setText(Long.toString((new Date().getTime() - ideas.get(position).getTimestamp().getTime())/(1000*60)) + "m");
+        if ((new Date().getTime() - ideas.get(position).getTimestamp().getTime())/(1000*60) < 60 && (new Date().getTime() - ideas.get(position).getTimestamp().getTime())/(1000*60) >= 1) {
+            holder.time.setText(Long.toString((new Date().getTime() - ideas.get(position).getTimestamp().getTime()) / (1000 * 60)) + "m");
+        } else if ((new Date().getTime() - ideas.get(position).getTimestamp().getTime())/(1000*60) < 1) {
+            holder.time.setText("Just Now");
         } else {
             holder.time.setText(Long.toString((new Date().getTime() - ideas.get(position).getTimestamp().getTime())/(1000*60*60)) + "h");
         }
