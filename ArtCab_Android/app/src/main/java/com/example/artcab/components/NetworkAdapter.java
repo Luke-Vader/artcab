@@ -198,30 +198,37 @@ public class NetworkAdapter extends RecyclerView.Adapter<NetworkAdapter.ViewHold
         whatsapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri whatsappUri = Uri.parse("smsto:" + user.getWhatsapp());
-                Intent whatsapp = new Intent(Intent.ACTION_SENDTO, whatsappUri);
-                whatsapp.setPackage("com.whatsapp");
-                try {
-                    context.startActivity(whatsapp);
-                } catch (Exception e) {
-                    Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
+                if (user.getWhatsapp().length() != 10) {
+                    Toast.makeText(context, "No WhatsApp Number Provided", Toast.LENGTH_SHORT).show();
+                } else {
+                    Uri whatsappUri = Uri.parse("smsto:" + user.getWhatsapp());
+                    Intent whatsapp = new Intent(Intent.ACTION_SENDTO, whatsappUri);
+                    whatsapp.setPackage("com.whatsapp");
+                    try {
+                        context.startActivity(whatsapp);
+                    } catch (Exception e) {
+                        Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
+                    }
                 }
-
             }
         });
 
         instagram.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri instaUri = Uri.parse("http://instagram.com/_u/" + user.getInstagram());
-                Intent instagram = new Intent(Intent.ACTION_VIEW, instaUri);
-                instagram.setPackage("com.instagram.android");
+                if (user.getInstagram().length() == 0) {
+                    Toast.makeText(context, "No Instagram Profile Provided", Toast.LENGTH_SHORT).show();
+                }else {
+                    Uri instaUri = Uri.parse("http://instagram.com/_u/" + user.getInstagram());
+                    Intent instagram = new Intent(Intent.ACTION_VIEW, instaUri);
+                    instagram.setPackage("com.instagram.android");
 
-                try {
-                    context.startActivity(instagram);
-                } catch (ActivityNotFoundException e) {
-                    context.startActivity(new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("http://instagram.com/" + user.getInstagram())));
+                    try {
+                        context.startActivity(instagram);
+                    } catch (ActivityNotFoundException e) {
+                        context.startActivity(new Intent(Intent.ACTION_VIEW,
+                                Uri.parse("http://instagram.com/" + user.getInstagram())));
+                    }
                 }
             }
         });

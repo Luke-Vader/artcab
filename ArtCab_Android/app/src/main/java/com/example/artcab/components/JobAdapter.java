@@ -1,7 +1,9 @@
 package com.example.artcab.components;
 
 import android.app.Dialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -113,7 +115,7 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
         }
     }
 
-    private void displayUser(User user) {
+    private void displayUser(final User user) {
         userDialog = new Dialog(context, android.R.style.Theme_DeviceDefault_DialogWhenLarge_NoActionBar);
         userDialog.setContentView(R.layout.user_view);
         userDialog.show();
@@ -122,6 +124,9 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
         TextView username = userDialog.findViewById(R.id.profile_name);
         TextView quote = userDialog.findViewById(R.id.profile_quote);
         TextView portfolio = userDialog.findViewById(R.id.portfolio_text);
+        ImageView whatsapp = userDialog.findViewById(R.id.whatsapp_connect);
+        ImageView instagram = userDialog.findViewById(R.id.instagram_connect);
+        ImageView email = userDialog.findViewById(R.id.email_connect);
         final ImageView userImage = userDialog.findViewById(R.id.user_profile);
         RecyclerView specials = userDialog.findViewById(R.id.special_recycler);
         RecyclerView links = userDialog.findViewById(R.id.links_recycler);
@@ -152,6 +157,54 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 userDialog.dismiss();
+            }
+        });
+
+        whatsapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (user.getWhatsapp().length() != 10) {
+                    Toast.makeText(context, "No WhatsApp Number Provided", Toast.LENGTH_SHORT).show();
+                } else {
+                    Uri whatsappUri = Uri.parse("smsto:" + user.getWhatsapp());
+                    Intent whatsapp = new Intent(Intent.ACTION_SENDTO, whatsappUri);
+                    whatsapp.setPackage("com.whatsapp");
+                    try {
+                        context.startActivity(whatsapp);
+                    } catch (Exception e) {
+                        Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+
+        instagram.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (user.getInstagram().length() == 0) {
+                    Toast.makeText(context, "No Instagram Profile Provided", Toast.LENGTH_SHORT).show();
+                }else {
+                    Uri instaUri = Uri.parse("http://instagram.com/_u/" + user.getInstagram());
+                    Intent instagram = new Intent(Intent.ACTION_VIEW, instaUri);
+                    instagram.setPackage("com.instagram.android");
+
+                    try {
+                        context.startActivity(instagram);
+                    } catch (ActivityNotFoundException e) {
+                        context.startActivity(new Intent(Intent.ACTION_VIEW,
+                                Uri.parse("http://instagram.com/" + user.getInstagram())));
+                    }
+                }
+            }
+        });
+
+        email.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Intent.ACTION_SENDTO);
+                intent.setData(android.net.Uri.parse("mailto:" + user.getEmail()));
+                Intent.createChooser(intent,"Email");
+                context.startActivity(intent);
             }
         });
 
