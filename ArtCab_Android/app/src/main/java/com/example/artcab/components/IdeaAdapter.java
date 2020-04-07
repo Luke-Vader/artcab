@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,19 +26,23 @@ import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-public class IdeaAdapter extends RecyclerView.Adapter<IdeaAdapter.ViewHolder> {
+public class IdeaAdapter extends RecyclerView.Adapter<IdeaAdapter.ViewHolder> implements Filterable {
 
     FirebaseFirestore db;
     FirebaseAuth auth;
     StorageReference storageReference;
 
     private ArrayList<Idea> ideas;
+    private ArrayList<Idea> allIdeas;
     private Context context;
 
     public IdeaAdapter(Context context, ArrayList<Idea> ideas) {
         this.context = context;
         this.ideas = ideas;
+        this.allIdeas = new ArrayList<>(ideas);
     }
 
     @NonNull
@@ -82,6 +88,43 @@ public class IdeaAdapter extends RecyclerView.Adapter<IdeaAdapter.ViewHolder> {
     public int getItemCount() {
         return ideas.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return genre;
+    }
+
+    private Filter genre = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+         ArrayList<Idea> filtered = new ArrayList<>();
+         if (constraint == null || constraint.length() == 0) {
+             filtered.addAll(allIdeas);
+         } else {
+             String filterPattern = constraint.toString().toLowerCase().trim();
+             String genres[] = filterPattern.split(" ");
+             List<String> con = Arrays.asList(genres);
+             for (String s : con) {
+                 for (Idea idea : allIdeas) {
+                     if (idea.getGenre().toLowerCase().contains(s)) {
+                         filtered.add(idea);
+                     }
+                 }
+             }
+         }
+         FilterResults results = new FilterResults();
+         results.values = filtered;
+         return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            ideas.clear();
+            ideas.addAll((ArrayList) results.values);
+            notifyDataSetChanged();
+
+        }
+    };
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 

@@ -2,6 +2,7 @@ package com.example.artcab.fragments;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -48,7 +50,7 @@ public class IdeaFragment extends Fragment {
 
     UUID uuid;
     ArrayList<Idea> ideas;
-    String idea;
+    ArrayList<String> genres = new ArrayList<>();
     EditText ideaText;
     String username;
     String userId;
@@ -59,6 +61,7 @@ public class IdeaFragment extends Fragment {
     ImageButton sort;
     Button post;
     Spinner genreSelect;
+    final boolean checkedItems[] = new boolean[13];
 
     @Nullable
     @Override
@@ -80,7 +83,8 @@ public class IdeaFragment extends Fragment {
         sort.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Filter is WIP, Not Forgotten ;-)", Toast.LENGTH_SHORT).show();
+                filterDialog();
+                genres.clear();
             }
         });
 
@@ -185,5 +189,53 @@ public class IdeaFragment extends Fragment {
         } else {
             return true;
         }
+    }
+
+    private void filterDialog() {
+        AlertDialog.Builder specialsFilter = new AlertDialog.Builder(getActivity());
+        specialsFilter.setTitle("Filter By Specialisation");
+        final String[] preferences = {
+                "Comedy",
+                "Drama",
+                "Action",
+                "Tragedy",
+                "Thriller",
+                "Horror",
+                "Noir",
+                "Experimental",
+                "Romance",
+                "Adventure",
+                "Documentary",
+                "Animation",
+                "Silent"
+        };
+
+        specialsFilter.setMultiChoiceItems(preferences, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+                if (isChecked) {
+                    genres.add(preferences[which]);
+                    checkedItems[which] = true;
+                } else if (genres.contains(preferences[which])) {
+                    genres.remove(preferences[which]);
+                    checkedItems[which] = false;
+                }
+            }
+        });
+
+        specialsFilter.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String selected = "";
+                for (String genre : genres){
+                    selected += genre + " ";
+                }
+                ideaAdapter.getFilter().filter(selected);
+            }
+        });
+        specialsFilter.setNegativeButton("Cancel", null);
+        AlertDialog dialog = specialsFilter.create();
+        dialog.show();
+
     }
 }
