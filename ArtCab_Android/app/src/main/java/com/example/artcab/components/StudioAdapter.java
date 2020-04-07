@@ -13,9 +13,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.artcab.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -39,14 +42,28 @@ public class StudioAdapter extends RecyclerView.Adapter<StudioAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull StudioAdapter.ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final StudioAdapter.ViewHolder holder, final int position) {
 
         db = FirebaseFirestore.getInstance();
         storage = FirebaseStorage.getInstance().getReference();
 
+        storage.child("studios/" + studios.get(position).getUid() + "/1").getDownloadUrl()
+                .addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Picasso.get().load(uri).fit().centerCrop().into(holder.image);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        holder.image.setImageResource(R.color.colorAccent);
+                    }
+                });
+
         holder.area.setText(studios.get(position).getCarpetArea() + " Sq.ft");
-        holder.rent.setText(studios.get(position).getRent() + "/hour");
-        holder.deposit.setText("Deposit: " + studios.get(position).getDeposit());
+        holder.rent.setText("₹" + studios.get(position).getRent() + "/hour");
+        holder.deposit.setText("Deposit:₹" + studios.get(position).getDeposit());
         holder.name.setText(studios.get(position).getName());
         holder.description.setText(studios.get(position).getDescription());
         if (studios.get(position).getParking().equals("1")) {
