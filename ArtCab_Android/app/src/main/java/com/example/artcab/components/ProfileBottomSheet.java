@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.artcab.ChangePasswordActivity;
 import com.example.artcab.EditUserActivity;
 import com.example.artcab.MainActivity;
 import com.example.artcab.R;
@@ -63,7 +64,7 @@ public class ProfileBottomSheet extends BottomSheetDialogFragment {
         changePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Yet to be built", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(), ChangePasswordActivity.class));
             }
         });
 
