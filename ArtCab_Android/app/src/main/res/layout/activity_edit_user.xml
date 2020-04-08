@@ -7,4 +7,28 @@
     android:layout_height="wrap_content"
     tools:context=".EditUserActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/change_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            app:title="Edit Profile"
+            app:titleTextColor="@color/fontColorWhite"
+            android:background="@color/colorPrimaryDark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_marginTop="8dp"
+        android:src="@drawable/user_dark_icon"
+        android:layout_below="@+id/change_toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_width="80dp"
+        android:layout_height="80dp"/>
+
+
+
 </RelativeLayout>
