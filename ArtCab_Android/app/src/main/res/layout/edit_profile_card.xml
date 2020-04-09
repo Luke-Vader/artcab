@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    android:id="@+id/link_box"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:textSize="12sp"
+    android:textColor="@color/greyFont"
+    android:text="Director"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
