@@ -92,11 +92,17 @@ public class EditUserActivity extends AppCompatActivity {
         editTastes = findViewById(R.id.edit_tastes);
         profileImage = findViewById(R.id.profile_image);
 
-        storage.child("users").child(auth.getCurrentUser().getUid()).getDownloadUrl()
+        storage.child("user/" + auth.getCurrentUser().getUid()).getDownloadUrl()
                 .addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        Picasso.get().load(uri).into(profileImage);
+                        Picasso.get().load(uri).fit().centerCrop().into(profileImage);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(EditUserActivity.this, "Add a face to your Account", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -152,6 +158,7 @@ public class EditUserActivity extends AppCompatActivity {
 
     private void showSpecials() {
         selected = "";
+        specials.clear();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Specialisations");
         final String[] specialisations = {
@@ -185,7 +192,6 @@ public class EditUserActivity extends AppCompatActivity {
                     selected += special + ", ";
                 }
                 special.setText(selected);
-                Toast.makeText(EditUserActivity.this, specials.toString(), Toast.LENGTH_SHORT).show();
             }
         });
         builder.setNegativeButton("Cancel", null);
@@ -195,6 +201,7 @@ public class EditUserActivity extends AppCompatActivity {
 
     private void showGenres() {
         selected = "";
+        genres.clear();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Specialisations");
         final String[] preferences = {
@@ -240,6 +247,7 @@ public class EditUserActivity extends AppCompatActivity {
 
     private void showTastes() {
         selected = "";
+        tastes.clear();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Specialisations");
         final String[] preferences = {
@@ -293,7 +301,7 @@ public class EditUserActivity extends AppCompatActivity {
                 profileImage.setImageBitmap(bitmap);
             }
             catch (IOException e) {
-
+                e.printStackTrace();
             }
         }
     }
