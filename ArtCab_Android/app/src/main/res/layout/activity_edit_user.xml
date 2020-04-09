@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/colorPrimaryDark"
     tools:context=".EditUserActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -21,14 +22,51 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_marginTop="8dp"
-        android:src="@drawable/user_dark_icon"
+    <ScrollView
         android:layout_below="@+id/change_toolbar"
-        android:layout_centerHorizontal="true"
-        android:layout_width="80dp"
-        android:layout_height="80dp"/>
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
+        <RelativeLayout
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/big_user_icon"
+                android:layout_centerHorizontal="true"
+                android:layout_width="80dp"
+                android:layout_height="80dp"/>
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_marginTop="4dp"
+                android:padding="4dp"
+                android:hint="Name"
+                android:text="Rishabh Banerjee"
+                android:textColor="@color/greyFont"
+                android:background="@color/colorPrimary"
+                android:layout_below="@id/profile_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/quote"
+                android:layout_marginTop="4dp"
+                android:padding="4dp"
+                android:hint="Name"
+                android:text="May the Force be with you"
+                android:textColor="@color/greyFont"
+                android:background="@color/colorPrimary"
+                android:layout_below="@id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>
