@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -65,6 +66,7 @@ public class EditUserActivity extends AppCompatActivity {
     TextView taste;
     User serverUser;
     String selected;
+    Button updateUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +93,7 @@ public class EditUserActivity extends AppCompatActivity {
         editSpecials = findViewById(R.id.edit_specials);
         editTastes = findViewById(R.id.edit_tastes);
         profileImage = findViewById(R.id.profile_image);
+        updateUser = findViewById(R.id.update_user);
 
         storage.child("user/" + auth.getCurrentUser().getUid()).getDownloadUrl()
                 .addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -122,9 +125,22 @@ public class EditUserActivity extends AppCompatActivity {
                         special.setText(serverUser.getSpecialisations().toString().substring(1,serverUser.getSpecialisations().toString().length() - 1));
                         genre.setText(serverUser.getGenres().toString().substring(1,serverUser.getGenres().toString().length() - 1));
                         taste.setText(serverUser.getTastes().toString().substring(1,serverUser.getTastes().toString().length() - 1));
+                        specials = serverUser.getSpecialisations();
+                        tastes = serverUser.getTastes();
+                        genres = serverUser.getGenres();
+                        links = serverUser.getLinks();
 
                     }
                 });
+
+        updateUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (validate()) {
+                    uploadChanges();
+                }
+            }
+        });
 
         profileImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -304,6 +320,62 @@ public class EditUserActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+    }
+
+    private boolean validate() {
+        if (name.getText().toString().isEmpty() || name.getText().toString().length() == 0) {
+            name.setError("Field can't be Empty");
+            return false;
+        } else if (email.getText().toString().isEmpty() || email.getText().toString().length() == 0) {
+            email.setError("Field can't be Empty");
+            return false;
+        } else if (phone.getText().toString().isEmpty() || phone.getText().toString().length() == 0) {
+            phone.setError("Field can't be Empty");
+            return false;
+        } else if (quote.getText().toString().isEmpty() || quote.getText().toString().length() == 0) {
+            quote.setError("Field can't be Empty");
+            return false;
+        } else if (specials.isEmpty()) {
+            Toast.makeText(this, "Choose a Specialisation", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+    private void uploadChanges() {
+        db.collection("users").document(auth.getCurrentUser().getUid())
+                .update(
+                        "name", name.getText().toString(),
+                        "email", email.getText().toString(),
+                        "instagram", instagram.getText().toString(),
+                        "phone", phone.getText().toString(),
+                        "portfolio", portfolio.getText().toString(),
+                        "quote", quote.getText().toString(),
+                        "whatsapp", whatsApp.getText().toString(),
+                        "genres", genres,
+                        "specialisations", specials,
+                        "tastes", tastes
+                )
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(EditUserActivity.this, "Details Updated Successfully", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(EditUserActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                        e.printStackTrace();
+                    }
+                });
+
+        auth.getCurrentUser().updateEmail(email.getText().toString());
+
+        if (filepath != null) {
+            storage.child("user/" + auth.getCurrentUser().getUid()).putFile(filepath);
+        }
+
     }
 
 }

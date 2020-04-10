@@ -233,6 +233,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
+            <Button
+                android:id="@+id/update_user"
+                android:text="Save"
+                android:background="@color/colorAccent"
+                android:padding="4dp"
+                android:layout_margin="4dp"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/fontColorWhite"
+                android:layout_below="@+id/tastes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
         </RelativeLayout>
 
     </ScrollView>
