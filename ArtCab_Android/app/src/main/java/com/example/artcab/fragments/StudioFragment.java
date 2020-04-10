@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.artcab.LoginOrSignupActivity;
 import com.example.artcab.R;
+import com.example.artcab.components.Post;
 import com.example.artcab.components.Studio;
 import com.example.artcab.components.StudioAdapter;
 import com.example.artcab.components.StudioImageAdapter;
@@ -202,6 +203,9 @@ public class StudioFragment extends Fragment {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     Toast.makeText(getActivity(), "Studio Posted", Toast.LENGTH_SHORT).show();
+                                    addPost();
+                                    studios.add(studio);
+                                    studioAdapter.notifyDataSetChanged();
                                     studioDialog.dismiss();
                                 }
                             });
@@ -289,6 +293,16 @@ public class StudioFragment extends Fragment {
     private void setUploadAdapter() {
         imageAdapter = new StudioImageAdapter(getActivity(), images);
         imageRecycler.setAdapter(imageAdapter);
+    }
+
+    private void addPost() {
+        Post post = new Post();
+        post.setUid(uuid.toString());
+        post.setTitle(name.getText().toString());
+        post.setObject(db.collection("studios").document(uuid.toString()));
+        post.setType("Studio");
+        db.collection("users").document(auth.getCurrentUser().getUid()).collection("posts").document(uuid.toString()).set(post);
+
     }
 
 }

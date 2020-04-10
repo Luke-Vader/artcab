@@ -13,6 +13,7 @@ import com.example.artcab.ChangePasswordActivity;
 import com.example.artcab.EditUserActivity;
 import com.example.artcab.MainActivity;
 import com.example.artcab.R;
+import com.example.artcab.ViewPostActivity;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -57,7 +58,7 @@ public class ProfileBottomSheet extends BottomSheetDialogFragment {
         viewPosts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Yet to be built", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(), ViewPostActivity.class));
             }
         });
 

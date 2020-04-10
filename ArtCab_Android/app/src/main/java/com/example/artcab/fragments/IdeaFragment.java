@@ -28,6 +28,7 @@ import com.example.artcab.LoginOrSignupActivity;
 import com.example.artcab.R;
 import com.example.artcab.components.Idea;
 import com.example.artcab.components.IdeaAdapter;
+import com.example.artcab.components.Post;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -171,6 +172,9 @@ public class IdeaFragment extends Fragment {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Toast.makeText(getActivity(), "Idea Posted", Toast.LENGTH_SHORT).show();
+                                    addPost();
+                                    ideas.add(idea);
+                                    ideaAdapter.notifyDataSetChanged();
                                     ideaDialog.dismiss();
                                 }
                             })
@@ -242,4 +246,15 @@ public class IdeaFragment extends Fragment {
         dialog.show();
 
     }
+
+    private void addPost() {
+        Post post = new Post();
+        post.setUid(uuid.toString());
+        post.setTitle(ideaText.getText().toString());
+        post.setObject(db.collection("ideas").document(uuid.toString()));
+        post.setType("Idea");
+        db.collection("users").document(auth.getCurrentUser().getUid()).collection("posts").document(uuid.toString()).set(post);
+
+    }
+
 }
