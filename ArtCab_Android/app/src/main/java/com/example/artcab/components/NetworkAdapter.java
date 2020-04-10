@@ -12,6 +12,7 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -62,6 +63,14 @@ public class NetworkAdapter extends RecyclerView.Adapter<NetworkAdapter.ViewHold
 
         holder.name.setText(currentUser.getName());
         holder.quote.setText(currentUser.getQuote());
+        holder.portfolio.setText(currentUser.getPortfolio());
+        if (currentUser.getSpecialisations().size() != 0) {
+            holder.special.setText(currentUser.getSpecialisations().get(0));
+            holder.special2.setText(currentUser.getSpecialisations().get(0));
+        } else {
+            holder.special.setVisibility(View.GONE);
+            holder.special2.setVisibility(View.GONE);
+        }
 
         storageReference.child("user/" + currentUser.getUserId()).getDownloadUrl()
                 .addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -76,6 +85,21 @@ public class NetworkAdapter extends RecyclerView.Adapter<NetworkAdapter.ViewHold
                         holder.image.setImageResource(R.drawable.user_dark_icon);
                     }
                 });
+
+        holder.expand.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (holder.switcher.getVisibility() == View.GONE) {
+                    holder.switcher.setVisibility(View.VISIBLE);
+                    holder.expand.setImageResource(R.drawable.collapse_icon);
+                    holder.special.setVisibility(View.GONE);
+                } else {
+                    holder.switcher.setVisibility(View.GONE);
+                    holder.special.setVisibility(View.VISIBLE);
+                    holder.expand.setImageResource(R.drawable.expand_icon);
+                }
+            }
+        });
 
         holder.userCard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,9 +160,14 @@ public class NetworkAdapter extends RecyclerView.Adapter<NetworkAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         RelativeLayout userCard;
+        TextView portfolio;
+        ImageView expand;
+        TextView special;
+        TextView special2;
         TextView name;
         TextView quote;
         ImageView image;
+        RelativeLayout switcher;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -146,7 +175,11 @@ public class NetworkAdapter extends RecyclerView.Adapter<NetworkAdapter.ViewHold
             quote = itemView.findViewById(R.id.network_quote);
             image = itemView.findViewById(R.id.network_profile_image);
             userCard = itemView.findViewById(R.id.user_container);
-
+            portfolio = itemView.findViewById(R.id.network_portfolio);
+            expand = itemView.findViewById(R.id.expand);
+            special = itemView.findViewById(R.id.top_special);
+            special2 = itemView.findViewById(R.id.top_special2);
+            switcher = itemView.findViewById(R.id.portfolio_switcher);
         }
     }
 
