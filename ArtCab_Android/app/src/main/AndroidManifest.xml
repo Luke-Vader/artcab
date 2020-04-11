@@ -13,14 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewPostActivity"></activity>
-        <activity android:name=".ChangePasswordActivity" />
-        <activity android:name=".EditUserActivity" />
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAv4dlLRkzDZScczNsC0E2XLu_-IBo8VA4" />
-
+        <activity android:name=".ViewPostActivity" />
+        <activity android:name=".ChangePasswordActivity" />
+        <activity android:name=".EditUserActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".ProfilePictureActivity" />
         <activity android:name=".PasswordActivity" />
@@ -37,7 +35,8 @@
         <activity android:name=".SpecialSubActivity" />
         <activity android:name=".SpecialisationActivity" />
         <activity android:name=".LoginOrSignupActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".SplashActivity" android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
