@@ -6,6 +6,8 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/network_toolbar"
+        app:elevation="0dp"
+        android:background="@color/backgroundWhite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -36,6 +38,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/network_container"
+        android:background="@color/backgroundWhite"
         android:layout_below="@+id/network_toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
