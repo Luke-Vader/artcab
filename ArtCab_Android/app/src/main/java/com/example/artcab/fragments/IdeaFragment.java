@@ -167,6 +167,7 @@ public class IdeaFragment extends Fragment {
                     idea.setIdea(ideaText.getText().toString().trim());
                     idea.setGenre(genreSelect.getSelectedItem().toString());
                     idea.setUser(auth.getCurrentUser().getUid());
+                    idea.setTimestamp(new Timestamp(new Date().getTime()));
                     db.collection("ideas").document(uuid.toString()).set(idea)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override

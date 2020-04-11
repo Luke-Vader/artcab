@@ -66,6 +66,7 @@ public class IdeaAdapter extends RecyclerView.Adapter<IdeaAdapter.ViewHolder> im
         }
 
         holder.quote.setText(ideas.get(holder.getAdapterPosition()).getIdea());
+        holder.genre.setText(ideas.get(holder.getAdapterPosition()).getGenre());
 
         //holder.time.setText(ideas.get(holder.getAdapterPosition()).getTimestamp().toString());
 
@@ -138,6 +139,7 @@ public class IdeaAdapter extends RecyclerView.Adapter<IdeaAdapter.ViewHolder> im
 
         TextView quote;
         TextView user;
+        TextView genre;
         TextView time;
         ImageView userImage;
 
@@ -147,6 +149,7 @@ public class IdeaAdapter extends RecyclerView.Adapter<IdeaAdapter.ViewHolder> im
             user = itemView.findViewById(R.id.username);
             time = itemView.findViewById(R.id.time_elapsed);
             userImage = itemView.findViewById(R.id.profile_image);
+            genre = itemView.findViewById(R.id.idea_genre);
 
         }
     }
