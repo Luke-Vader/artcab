@@ -81,6 +81,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+        <TextView
+            android:id="@+id/forget_password"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/colorAccent"
+            android:layout_marginEnd="16dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/signin"
+            android:textSize="16sp"
+            android:text="Forgot Password?"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
     </RelativeLayout>
 
 </RelativeLayout>
