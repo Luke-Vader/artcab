@@ -5,7 +5,7 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/splash"/>
+            android:src="@drawable/app_icon_512"/>
 
     </item>
 </layer-list>
