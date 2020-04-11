@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.example.artcab.components.NetworkAdapter;
 import com.example.artcab.components.Post;
 import com.example.artcab.components.PostAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -34,7 +33,7 @@ public class ViewPostActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_postr);
+        setContentView(R.layout.activity_view_posts);
 
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
