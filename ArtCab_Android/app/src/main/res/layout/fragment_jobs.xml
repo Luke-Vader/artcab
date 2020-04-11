@@ -3,10 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/colorPrimaryDark">
+    android:background="@color/backgroundWhite">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/action_bar_jobs"
+        app:elevation="0dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -16,21 +17,10 @@
 
             <androidx.appcompat.widget.Toolbar
                 app:title="Jobs"
-                app:titleTextColor="@color/fontColorWhite"
-                android:background="@color/colorPrimaryDark"
+                app:titleTextColor="@color/fontColorBlack"
+                android:background="@color/backgroundWhite"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"/>
-
-            <ImageButton
-                android:id="@+id/filter_jobs"
-                android:src="@drawable/filter_icon"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="16dp"
-                android:scaleType="fitCenter"
-                android:background="@color/colorPrimaryDark"
-                android:layout_alignParentEnd="true"
-                android:layout_width="24dp"
-                android:layout_height="24dp"/>
 
         </RelativeLayout>
 
