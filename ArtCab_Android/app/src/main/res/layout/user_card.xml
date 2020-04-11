@@ -7,27 +7,25 @@
     android:layout_marginTop="4dp"
     android:layout_marginBottom="4dp"
     android:layout_width="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/user_background"
     android:id="@+id/user_container"
     android:layout_height="wrap_content">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/network_profile_image"
-        android:src="@drawable/user_dark_icon"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="4dp"
         android:layout_alignParentStart="true"
-        android:layout_width="32dp"
-        android:layout_height="32dp"/>
+        android:layout_width="44dp"
+        android:layout_height="44dp"/>
 
     <TextView
         android:id="@+id/network_username"
         android:layout_toEndOf="@+id/network_profile_image"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginTop="14dp"
-        android:text="Rishabh Banerjee"
         android:textColor="@color/fontColorBlack"
         android:textStyle="bold"
         android:textSize="16sp"
@@ -36,12 +34,11 @@
 
     <TextView
         android:id="@+id/network_quote"
-        android:layout_below="@+id/network_profile_image"
-        android:layout_marginStart="16dp"
+        android:layout_below="@+id/network_username"
+        android:layout_toEndOf="@+id/network_profile_image"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="4dp"
         android:layout_marginBottom="8dp"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
@@ -50,7 +47,7 @@
         android:background="@drawable/special_chip_background"
         android:textColor="@color/fontColorWhite"
         android:layout_below="@+id/network_quote"
-        android:padding="4dp"
+        android:padding="6dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -66,6 +63,7 @@
     <RelativeLayout
         android:id="@+id/portfolio_switcher"
         android:layout_below="@+id/network_quote"
+        android:layout_toEndOf="@+id/network_profile_image"
         android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
