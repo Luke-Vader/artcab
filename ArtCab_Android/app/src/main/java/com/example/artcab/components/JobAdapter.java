@@ -27,6 +27,7 @@ import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
 
@@ -58,6 +59,16 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
         holder.title.setText(jobs.get(holder.getAdapterPosition()).getTitle());
         holder.location.setText(jobs.get(holder.getAdapterPosition()).getLocation());
         holder.organisation.setText(jobs.get(holder.getAdapterPosition()).getOrganisation());
+
+        if ((new Date().getTime() - jobs.get(position).getTimestamp().getTime())/(1000*60) < 60 && (new Date().getTime() - jobs.get(position).getTimestamp().getTime())/(1000*60) >= 1) {
+            holder.timeElapsed.setText(Long.toString((new Date().getTime() - jobs.get(position).getTimestamp().getTime()) / (1000 * 60)) + "m Ago");
+        } else if ((new Date().getTime() - jobs.get(position).getTimestamp().getTime())/(1000*60) < 1) {
+            holder.timeElapsed.setText("Just Now");
+        } else if ((new Date().getTime() - jobs.get(position).getTimestamp().getTime())/(1000*60*60) < 24){
+            holder.timeElapsed.setText(Long.toString((new Date().getTime() - jobs.get(position).getTimestamp().getTime())/(1000*60*60)) + "h Ago");
+        } else {
+            holder.timeElapsed.setText(Long.toString((new Date().getTime() - jobs.get(position).getTimestamp().getTime())/(1000*60*60*24)) + " days Ago");
+        }
 
         db.collection("users").document(jobs.get(holder.getAdapterPosition()).getPostedBy()).get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -108,7 +119,7 @@ public class JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
             super(itemView);
             title = itemView.findViewById(R.id.job_title);
             description = itemView.findViewById(R.id.job_description);
-            timeElapsed = itemView.findViewById(R.id.time_elapsed);
+            timeElapsed = itemView.findViewById(R.id.days_ago);
             organisation = itemView.findViewById(R.id.job_organisation);
             location = itemView.findViewById(R.id.job_location);
             adminName = itemView.findViewById(R.id.posted_by);

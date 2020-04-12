@@ -2,7 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/backgroundWhite"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -13,7 +13,7 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="40dp"
         android:gravity="start|center"
-        android:textColor="@color/fontColorWhite"
+        android:textColor="@color/fontColorBlack"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
@@ -21,7 +21,7 @@
         android:id="@+id/type"
         android:layout_below="@+id/content"
         android:textSize="14sp"
-        android:textColor="@color/fontColorWhite"
+        android:textColor="@color/fontColorBlack"
         android:layout_marginStart="16dp"
         android:textStyle="bold"
         android:layout_marginBottom="4dp"

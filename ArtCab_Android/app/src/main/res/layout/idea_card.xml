@@ -16,24 +16,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/idea_genre"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/idea_genre"
-        android:text="Thriller"
-        android:textColor="@color/fontColorWhite"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:rotation="90"
-        android:padding="4dp"
-        android:background="@drawable/genre_chip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
@@ -60,11 +46,10 @@
     <TextView
         android:id="@+id/time_elapsed"
         android:layout_width="wrap_content"
+        android:layout_alignParentEnd="true"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_alignTop="@+id/username"
-        android:layout_toStartOf="@+id/idea_genre"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         android:textStyle="bold" />
 
 </RelativeLayout>

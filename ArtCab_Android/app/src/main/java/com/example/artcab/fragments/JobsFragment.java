@@ -32,7 +32,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.UUID;
 
 public class JobsFragment extends Fragment {
@@ -77,7 +79,9 @@ public class JobsFragment extends Fragment {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
                                 Job serverJob = documentSnapshot.toObject(Job.class);
-                                jobs.add(serverJob);
+                                if ((new Date().getTime() - serverJob.getTimestamp().getTime())/(1000*60*60*24) < 21) {
+                                    jobs.add(serverJob);
+                                }
                             }
                             setAdapter();
                         }
@@ -142,6 +146,7 @@ public class JobsFragment extends Fragment {
                     job.setOrganisation(organisation.getText().toString());
                     job.setTitle(title.getText().toString());
                     job.setPostedBy(auth.getCurrentUser().getUid());
+                    job.setTimestamp(new Timestamp(new Date().getTime()));
                     db.collection("jobs").document(uuid.toString()).set(job)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
