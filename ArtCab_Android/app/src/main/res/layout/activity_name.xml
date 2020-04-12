@@ -25,12 +25,12 @@
 
         <EditText
             android:id="@+id/name"
-            android:background="@color/fontColorWhite"
-            android:textSize="24sp"
-            android:inputType="text"
-            android:padding="8dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:background="@color/fontColorWhite"
+            android:inputType="textPersonName|text"
+            android:padding="8dp"
+            android:textSize="24sp" />
 
     </LinearLayout>
 
