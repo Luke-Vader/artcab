@@ -61,12 +61,6 @@ public class StudioAdapter extends RecyclerView.Adapter<StudioAdapter.ViewHolder
                     public void onSuccess(Uri uri) {
                         Picasso.get().load(uri).fit().centerCrop().into(holder.image);
                     }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        holder.image.setImageResource(R.color.colorAccent);
-                    }
                 });
 
         holder.area.setText(studios.get(position).getCarpetArea() + " Sq.ft");

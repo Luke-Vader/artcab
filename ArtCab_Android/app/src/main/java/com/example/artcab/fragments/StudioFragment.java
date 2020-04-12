@@ -86,24 +86,9 @@ public class StudioFragment extends Fragment {
         db = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
         storage = FirebaseStorage.getInstance().getReference();
-        /*if (!Places.isInitialized()) {
-            Places.initialize(getActivity(), "AIzaSyA1Ij65-z4eFi6eITqDcU5TYE7Q-u6S510");
-        }*/
 
         addStudio = view.findViewById(R.id.add_studio);
         studioRecycler = view.findViewById(R.id.studio_container);
-        //test = view.findViewById(R.id.filter_studios);
-
-        /*test.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Creates an Intent that will load a map of San Francisco
-                Uri gmmIntentUri = Uri.parse("geo:0,0?q=19.0530475733,73.07346(Studio)");
-                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-                mapIntent.setPackage("com.google.android.apps.maps");
-                startActivity(mapIntent);
-            }
-        });*/
 
         studios = new ArrayList<>();
         db.collection("studios").get()
@@ -198,6 +183,7 @@ public class StudioFragment extends Fragment {
                     studio.setDescription(description.getText().toString());
                     studio.setLocation(location.getText().toString());
                     studio.setPostedBy(auth.getCurrentUser().getUid());
+                    studio.setUid(uuid.toString());
                     db.collection("studios").document(uuid.toString()).set(studio)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
