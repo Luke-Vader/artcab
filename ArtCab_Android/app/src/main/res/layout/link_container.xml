@@ -7,10 +7,13 @@
 
     <TextView
         android:id="@+id/link"
-        android:textSize="18sp"
-        android:textColor="@color/colorAccent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:textSize="14sp"
+        android:background="@drawable/link_background"
+        android:padding="8dp"
+        android:elevation="2dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:textColor="@color/fontColorWhite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
