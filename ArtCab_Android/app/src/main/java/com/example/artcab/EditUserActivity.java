@@ -251,7 +251,7 @@ public class EditUserActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 for (String genre : genres) {
-                    selected += genre + " ";
+                    selected += genre + ", ";
                 }
                 genre.setText(selected);
             }
@@ -290,7 +290,7 @@ public class EditUserActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 for (String taste : tastes) {
-                    selected += taste + " ";
+                    selected += taste + ", ";
                 }
                 taste.setText(selected);
             }
@@ -360,6 +360,7 @@ public class EditUserActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(EditUserActivity.this, "Details Updated Successfully", Toast.LENGTH_SHORT).show();
+                        finish();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

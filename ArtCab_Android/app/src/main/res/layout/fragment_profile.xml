@@ -49,6 +49,7 @@
             android:layout_centerHorizontal="true"
             android:textAlignment="center"
             android:layout_above="@+id/icon"
+            android:fontFamily="@font/roboto_light"
             android:textSize="18sp"
             android:layout_marginBottom="24dp"
             android:textColor="@color/greyFont"

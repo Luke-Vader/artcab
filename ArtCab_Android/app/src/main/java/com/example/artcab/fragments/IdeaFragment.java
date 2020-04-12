@@ -64,7 +64,6 @@ public class IdeaFragment extends Fragment {
     ImageButton sort;
     Button post;
     Spinner genreSelect;
-    final boolean checkedItems[] = new boolean[13];
 
     @Nullable
     @Override
@@ -219,15 +218,13 @@ public class IdeaFragment extends Fragment {
                 "Silent"
         };
 
-        specialsFilter.setMultiChoiceItems(preferences, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
+        specialsFilter.setMultiChoiceItems(preferences, null, new DialogInterface.OnMultiChoiceClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which, boolean isChecked) {
                 if (isChecked) {
                     genres.add(preferences[which]);
-                    checkedItems[which] = true;
                 } else if (genres.contains(preferences[which])) {
                     genres.remove(preferences[which]);
-                    checkedItems[which] = false;
                 }
             }
         });

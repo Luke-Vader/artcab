@@ -20,7 +20,7 @@
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_navigation"
         android:elevation="0dp"
-        app:itemIconTint="@color/colorPrimary"
+        app:itemIconTint="@color/backgroundWhite"
         app:itemHorizontalTranslationEnabled="true"
         app:itemTextColor="@color/fontColorWhite"
         android:background="@color/colorPrimaryDark"/>

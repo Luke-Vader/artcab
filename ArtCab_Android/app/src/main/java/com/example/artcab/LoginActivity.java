@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -52,16 +53,17 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (validate()) {
                     auth.signInWithEmailAndPassword(email.getText().toString(), password.getText().toString())
-                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                public void onSuccess(AuthResult authResult) {
                                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(LoginActivity.this, "Incorrect Email or Password", Toast.LENGTH_SHORT).show();
+                                    email.setError("Incorrect Email or Password");
+                                    password.setError("Incorrect Email or Password");
                                 }
                             });
                 } else {
@@ -80,13 +82,18 @@ public class LoginActivity extends AppCompatActivity {
         email.setPositiveButton("CONFIRM", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                auth.sendPasswordResetEmail(userEmail.getText().toString())
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                Toast.makeText(LoginActivity.this, "Email Sent", Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                if (!userEmail.getText().toString().isEmpty()) {
+                    auth.sendPasswordResetEmail(userEmail.getText().toString())
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    Toast.makeText(LoginActivity.this, "Email Sent", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                } else {
+                    Toast.makeText(LoginActivity.this, "Email Required", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 

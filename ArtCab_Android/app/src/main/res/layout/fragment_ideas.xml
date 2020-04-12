@@ -8,6 +8,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/action_bar_idea"
         android:layout_width="match_parent"
+        android:background="@color/backgroundWhite"
         app:elevation="0dp"
         android:layout_height="wrap_content">
 
