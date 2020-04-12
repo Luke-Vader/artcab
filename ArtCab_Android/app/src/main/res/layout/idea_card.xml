@@ -3,30 +3,44 @@
     android:id="@+id/idea_parent"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
-    android:layout_marginEnd="16dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
     android:layout_marginTop="4dp"
+    android:elevation="4dp"
     android:layout_marginBottom="4dp"
-    android:background="@color/colorPrimary"
-    android:orientation="vertical">
+    android:background="@drawable/user_background"
+    android:orientation="vertical" >
 
     <TextView
         android:id="@+id/idea_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_toStartOf="@+id/idea_genre"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/idea_genre"
+        android:text="Thriller"
+        android:textColor="@color/fontColorWhite"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:rotation="90"
+        android:padding="4dp"
+        android:background="@drawable/genre_chip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
         android:layout_width="32dp"
-        android:src="@drawable/user_dark_icon"
         android:layout_height="32dp"
         android:layout_below="@id/idea_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp" />
 
@@ -34,9 +48,10 @@
         android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/idea_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_alignTop="@+id/profile_image"
+        android:layout_marginTop="8dp"
+        android:textSize="12sp"
         android:textColor="@color/fontColorBlack"
         android:layout_marginBottom="8dp"
         android:layout_toEndOf="@id/profile_image"
@@ -46,12 +61,10 @@
         android:id="@+id/time_elapsed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/idea_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="17h"
+        android:layout_marginTop="8dp"
+        android:layout_alignTop="@+id/username"
+        android:layout_toStartOf="@+id/idea_genre"
+        android:layout_marginEnd="8dp"
         android:textStyle="bold" />
 
 </RelativeLayout>
