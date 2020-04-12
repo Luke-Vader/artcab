@@ -81,10 +81,15 @@ public class StudioAdapter extends RecyclerView.Adapter<StudioAdapter.ViewHolder
         holder.location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri gmmIntentUri = Uri.parse(studios.get(position).getLocation());
-                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-                mapIntent.setPackage("com.google.android.apps.maps");
-                context. startActivity(mapIntent);
+                try{
+                    Uri gmmIntentUri = Uri.parse(studios.get(position).getLocation());
+                    Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                    mapIntent.setPackage("com.google.android.apps.maps");
+                    context. startActivity(mapIntent);
+                } catch (Exception e){
+                    Toast.makeText(context, "Location for " + studios.get(position).getName() + " not provided", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
             }
         });
 
