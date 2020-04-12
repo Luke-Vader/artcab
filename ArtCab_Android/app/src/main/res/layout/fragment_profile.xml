@@ -45,7 +45,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:text="You ain't logged in"
+            android:text="You're not logged in"
             android:layout_centerHorizontal="true"
             android:textAlignment="center"
             android:layout_above="@+id/icon"

@@ -55,7 +55,7 @@ public class GenreActivity extends AppCompatActivity {
         selected = "";
         genres.clear();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Specialisations");
+        builder.setTitle("Genres");
         final String[] preferences = {
                 "Comedy",
                 "Drama",

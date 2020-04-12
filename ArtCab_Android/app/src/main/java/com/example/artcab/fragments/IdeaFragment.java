@@ -201,7 +201,7 @@ public class IdeaFragment extends Fragment {
 
     private void filterDialog() {
         AlertDialog.Builder specialsFilter = new AlertDialog.Builder(getActivity());
-        specialsFilter.setTitle("Filter By Specialisation");
+        specialsFilter.setTitle("Filter By Genre");
         final String[] preferences = {
                 "Comedy",
                 "Drama",

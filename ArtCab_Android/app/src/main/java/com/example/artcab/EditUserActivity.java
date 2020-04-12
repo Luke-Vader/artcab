@@ -219,7 +219,7 @@ public class EditUserActivity extends AppCompatActivity {
         selected = "";
         genres.clear();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Specialisations");
+        builder.setTitle("Genres");
         final String[] preferences = {
                 "Comedy",
                 "Drama",
@@ -265,7 +265,7 @@ public class EditUserActivity extends AppCompatActivity {
         selected = "";
         tastes.clear();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Specialisations");
+        builder.setTitle("Tastes");
         final String[] preferences = {
                 "Bollywood",
                 "Hollywood",

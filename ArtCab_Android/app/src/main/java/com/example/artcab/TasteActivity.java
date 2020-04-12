@@ -59,7 +59,7 @@ public class TasteActivity extends AppCompatActivity {
         selected = "";
         tastes.clear();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Specialisations");
+        builder.setTitle("Tastes");
         final String[] preferences = {
                 "Bollywood",
                 "Hollywood",
