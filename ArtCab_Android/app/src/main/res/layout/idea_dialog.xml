@@ -4,11 +4,12 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorPrimaryDark">
+    android:background="@color/backgroundWhite">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/idea_toolbar"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/backgroundWhite"
+        app:elevation="0dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -23,7 +24,7 @@
                 android:layout_marginEnd="16dp"
                 android:scaleType="fitCenter"
                 android:layout_alignParentStart="true"
-                android:background="@color/colorPrimaryDark"
+                android:background="@color/backgroundWhite"
                 android:layout_centerVertical="true"
                 android:layout_width="24dp"
                 android:layout_height="?attr/actionBarSize"/>
@@ -31,9 +32,9 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/post_idea_toolbar"
                 android:layout_toEndOf="@+id/collapse"
-                app:title="Your Idea"
-                app:titleTextColor="@color/fontColorWhite"
-                android:background="@color/colorPrimaryDark"
+                app:title="Post an Idea"
+                app:titleTextColor="@color/fontColorBlack"
+                android:background="@color/backgroundWhite"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"/>
 
@@ -42,8 +43,9 @@
                 android:text="POST"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="16dp"
-                android:textColor="@color/fontColorWhite"
-                android:background="@color/colorPrimaryDark"
+                app:elevation="0dp"
+                android:textColor="@color/colorAccent"
+                android:background="@drawable/button_outline"
                 android:layout_alignParentEnd="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -59,16 +61,16 @@
         android:layout_width="match_parent"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:padding="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:lines="4"
         android:hint="Idea"
-        android:background="@color/colorPrimary"
         android:layout_height="wrap_content"/>
 
     <TextView
         android:id="@+id/genre_text"
         android:layout_below="@+id/idea_text"
-        android:textColor="@color/fontColorWhite"
+        android:textColor="@color/fontColorBlack"
         android:text="Genre: "
         android:layout_marginTop="24dp"
         android:layout_marginStart="16dp"
@@ -78,7 +80,6 @@
 
     <Spinner
         android:id="@+id/genre_spinner"
-        android:background="@color/colorPrimary"
         android:layout_below="@id/idea_text"
         android:layout_marginTop="24dp"
         android:layout_marginStart="16dp"
