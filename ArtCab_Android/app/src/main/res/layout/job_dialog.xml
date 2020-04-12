@@ -4,12 +4,13 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorPrimaryDark">
+    android:background="@color/backgroundWhite">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/job_toolbar"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/backgroundWhite"
         android:layout_width="match_parent"
+        app:elevation="0dp"
         android:layout_height="wrap_content">
 
         <RelativeLayout
@@ -23,7 +24,7 @@
                 android:layout_marginEnd="16dp"
                 android:scaleType="fitCenter"
                 android:layout_alignParentStart="true"
-                android:background="@color/colorPrimaryDark"
+                android:background="@color/backgroundWhite"
                 android:layout_centerVertical="true"
                 android:layout_width="24dp"
                 android:layout_height="?attr/actionBarSize"/>
@@ -31,9 +32,9 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/post_job_toolbar"
                 android:layout_toEndOf="@+id/collapse"
-                app:title="Add Job"
-                app:titleTextColor="@color/fontColorWhite"
-                android:background="@color/colorPrimaryDark"
+                app:title="Add a Job"
+                app:titleTextColor="@color/fontColorBlack"
+                android:background="@color/backgroundWhite"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"/>
 
@@ -42,8 +43,8 @@
                 android:text="POST"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="16dp"
-                android:textColor="@color/fontColorWhite"
-                android:background="@color/colorPrimaryDark"
+                android:textColor="@color/colorAccent"
+                android:background="@drawable/button_outline"
                 android:layout_alignParentEnd="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -59,11 +60,11 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:hint="Title"
+        android:background="@drawable/editext_outline"
         android:layout_marginTop="4dp"
         android:inputType="textCapWords"
         android:layout_marginBottom="4dp"
         android:padding="8dp"
-        android:background="@color/colorPrimary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
@@ -73,13 +74,13 @@
         android:layout_width="match_parent"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:background="@drawable/editext_outline"
         android:inputType="textCapSentences|textMultiLine"
         android:padding="8dp"
         android:lines="4"
         android:layout_marginBottom="4dp"
         android:layout_marginTop="4dp"
         android:hint="Description"
-        android:background="@color/colorPrimary"
         android:layout_height="wrap_content"/>
 
     <EditText
@@ -92,7 +93,7 @@
         android:inputType="textCapSentences"
         android:layout_marginBottom="4dp"
         android:padding="8dp"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/editext_outline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
@@ -106,7 +107,7 @@
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
         android:padding="8dp"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/editext_outline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

@@ -4,11 +4,12 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorPrimaryDark">
+    android:background="@color/backgroundWhite">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/studio_toolbar"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/backgroundWhite"
+        app:elevation="0dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -23,7 +24,7 @@
                 android:layout_marginEnd="16dp"
                 android:scaleType="fitCenter"
                 android:layout_alignParentStart="true"
-                android:background="@color/colorPrimaryDark"
+                android:background="@color/backgroundWhite"
                 android:layout_centerVertical="true"
                 android:layout_width="24dp"
                 android:layout_height="?attr/actionBarSize"/>
@@ -32,8 +33,8 @@
                 android:id="@+id/post_studio_toolbar"
                 android:layout_toEndOf="@+id/collapse"
                 app:title="Studio"
-                app:titleTextColor="@color/fontColorWhite"
-                android:background="@color/colorPrimaryDark"
+                app:titleTextColor="@color/fontColorBlack"
+                android:background="@color/backgroundWhite"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"/>
 
@@ -42,8 +43,8 @@
                 android:text="POST"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="16dp"
-                android:textColor="@color/fontColorWhite"
-                android:background="@color/colorPrimaryDark"
+                android:textColor="@color/colorAccent"
+                android:background="@drawable/button_outline"
                 android:layout_alignParentEnd="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -67,11 +68,11 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:hint="Name"
+                android:background="@drawable/editext_outline"
                 android:layout_marginTop="4dp"
                 android:inputType="textCapWords"
                 android:layout_marginBottom="4dp"
                 android:padding="8dp"
-                android:background="@color/colorPrimary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -84,16 +85,15 @@
                 android:text="Carpet Area:"
                 android:layout_marginTop="8dp"
                 android:textSize="18sp"
-                android:textColor="@color/colorPrimary"
                 android:layout_height="wrap_content"/>
 
             <EditText
                 android:id="@+id/studio_area"
-                android:background="@color/colorPrimary"
                 android:layout_below="@+id/studio_name"
                 android:padding="4dp"
                 android:textAlignment="center"
                 android:hint="sqft"
+                android:background="@drawable/editext_outline"
                 android:layout_marginEnd="16dp"
                 android:layout_toEndOf="@+id/carpet_label"
                 android:inputType="number"
@@ -109,17 +109,16 @@
                 android:text="Rent:"
                 android:layout_marginTop="8dp"
                 android:textSize="18sp"
-                android:textColor="@color/colorPrimary"
                 android:layout_height="wrap_content"/>
 
             <EditText
                 android:id="@+id/studio_rent"
-                android:background="@color/colorPrimary"
                 android:layout_marginTop="4dp"
+                android:background="@drawable/editext_outline"
                 android:layout_below="@+id/studio_area"
                 android:padding="4dp"
                 android:textAlignment="center"
-                android:hint="₹"
+                android:hint="₹/hour"
                 android:layout_marginEnd="16dp"
                 android:layout_toEndOf="@+id/carpet_label"
                 android:inputType="number"
@@ -135,7 +134,6 @@
                 android:text="Parking:"
                 android:layout_marginTop="8dp"
                 android:textSize="18sp"
-                android:textColor="@color/colorPrimary"
                 android:layout_height="wrap_content"/>
 
             <TextView
@@ -145,7 +143,6 @@
                 android:text="NO"
                 android:layout_marginEnd="4dp"
                 android:layout_marginTop="4dp"
-                android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -155,9 +152,6 @@
                 android:layout_below="@id/rent_label"
                 android:layout_toEndOf="@id/yes_parking"
                 android:layout_marginTop="8dp"
-                android:thumbTint="@color/colorPrimary"
-                android:trackTint="@color/colorPrimary"
-                android:elevation="4dp"
                 android:layout_marginStart="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -169,7 +163,6 @@
                 android:text="YES"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="4dp"
-                android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -183,7 +176,6 @@
                 android:text="Equipment:"
                 android:layout_marginTop="8dp"
                 android:textSize="18sp"
-                android:textColor="@color/colorPrimary"
                 android:layout_height="wrap_content"/>
 
             <TextView
@@ -193,7 +185,6 @@
                 android:text="NO"
                 android:layout_marginEnd="4dp"
                 android:layout_marginTop="4dp"
-                android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -203,9 +194,6 @@
                 android:layout_below="@id/parking_label"
                 android:layout_toEndOf="@id/yes_parking"
                 android:layout_marginTop="8dp"
-                android:thumbTint="@color/colorPrimary"
-                android:trackTint="@color/colorPrimary"
-                android:elevation="4dp"
                 android:layout_marginStart="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -217,7 +205,6 @@
                 android:text="YES"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="4dp"
-                android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -231,15 +218,14 @@
                 android:text="Deposit:"
                 android:layout_marginTop="8dp"
                 android:textSize="18sp"
-                android:textColor="@color/colorPrimary"
                 android:layout_height="wrap_content"/>
 
             <EditText
                 android:id="@+id/studio_deposit"
-                android:background="@color/colorPrimary"
                 android:layout_marginTop="4dp"
                 android:layout_below="@+id/no_equipment"
                 android:padding="4dp"
+                android:background="@drawable/editext_outline"
                 android:textAlignment="center"
                 android:hint="₹"
                 android:layout_marginEnd="16dp"
@@ -250,25 +236,24 @@
 
             <EditText
                 android:id="@+id/studio_description"
-                android:layout_below="@+id/deposit_label"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/deposit_label"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/editext_outline"
                 android:layout_marginEnd="16dp"
-                android:inputType="textCapSentences|textMultiLine"
-                android:padding="8dp"
-                android:lines="4"
                 android:layout_marginBottom="4dp"
-                android:layout_marginTop="4dp"
                 android:hint="Description"
-                android:background="@color/colorPrimary"
-                android:layout_height="wrap_content"/>
+                android:inputType="textCapSentences|textMultiLine"
+                android:lines="4"
+                android:padding="8dp" />
 
             <TextView
                 android:id="@+id/image_label"
                 android:layout_below="@id/location_label"
                 android:textSize="18sp"
                 android:layout_marginStart="16dp"
-                android:textColor="@color/colorPrimary"
                 android:text="Images:"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -278,7 +263,6 @@
                 android:layout_below="@id/studio_description"
                 android:textSize="18sp"
                 android:layout_marginStart="16dp"
-                android:textColor="@color/colorPrimary"
                 android:text="Location:"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -309,10 +293,10 @@
                 android:id="@+id/add_images"
                 android:text="ADD IMAGES"
                 android:layout_marginTop="32dp"
-                android:textColor="@color/greyFont"
+                android:textColor="@color/fontColorWhite"
                 android:padding="8dp"
-                android:background="@color/colorPrimary"
                 android:layout_centerHorizontal="true"
+                android:background="@drawable/button_filled"
                 android:layout_below="@id/image_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
