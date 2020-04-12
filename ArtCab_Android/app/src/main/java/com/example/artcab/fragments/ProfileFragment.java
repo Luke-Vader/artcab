@@ -102,7 +102,6 @@ public class ProfileFragment extends Fragment {
 
     }
 
-
     private void login() {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,6 +118,12 @@ public class ProfileFragment extends Fragment {
                     @Override
                     public void onSuccess(Uri uri) {
                         Picasso.get().load(uri).fit().centerCrop().into(profilePicture);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        profilePicture.setImageResource(R.drawable.app_icon_512);
                     }
                 });
 
