@@ -6,43 +6,58 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginOrSignupActivity"
-    android:background="@color/colorPrimaryDark">
-    
-    <TextView
-        android:id="@+id/welcome_text"
-        android:text="@string/welcome"
-        android:layout_centerInParent="true"
-        android:textAlignment="center"
-        android:layout_marginBottom="16dp"
-        android:textSize="44sp"
-        android:textColor="@color/fontColorWhite"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+    android:background="@color/backgroundWhite">
 
-    <Button
-        android:id="@+id/sign_up_button"
-        android:text="@string/register"
-        android:textAllCaps="false"
-        android:background="@color/colorAccent"
+    <RelativeLayout
         android:layout_centerInParent="true"
-        android:padding="4dp"
-        android:layout_margin="4dp"
-        android:textColor="@color/fontColorWhite"
-        android:layout_below="@+id/welcome_text"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/sign_in_button"
-        android:text="@string/login"
-        android:layout_centerInParent="true"
-        android:layout_margin="4dp"
-        android:padding="4dp"
-        android:textColor="@color/fontColorWhite"
-        android:background="@color/colorAccent"
-        android:layout_below="@+id/sign_up_button"
-        android:textAllCaps="false"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/welcome_text"
+            android:text="@string/welcome"
+            android:textAlignment="center"
+            android:layout_marginBottom="16dp"
+            android:textSize="44sp"
+            android:textColor="@color/fontColorBlack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/inverted_trans"
+            android:layout_below="@id/welcome_text"
+            android:layout_width="156dp"
+            android:layout_height="156dp"/>
+
+        <Button
+            android:id="@+id/sign_up_button"
+            android:text="@string/register"
+            android:textAllCaps="false"
+            android:background="@drawable/button_filled"
+            android:layout_centerInParent="true"
+            android:padding="4dp"
+            android:layout_margin="4dp"
+            android:textColor="@color/fontColorWhite"
+            android:layout_below="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/sign_in_button"
+            android:text="@string/login"
+            android:layout_centerInParent="true"
+            android:layout_margin="4dp"
+            android:padding="4dp"
+            android:textColor="@color/fontColorWhite"
+            android:background="@drawable/button_filled"
+            android:layout_below="@+id/sign_up_button"
+            android:textAllCaps="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    </RelativeLayout>
 
 </RelativeLayout>

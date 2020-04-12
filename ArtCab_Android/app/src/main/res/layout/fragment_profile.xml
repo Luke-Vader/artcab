@@ -58,9 +58,9 @@
         <ImageView
             android:id="@+id/icon"
             android:layout_centerInParent="true"
-            android:src="@drawable/big_user_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:src="@drawable/splash_inverted"
+            android:layout_width="128dp"
+            android:layout_height="128dp"/>
 
         <Button
             android:id="@+id/login_button"
@@ -69,7 +69,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/icon"
             android:textColor="@color/fontColorWhite"
-            android:background="@color/colorAccent"
+            android:background="@drawable/button_filled"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 

@@ -107,7 +107,6 @@ public class ProfileFragment extends Fragment {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Login", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getActivity(), LoginOrSignupActivity.class);
                 startActivity(intent);
             }

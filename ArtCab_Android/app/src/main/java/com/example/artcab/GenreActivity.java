@@ -53,6 +53,7 @@ public class GenreActivity extends AppCompatActivity {
 
     private void showGenres() {
         selected = "";
+        genres.clear();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Specialisations");
         final String[] preferences = {

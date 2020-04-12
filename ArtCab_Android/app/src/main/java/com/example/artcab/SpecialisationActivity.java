@@ -12,21 +12,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class SpecialisationActivity extends AppCompatActivity {
 
     TextView selectSpecials;
     ArrayList<String> specials = new ArrayList<>();
     String selected;
-    Button goToSpecialSubCat;
+    Button goToGenre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_specialisation);
         selectSpecials = findViewById(R.id.special_select);
-        goToSpecialSubCat = findViewById(R.id.goto_spc_sub);
+        goToGenre = findViewById(R.id.goto_spc_sub);
 
         selectSpecials.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,20 +34,25 @@ public class SpecialisationActivity extends AppCompatActivity {
             }
         });
 
-        goToSpecialSubCat.setOnClickListener(new View.OnClickListener() {
+        goToGenre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                bundle.putStringArrayList("specials", specials);
-                Intent intent = new Intent(getApplicationContext(), GenreActivity.class);
-                intent.putExtras(bundle);
-                startActivity(intent);
+                if (!specials.isEmpty()) {
+                    Bundle bundle = new Bundle();
+                    bundle.putStringArrayList("specials", specials);
+                    Intent intent = new Intent(getApplicationContext(), GenreActivity.class);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(SpecialisationActivity.this, "Specialisation Required (Minimum 1)", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
 
     private void showSpecials() {
         selected = "";
+        specials.clear();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Specialisations");
         final String[] specialisations = {

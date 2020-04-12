@@ -57,6 +57,7 @@ public class TasteActivity extends AppCompatActivity {
 
     private void showTastes() {
         selected = "";
+        tastes.clear();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Specialisations");
         final String[] preferences = {
