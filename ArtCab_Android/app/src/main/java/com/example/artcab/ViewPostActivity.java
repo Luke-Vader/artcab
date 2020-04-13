@@ -29,7 +29,6 @@ public class ViewPostActivity extends AppCompatActivity {
     RecyclerView postRecycler;
     ArrayList<Post> posts;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
