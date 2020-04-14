@@ -1,4 +1,4 @@
-package com.example.artcab;
+package com.example.artcab.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,50 +7,48 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+
+import com.example.artcab.R;
 
 import java.util.ArrayList;
 
-public class EmailActivity extends AppCompatActivity {
+public class NameActivity extends AppCompatActivity {
 
     ArrayList<String> specials = new ArrayList<>();
     ArrayList<String> genres = new ArrayList<>();
     ArrayList<String> tastes = new ArrayList<>();
-    String name;
-    EditText email;
-    Button goToInsta;
+    EditText name;
+    Button goToEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_email);
+        setContentView(R.layout.activity_name);
+        name = findViewById(R.id.name);
+        goToEmail = findViewById(R.id.goto_email);
 
         Bundle bundle = getIntent().getExtras();
         specials = bundle.getStringArrayList("specials");
         genres = bundle.getStringArrayList("genres");
         tastes = bundle.getStringArrayList("tastes");
-        name = bundle.getString("name");
 
-        email = findViewById(R.id.email);
-        goToInsta = findViewById(R.id.goto_insta);
-
-        goToInsta.setOnClickListener(new View.OnClickListener() {
+        goToEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (email.getText().toString().length() == 0) {
-                    email.setError("Required");
+                if (name.getText().toString().length() == 0) {
+                    name.setError("Required");
                 } else {
                     Bundle bundle = new Bundle();
-                    Intent intent = new Intent(getApplicationContext(), InstagramActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), EmailActivity.class);
                     bundle.putStringArrayList("specials", specials);
                     bundle.putStringArrayList("genres", genres);
                     bundle.putStringArrayList("tastes", tastes);
-                    bundle.putString("name", name);
-                    bundle.putString("email", email.getText().toString());
+                    bundle.putString("name", name.getText().toString());
                     intent.putExtras(bundle);
                     startActivity(intent);
                 }
             }
         });
+
     }
 }

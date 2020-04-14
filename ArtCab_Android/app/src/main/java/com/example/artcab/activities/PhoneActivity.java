@@ -1,4 +1,4 @@
-package com.example.artcab;
+package com.example.artcab.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,47 +7,56 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+
+import com.example.artcab.R;
 
 import java.util.ArrayList;
 
-public class NameActivity extends AppCompatActivity {
+public class PhoneActivity extends AppCompatActivity {
 
     ArrayList<String> specials = new ArrayList<>();
     ArrayList<String> genres = new ArrayList<>();
     ArrayList<String> tastes = new ArrayList<>();
-    EditText name;
-    Button goToEmail;
+    String name;
+    String email;
+    String instagram;
+    EditText phone;
+    Button goToWhatsapp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_name);
-        name = findViewById(R.id.name);
-        goToEmail = findViewById(R.id.goto_email);
+        setContentView(R.layout.activity_phone);
+        phone = findViewById(R.id.phone);
+        goToWhatsapp = findViewById(R.id.goto_whatsapp);
 
         Bundle bundle = getIntent().getExtras();
         specials = bundle.getStringArrayList("specials");
         genres = bundle.getStringArrayList("genres");
         tastes = bundle.getStringArrayList("tastes");
+        name = bundle.getString("name");
+        email = bundle.getString("email");
+        instagram = bundle.getString("instagram");
 
-        goToEmail.setOnClickListener(new View.OnClickListener() {
+        goToWhatsapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (name.getText().toString().length() == 0) {
-                    name.setError("Required");
+                if (phone.getText().toString().length() == 0) {
+                    phone.setError("Required");
                 } else {
                     Bundle bundle = new Bundle();
-                    Intent intent = new Intent(getApplicationContext(), EmailActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), WhatsappActivity.class);
                     bundle.putStringArrayList("specials", specials);
                     bundle.putStringArrayList("genres", genres);
                     bundle.putStringArrayList("tastes", tastes);
-                    bundle.putString("name", name.getText().toString());
+                    bundle.putString("name", name);
+                    bundle.putString("email", email);
+                    bundle.putString("instagram", instagram);
+                    bundle.putString("phone", phone.getText().toString());
                     intent.putExtras(bundle);
                     startActivity(intent);
                 }
             }
         });
-
     }
 }

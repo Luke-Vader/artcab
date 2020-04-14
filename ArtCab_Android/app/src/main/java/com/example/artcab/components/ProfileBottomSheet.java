@@ -5,15 +5,14 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.example.artcab.ChangePasswordActivity;
-import com.example.artcab.EditUserActivity;
-import com.example.artcab.MainActivity;
+import com.example.artcab.activities.ChangePasswordActivity;
+import com.example.artcab.activities.EditUserActivity;
+import com.example.artcab.activities.MainActivity;
 import com.example.artcab.R;
-import com.example.artcab.ViewPostActivity;
+import com.example.artcab.activities.ViewPostActivity;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.firebase.auth.FirebaseAuth;
 

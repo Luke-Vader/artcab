@@ -1,4 +1,4 @@
-package com.example.artcab;
+package com.example.artcab.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 

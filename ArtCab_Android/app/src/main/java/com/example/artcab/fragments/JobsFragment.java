@@ -17,7 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.artcab.LoginOrSignupActivity;
+import com.example.artcab.activities.LoginOrSignupActivity;
 import com.example.artcab.R;
 import com.example.artcab.components.Job;
 import com.example.artcab.components.JobAdapter;
