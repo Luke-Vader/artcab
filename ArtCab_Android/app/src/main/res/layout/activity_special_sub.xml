@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    tools:context=".SpecialSubActivity">
+    tools:context=".activities.SpecialSubActivity">
 
     <LinearLayout
         android:id="@+id/sub_spc_container"

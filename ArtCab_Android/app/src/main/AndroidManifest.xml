@@ -16,27 +16,27 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAv4dlLRkzDZScczNsC0E2XLu_-IBo8VA4" />
-        <activity android:name=".ViewPostActivity" />
-        <activity android:name=".ChangePasswordActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:name=".EditUserActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:name=".LoginActivity" android:windowSoftInputMode="adjustResize|stateHidden" />
-        <activity android:name=".ProfilePictureActivity" />
-        <activity android:name=".PasswordActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:name=".LinksActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:name=".PortfolioActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:name=".QuoteActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:name=".WhatsappActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:name=".PhoneActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:name=".InstagramActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:name=".EmailActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:name=".NameActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:name=".TasteActivity" />
-        <activity android:name=".GenreActivity" />
-        <activity android:name=".SpecialSubActivity" />
-        <activity android:name=".SpecialisationActivity" />
-        <activity android:name=".LoginOrSignupActivity" />
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".SplashActivity" android:theme="@style/SplashTheme">
+        <activity android:name=".activities.ViewPostActivity" />
+        <activity android:name=".activities.ChangePasswordActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:name=".activities.EditUserActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:name=".activities.LoginActivity" android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity android:name=".activities.ProfilePictureActivity" />
+        <activity android:name=".activities.PasswordActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:name=".activities.LinksActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:name=".activities.PortfolioActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:name=".activities.QuoteActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:name=".activities.WhatsappActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:name=".activities.PhoneActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:name=".activities.InstagramActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:name=".activities.EmailActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:name=".activities.NameActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:name=".activities.TasteActivity" />
+        <activity android:name=".activities.GenreActivity" />
+        <activity android:name=".activities.SpecialSubActivity" />
+        <activity android:name=".activities.SpecialisationActivity" />
+        <activity android:name=".activities.LoginOrSignupActivity" />
+        <activity android:name=".activities.MainActivity"/>
+        <activity android:name=".activities.SplashActivity" android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

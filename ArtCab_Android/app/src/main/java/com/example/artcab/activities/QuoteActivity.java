@@ -1,4 +1,4 @@
-package com.example.artcab;
+package com.example.artcab.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,44 +7,32 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+
+import com.example.artcab.R;
 
 import java.util.ArrayList;
 
-public class LinksActivity extends AppCompatActivity {
+public class QuoteActivity extends AppCompatActivity {
 
     ArrayList<String> specials = new ArrayList<>();
     ArrayList<String> genres = new ArrayList<>();
     ArrayList<String> tastes = new ArrayList<>();
-    ArrayList<String> links = new ArrayList<>();
     String name;
     String email;
     String instagram;
     String phone;
     String whatsapp;
-    String quote;
-    String portfolio;
-    EditText link1;
-    EditText link2;
-    EditText link3;
-    Button goToPassword;
-    Button skipLinks;
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-    }
+    EditText quote;
+    Button goToPortFolio;
+    Button skipQuote;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_links);
-        link1 = findViewById(R.id.link_1);
-        link2 =findViewById(R.id.link_2);
-        link3 = findViewById(R.id.link_3);
-        goToPassword = findViewById(R.id.goto_password);
-        skipLinks = findViewById(R.id.skip_links);
+        setContentView(R.layout.activity_quote);
+        quote = findViewById(R.id.quote);
+        goToPortFolio = findViewById(R.id.goto_portfolio);
+        skipQuote = findViewById(R.id.skip_quote);
 
         Bundle bundle = getIntent().getExtras();
         specials = bundle.getStringArrayList("specials");
@@ -55,21 +43,15 @@ public class LinksActivity extends AppCompatActivity {
         instagram = bundle.getString("instagram");
         phone = bundle.getString("phone");
         whatsapp = bundle.getString("whatsapp");
-        quote = bundle.getString("quote");
-        portfolio = bundle.getString("portfolio");
 
-        goToPassword.setOnClickListener(new View.OnClickListener() {
+        goToPortFolio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                links = new ArrayList<>();
-                if (link1.getText().toString().length() == 0) {
-                    link1.setError("Required");
+                if (quote.getText().toString().length() == 0) {
+                    quote.setError("Required");
                 } else {
-                    links.add(link1.getText().toString());
-                    links.add(link2.getText().toString());
-                    links.add(link3.getText().toString());
                     Bundle bundle = new Bundle();
-                    Intent intent = new Intent(getApplicationContext(), PasswordActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), PortfolioActivity.class);
                     bundle.putStringArrayList("specials", specials);
                     bundle.putStringArrayList("genres", genres);
                     bundle.putStringArrayList("tastes", tastes);
@@ -78,24 +60,18 @@ public class LinksActivity extends AppCompatActivity {
                     bundle.putString("phone", phone);
                     bundle.putString("instagram", instagram);
                     bundle.putString("whatsapp", whatsapp);
-                    bundle.putString("quote", quote);
-                    bundle.putString("portfolio", portfolio);
-                    bundle.putStringArrayList("links", links);
+                    bundle.putString("quote", quote.getText().toString());
                     intent.putExtras(bundle);
                     startActivity(intent);
                 }
             }
         });
 
-        skipLinks.setOnClickListener(new View.OnClickListener() {
+        skipQuote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                links = new ArrayList<>();
-                links.add("");
-                links.add("");
-                links.add("");
                 Bundle bundle = new Bundle();
-                Intent intent = new Intent(getApplicationContext(), PasswordActivity.class);
+                Intent intent = new Intent(getApplicationContext(), PortfolioActivity.class);
                 bundle.putStringArrayList("specials", specials);
                 bundle.putStringArrayList("genres", genres);
                 bundle.putStringArrayList("tastes", tastes);
@@ -104,9 +80,7 @@ public class LinksActivity extends AppCompatActivity {
                 bundle.putString("instagram", instagram);
                 bundle.putString("phone", phone);
                 bundle.putString("whatsapp", whatsapp);
-                bundle.putString("quote", quote);
-                bundle.putString("portfolio", portfolio);
-                bundle.putStringArrayList("links", links);
+                bundle.putString("quote", "");
                 intent.putExtras(bundle);
                 startActivity(intent);
             }

@@ -1,4 +1,4 @@
-package com.example.artcab;
+package com.example.artcab.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.artcab.R;
 import com.example.artcab.components.Post;
 import com.example.artcab.components.PostAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;

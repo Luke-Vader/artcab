@@ -1,4 +1,4 @@
-package com.example.artcab;
+package com.example.artcab.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +12,7 @@ import android.os.Handler;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.artcab.R;
 import com.example.artcab.fragments.IdeaFragment;
 import com.example.artcab.fragments.JobsFragment;
 import com.example.artcab.fragments.NetworksFragment;
