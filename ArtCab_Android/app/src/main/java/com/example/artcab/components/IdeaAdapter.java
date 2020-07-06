@@ -38,7 +38,6 @@ public class IdeaAdapter extends RecyclerView.Adapter<IdeaAdapter.ViewHolder> im
 
     FirebaseFirestore db;
     FirebaseAuth auth;
-    User currentUser;
     StorageReference storageReference;
     Dialog userDialog;
 
@@ -79,7 +78,6 @@ public class IdeaAdapter extends RecyclerView.Adapter<IdeaAdapter.ViewHolder> im
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        currentUser = documentSnapshot.toObject(User.class);
                         holder.user.setText(documentSnapshot.getString("name"));
                     }
                 });
@@ -101,14 +99,40 @@ public class IdeaAdapter extends RecyclerView.Adapter<IdeaAdapter.ViewHolder> im
         holder.userImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displayUser(currentUser);
+                db.collection("users").document(ideas.get(holder.getAdapterPosition()).getUser()).get()
+                        .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                            @Override
+                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                User user = documentSnapshot.toObject(User.class);
+                                displayUser(user);
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(context, "Unable to find user", Toast.LENGTH_SHORT).show();
+                            }
+                        });
             }
         });
 
         holder.user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displayUser(currentUser);
+                db.collection("users").document(ideas.get(holder.getAdapterPosition()).getUser()).get()
+                        .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                            @Override
+                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                User user = documentSnapshot.toObject(User.class);
+                                displayUser(user);
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(context, "Unable to find user", Toast.LENGTH_SHORT).show();
+                            }
+                        });
             }
         });
 
