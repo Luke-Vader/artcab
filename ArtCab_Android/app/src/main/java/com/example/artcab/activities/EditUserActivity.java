@@ -47,7 +47,6 @@ public class EditUserActivity extends AppCompatActivity {
     ArrayList<String> tastes = new ArrayList<>();
 
     ImageView editSpecials;
-    ImageView editLinks;
     ImageView editTastes;
     ImageView editGenres;
     ImageView profileImage;
@@ -61,7 +60,6 @@ public class EditUserActivity extends AppCompatActivity {
     EditText whatsApp;
     TextView special;
     TextView genre;
-    TextView link;
     TextView taste;
     User serverUser;
     String selected;
@@ -85,10 +83,8 @@ public class EditUserActivity extends AppCompatActivity {
         whatsApp = findViewById(R.id.whatsapp);
         special = findViewById(R.id.specials);
         genre = findViewById(R.id.genres);
-        link = findViewById(R.id.links);
         taste = findViewById(R.id.tastes);
         editGenres = findViewById(R.id.edit_genres);
-        editLinks = findViewById(R.id.edit_links);
         editSpecials = findViewById(R.id.edit_specials);
         editTastes = findViewById(R.id.edit_tastes);
         profileImage = findViewById(R.id.profile_image);
@@ -120,7 +116,6 @@ public class EditUserActivity extends AppCompatActivity {
                         instagram.setText(serverUser.getInstagram());
                         phone.setText(serverUser.getPhone());
                         whatsApp.setText(serverUser.getWhatsapp());
-                        link.setText(serverUser.getLinks().toString().substring(1,serverUser.getLinks().toString().length() - 1));
                         special.setText(serverUser.getSpecialisations().toString().substring(1,serverUser.getSpecialisations().toString().length() - 1));
                         genre.setText(serverUser.getGenres().toString().substring(1,serverUser.getGenres().toString().length() - 1));
                         taste.setText(serverUser.getTastes().toString().substring(1,serverUser.getTastes().toString().length() - 1));

@@ -176,34 +176,8 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
-                android:id="@+id/links_label"
-                android:layout_below="@id/genres"
-                android:text="Links"
-                android:textSize="16sp"
-                android:textColor="@color/fontColorBlack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <ImageView
-                android:id="@+id/edit_links"
-                android:src="@drawable/ic_edit_black_24dp"
-                android:layout_below="@id/genres"
-                android:layout_marginStart="16dp"
-                android:layout_toEndOf="@id/links_label"
-                android:layout_width="24dp"
-                android:layout_height="24dp"/>
-
-            <TextView
-                android:id="@+id/links"
-                android:layout_below="@+id/links_label"
-                android:textSize="12sp"
-                android:textColor="@color/greyFont"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <TextView
                 android:id="@+id/taste_label"
-                android:layout_below="@id/links"
+                android:layout_below="@id/genres"
                 android:text="Taste"
                 android:textSize="16sp"
                 android:textColor="@color/fontColorBlack"
@@ -213,7 +187,7 @@
             <ImageView
                 android:id="@+id/edit_tastes"
                 android:src="@drawable/ic_edit_black_24dp"
-                android:layout_below="@id/links"
+                android:layout_below="@id/genres"
                 android:layout_marginStart="16dp"
                 android:layout_toEndOf="@id/taste_label"
                 android:layout_width="24dp"

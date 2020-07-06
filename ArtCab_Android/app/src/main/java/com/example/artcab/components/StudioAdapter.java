@@ -65,7 +65,7 @@ public class StudioAdapter extends RecyclerView.Adapter<StudioAdapter.ViewHolder
 
         holder.area.setText(studios.get(position).getCarpetArea() + " Sq.ft");
         holder.rent.setText("₹" + studios.get(position).getRent() + "/hour");
-        holder.deposit.setText("Deposit:₹" + studios.get(position).getDeposit());
+        holder.deposit.setText("Deposit: ₹" + studios.get(position).getDeposit());
         holder.name.setText(studios.get(position).getName());
         holder.description.setText(studios.get(position).getDescription());
         if (studios.get(position).getParking().equals("1")) {
